@@ -1,0 +1,73 @@
+<div class="section-head login-head">
+    <div class="row">
+        <div class="col-11 mx-auto">
+            <div class="container-fluid">
+                <div class="btnback">
+                    <a [routerLink]="['/user/welcome']"><i class="fas fa-arrow-left mx-2"></i>Back</a>
+                </div>
+                <br />
+                <div class="col-sm-9 col-md-10 mx-auto cards_main">
+                    <div class="heading-txt">
+                        <h2 class="text-center sub-heading light-grey">
+                            Making Real Estate <span class="blue-color">Simple</span>
+                        </h2>
+                    </div>
+                    <div class="welcome-txt">
+                        <h2 class="text-center sub-heading light-grey fs-5">Welcome</h2>
+                    </div>
+                    <span class="">
+              <p class="text-center">
+                To utilize all the app's features please login or create an
+                account.
+              </p>
+            </span>
+                    <div class="col-sm-10 col-md-10 col-lg-6 col-xl-6 mx-auto">
+                        <form [formGroup]="loginForm">
+                            <div class="form-group">
+                                <input type="text" name="email" formControlName="email" class="form-control" placeholder="Email Id / Phone Number" />
+                                <div *ngIf="submitted && f['email'].invalid" class="text-danger">
+                                    *Please enter Email Id / Phone Number
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" formControlName="password" class="form-control" placeholder="Password" />
+                                <div *ngIf="submitted && f['password'].invalid" class="text-danger">
+                                    *Please enter your password
+                                </div>
+                            </div>
+                            <div class="row reminder-check">
+                                <div class="col-12 mx-auto">
+                                    <div class="row justify-content-between">
+                                        <div class="col-6 col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                                <label class="form-check-label" for="flexCheckDefault">
+                            Remember me
+                          </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-6 text-right forget">
+                                            <a [routerLink]="['/user/Forget-password']" routerLinkActive="router-link-active">Forgot
+                          Password?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="prev-next-btn text-center py-2">
+                    <button type="submit" class="next-btn" (click)="loginMethod()">
+                      Login
+                    </button>
+                  </span>
+                            </div>
+                        </form>
+                        <div class="create-ac text-center">
+                            <p style="cursor: pointer">
+                                New User?
+                                <span style="color: #43d2ff" [routerLink]="['/user/signUp']">Create an Account</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+.heading-txt {
+    padding: 0.2rem;
+  }
+  
+  .small-text {
+    padding: 1rem;
+    p {
+      font-size: 18px;
+      letter-spacing: 0.29px;
+      font-family: "Montserrat", sans-serif;
+      line-height: 24px;
+    }
+  }
+  
+  .form-check-input:checked {
+    background-color: #43d2ff;
+    border-color: #43d2ff;
+  }
+
+  .prev-next-btn {
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }

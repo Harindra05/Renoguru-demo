@@ -1,0 +1,72 @@
+.heading-txt {
+    padding: 0.2rem;
+  }
+  
+  .small-text {
+    // padding: 1rem;
+    p {
+      font-size: 14px;
+      letter-spacing: 0.29px;
+      font-family: "Montserrat", sans-serif;
+      line-height: 24px;
+    }
+  }
+  .form-group {
+    input {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .form-check-input:checked {
+    background-color: #43d2ff;
+    border-color: #43d2ff;
+  }
+  
+  .create-ac {
+    p {
+      font-size: 18px;
+    }
+  }
+  
+  .welcome-txt p {
+    font-size: 19px;
+    letter-spacing: 1px;
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .welcome-txt p {
+      font-size: 19px;
+      letter-spacing: 1px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .welcome-txt p {
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+  
+    .welcome-txt p {
+      font-size: 19px;
+      letter-spacing: 1px;
+    }
+  }
+  
+  @media screen and (max-width: 425px) {
+    .welcome-txt p {
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    h5 {
+      font-size: 18px;
+    }
+    .welcome-txt p {
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+  }
+  

@@ -1,0 +1,37 @@
+.heading-txt {
+    padding: 1.1rem 0 0.6rem 0px;
+    h2 {
+      margin-bottom: 5px;
+    }
+  }
+  .welcome-txt {
+    padding: 0rem;
+    margin-bottom: 0;
+    h2 {
+      font-size: 25px;
+    }
+    p {
+      font-size: 25px;
+      margin-bottom: -33px;
+    }
+  }
+  .small-text {
+    p {
+      font-size: 14px;
+      padding-top: 0.5rem;
+      letter-spacing: 0.29px;
+    }
+  }
+  .forget a {
+    text-decoration: none;
+    color: #43d2ff;
+  }
+  .reminder-check {
+    padding: 1rem 0;
+  }
+  .form-check-input:checked {
+    background-color: #43d2ff;
+    border-color: #43d2ff;
+  }
+  
+  
