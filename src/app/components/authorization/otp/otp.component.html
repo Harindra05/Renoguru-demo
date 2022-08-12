@@ -1,55 +1,21 @@
-<div class="section-head login-head">
-    <div class="container-fluid">
-      <div class="btnback">
-        <a [routerLink]="['/user/verify-phone-number']"><i class="fas fa-arrow-left mx-2"></i>Back</a>
-      </div>
-      <br />
-      <div class="col-12 col-md-10 col-lg-10 mx-auto cards_main cards-main">
-        <div class="heading-txt">
-          <h2 class="text-center" style="color: #484451">Verification</h2>
-        </div>
-        <div class="">
-          <p class="text-center">
-            We have sent a verification link to the email below, please verifiy
-            your email.<i class="fas fa-exclamation-circle ml-2" style="color: #43d2ff"></i>
-          </p>
-          <p class="text-center" style="margin-bottom: 0">
-            OTP Sent to:
-            <span class="font-weight-bold ml-3">{{ phoneNumber }}</span>
-          </p>
-        </div>
-        <div class="col-sm-10 col-md-10 col-lg-6 mx-auto">
-          <form [formGroup]="receviedotpForm" (ngSubmit)="otpverifiyMethod()">
-            <div class="form-group">
-              <br />
-              <input type="text" formControlName="otp" name="text" class="form-control"
-                onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="6"
-                placeholder=" Enter Your OTP" />
-              <div class="text-danger" *ngIf="submitted && f['otp'].invalid">
-                * please entered your Otp
-              </div>
-              <p class="text-center" style="margin-bottom: 0; color: #484451">
-                Didn't receive it?
-                <a style="color: #43d2ff; text-decoration: none" class="ml-3"
-                  [routerLink]="['/user/verify-phone-number']">Resend
-                </a>
-              </p>
+<section class="ftco-section bg-light">
+    <div class="">
+        <div class="container" id="container">
+            <div class="form-container log-in-container">
+                <form [formGroup]="receviedotpForm">
+                    <h2>OTP verify</h2>
+                    <input formControlName="otp" name="text" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="6" placeholder=" Enter Your OTP" />
+                    <button type="submit" [disabled]="!receviedotpForm.valid" (click)="otpverifiyMethod()">Submit</button>
+                </form>
             </div>
-            <div class="text-center">
-              <span class="login-btn prev-next-btn">
-                <button type="submit" class="next-btn">Next</button>
-              </span>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-right">
+                        <h1>OTP </h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                    </div>
+                </div>
             </div>
-            <div class="text-center my-3">
-              <span class="login-btn-skip prev-next-btn">
-                <button type="button" class="next-btn" [routerLink]="['/user/overview']"
-                  routerLinkActive="router-link-active">
-                  Skip for Now
-                </button>
-              </span>
-            </div>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
+</section>

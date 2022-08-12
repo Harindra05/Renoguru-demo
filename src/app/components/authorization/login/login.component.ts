@@ -39,13 +39,15 @@ export class LoginComponent implements OnInit {
     try {
       const md5 = Md5.hashStr(this.loginForm.value.password)
       this.loginForm.value.password = md5
-      let data = await this.api.post('auth/admin-signin',this.loginForm.value)
+      let data = await this.api.post('auth/signin',this.loginForm.value)
       if(data.success){
         this.toastr.success(data.message);
         this.cookie.set('renoWeb',JSON.stringify(data.data));
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
       }
-    } catch (error) {
+    } catch (error:any) {
+      this.toastr.error(error.message);
+
       console.log(error);
     }
   }

@@ -1,104 +1,45 @@
-<div class="section-head login-head">
-    <div class="container-fluid">
-      <div class="btnback">
-        <a [routerLink]="['/user/welcome']"><i class="fas fa-arrow-left mx-2"></i>Back</a>
-      </div>
-      <br />
-      <div class="col-12 col-md-10 col-lg-10 cards_main mx-auto">
-        <div class="heading-txt">
-          <h2 class="text-center sub-heading py-2" style="color: #484451; margin-bottom: 0">
-            Sign Up
-          </h2>
+<section class="ftco-section bg-light">
+    <div class="">
+        <div class="container" id="container">
+            <div class="form-container log-in-container">
+                <form [formGroup]="signupForm" (ngSubmit)="signupMethod()">
+                    <h2>Signup</h2>
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fa fa-facebook fa-2x"></i></a>
+                        <a href="#" class="social"><i class="fab fa fa-google fa-2x"></i></a>
+                    </div>
+                    <span>or use your account</span>
+                    <input type="text" class="form-control" formControlName="firstName" placeholder="firstName" />
+                    <small class="text-danger" *ngIf="f.firstName.invalid && f.firstName.touched">*please enter your first name in characters</small>
+                    <input type="text" class="form-control" formControlName="lastName" placeholder="lastName" />
+                    <small class="text-danger" *ngIf="f.lastName.invalid && f.lastName.touched">*please enter your first name in characters</small>
+                    <input type="email" class="form-control" formControlName="email" placeholder="Email" />
+                    <small class="text-danger" *ngIf="f.email.invalid && f.email.touched">*  please enter your Email
+                    </small>
+                    <select name="gender" formControlName="gender" for id="gender">
+                        <option value="" selected  disabled>Select gender</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
+                    <input type="new text" minlength="8" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="11" class="form-control" formControlName="phone" placeholder="Phone Number" />
+                    <small class="text-danger" *ngIf="f.phone.invalid && f.phone.touched">*please enter your phone number</small>
+                    <input type="password" class="form-control" formControlName="password" placeholder="Password" />
+                    <input type="password" class="form-control" formControlName="confirm_password" placeholder="Confirm Password" />
+                    <small class="text-danger" *ngIf="f.confirm_password.errors?.mustMatch">*Your password is not matched </small>
+                    <p class="signup" routerLink="/login">Already have an account? <span class="">Login</span></p>
+
+                    <a href="#">Forgot your password?</a>
+                    <button>Sign Up</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-right">
+                        <h1>Signup </h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="welcome-txt">
-          <p class="text-center">
-            Please enter your real name, this will help with proving your identity
-            which <br />
-            you need to be able to buy, sell, let and rent properties.
-            <i class="fas fa-exclamation-circle" style="color: #43d2ff"></i>
-          </p>
-        </div>
-        <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
-          <form [formGroup]="signupForm">
-            <div class="form-group">
-              <input type="text" name="firstName" formControlName="firstName" class="form-control"
-                placeholder=" First Name" />
-              <!-- <small
-                class="text-danger"
-                *ngIf="f['firstName'].invalid && f['firstName'].touched"
-                >*please entered your first name in characters</small
-              > -->
-              <div *ngIf="submitted && f['firstName'].invalid" class="text-danger">
-                *Please enter your first name
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" name="lastName" formControlName="lastName" class="form-control"
-                placeholder=" Last Name" />
-              <!-- <small
-                class="text-danger"
-                *ngIf="f['lastName'].invalid && f['lastName'].touched"
-                >*please entered your last name in characters</small
-              > -->
-              <div *ngIf="submitted && f['lastName'].invalid" class="text-danger">
-                *Please enter your last name
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="email" name="emailId" formControlName="emailId" class="form-control" placeholder=" Email" />
-              <!-- <small
-                class="text-danger"
-                *ngIf="f['emailId'].invalid && f['emailId'].touched"
-                >* please entered your Email
-              </small> -->
-              <div *ngIf="submitted && f['emailId'].invalid" class="text-danger">
-                *Please enter your correct Email id
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="password" name="password" formControlName="password" class="form-control"
-                placeholder="Password" />
-              <!-- <small class="text-danger" *ngIf="f.password.invalid && f.password.touched">* please entered  Password</small> -->
-              <!-- <div *ngIf="f.password.errors && f.password.errors.minlength">password should be 8 character.</div> -->
-              <div *ngIf="submitted && f['password'].invalid" class="text-danger">
-                *Please enter your Password
-              </div>
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="password" name="pass" id="inputPassword3"
-                formControlName="confirm_password" placeholder="Confirm Password" />
-  
-              <!-- <div
-                class="text-danger"
-                *ngIf="f['confirm_password'].errors?.['mustMatch'] && submitted  && f['password'].invalid"
-              >
-                Your password is not matched
-              </div> -->
-              <div *ngIf="submitted && f['confirm_password'].invalid || f['confirm_password'].errors?.['mustMatch']"
-                class="text-danger">
-                *Your password is not match
-              </div>
-            </div>
-  
-            <div class="prev-next-btn text-center form-group">
-              <button type="submit" class="next-btn" (click)="signupMethod()">
-                SignUp
-              </button>
-            </div>
-            <!-- <small
-              class="text-danger"
-              *ngIf="signupForm.invalid && signupForm.touched"
-              >*please Fill Complete form first</small
-            > -->
-          </form>
-          <div class="create-ac text-center py-3">
-            <p>
-              Already have a account ?
-              <span class="ml-3" style="color: #43d2ff; cursor: pointer" [routerLink]="['/user/login']">
-                Login</span>
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</section>

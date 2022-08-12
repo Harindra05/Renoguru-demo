@@ -13,7 +13,7 @@ export class LoginserviceService {
       if (!this.cookieService.check("renoWeb")) {
         resolve(true);
       } else {
-          this.router.navigateByUrl("/dashboard");
+          this.router.navigateByUrl("/");
           resolve(false);
         }
     });

@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
+import { ToastrService } from "ngx-toastr";
+import { ApiService } from "src/app/services/api.service";
+import { Md5 } from "ts-md5";
 
 
 @Component({
@@ -13,9 +17,10 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
-
-    private route: Router
+    private api: ApiService,
+    private route: Router,
+    private cookie:CookieService,
+    private toastr:ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +31,14 @@ export class SignupComponent implements OnInit {
           [Validators.required, Validators.pattern("[a-zA-Z ]*")],
         ],
         lastName: ["", [Validators.required, Validators.pattern("[a-zA-Z ]*")]],
-        emailId: ["", [Validators.required, Validators.email]],
+        email: ["", [Validators.required, Validators.email]],
+        "phone": ['',Validators.required],
+        "gender": [''],
+        // "country": [''],
+        // "about":[''],
+        // "hoursTypeIds": [],
+        // "favouriteStyleTypeIds": [],
+        // "userImage": [''],
         password: ["", Validators.required],
         confirm_password: ["", Validators.required],
       },
@@ -62,10 +74,16 @@ export class SignupComponent implements OnInit {
     if (this.signupForm.invalid) {
       return;
     }
-
- 
     try {
-  
+      const md5 = Md5.hashStr(this.signupForm.value.password)
+      this.signupForm.value.password = md5;
+      delete this.signupForm.value.confirm_password
+      let data = await this.api.post('auth/signup-with-email',this.signupForm.value)
+      if(data.success){
+        this.toastr.success(data.message);
+        this.route.navigate(['/otp']);
+      }
+
     } catch (error) {
       console.error(error);
     }
