@@ -1,19 +1,24 @@
-<section class="hero-wrap hero-wrap-2" style="background-image:url(assets/images/bg_4.jpg)">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/bg_4.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 pt-5 text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index-2.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Blog <i class="fa fa-chevron-right"></i></span></p>
-                <h1 class="mb-0 bread">Our Blog</h1>
+                <p class="breadcrumbs">
+                    <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
+                    <span>Inspirations <i class="fa fa-chevron-right"></i></span>
+                </p>
+                <h1 class="mb-0 bread">Inspirations</h1>
             </div>
         </div>
     </div>
 </section>
+
 <section class="ftco-section bg-light">
     <div class="container-xl">
         <div class="row">
             <div class="col-md-4 d-flex" *ngFor="let data of listDetails">
-                <div class="blog-entry justify-content-end" data-aos="" data-aos-duration="1000" data-aos-delay="100" [routerLink]="['/blogs-details',data.id]">
+                <div class="blog-entry justify-content-end" data-aos="" data-aos-duration="1000" data-aos-delay="100" [routerLink]="['/inspirations',data.type==2 ? 'living' : data.type==3 ? 'dining' : data.type==4 ? 'bedroom' : 'kitchen',data.id]">
+                    <!-- [routerLink]="['/blogs-details',data.id]" -->
                     <a class="block-20 img d-flex align-items-end" style="background-image:url({{data.image?data.image:img}})">
                     </a>
                     <div class="text">

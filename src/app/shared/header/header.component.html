@@ -9,17 +9,32 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/properties">Design</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/designs">Design</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/trending">Trending</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Inspirations
+                  </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <!-- <a class="dropdown-item" [routerLink]="['/inspirations']">All</a> -->
+                        <a class="dropdown-item" [routerLink]="['/inspirations','living']">Living</a>
+                        <a class="dropdown-item" [routerLink]="['/inspirations','dining']">Dining</a>
+                        <a class="dropdown-item" [routerLink]="['/inspirations','bedroom']">Bedroom</a>
+                        <a class="dropdown-item" [routerLink]="['/inspirations','kitchen']">Kitchen</a>
+                    </div>
+                </li>
+                <!-- <li class="nav-item"><a class="nav-link" routerLink="/inspirations">Inspirations</a></li> -->
                 <li class="nav-item"><a class="nav-link" routerLink="/agents">Designer</a></li>
-                <!-- <li class="nav-item"><a class="nav-link" routerLink="/">Inspiration</a></li> -->
-                <li class="nav-item"><a class="nav-link" routerLink="/">Videos</a></li>
-                <!-- <li class="nav-item"><a class="nav-link" routerLink="/">Trending</a></li> -->
+                <li class="nav-item"><a class="nav-link">Videos</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="/blogs">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="/contact">Contact</a></li>
             </ul>
-            <p class="mb-0"><a href="#" class="btn btn-primary rounded">Submit An Enquiry</a></p>
+            <p class="mb-0"><a routerLink="/enquiry" class="btn btn-primary rounded">Submit An Enquiry</a></p>
             <p class="mb-0 ml-2" routerLink="/login" *ngIf="!userData"><a class="btn btn-primary rounded">Login</a></p>
         </div>
+        <span class="mr-2 ml-2" *ngIf="userData" routerLink="/profile" style="cursor: pointer;">
+            <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+        </span>
         <p class="mb-0 ml-2" (click)="logout()" *ngIf="userData"><a class="btn btn-primary rounded logout"><i class='fa fa-sign-out'></i></a></p>
     </div>
 </nav>

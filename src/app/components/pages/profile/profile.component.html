@@ -1,0 +1,119 @@
+<section class="hero-wrap hero-wrap-2" style="background-image: url(assets/images/bg_4.jpg)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 pt-5 text-center">
+                <p class="breadcrumbs">
+                    <span class="mr-2"><a href="index-2.html">Home <i class="fa fa-chevron-right"></i></a
+          ></span>
+                    <span>profile <i class="fa fa-chevron-right"></i></span>
+                </p>
+                <h1 class="mb-0 bread">User Details</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="form-section">
+    <div class="heading-section d-flex justify-content-between">
+        <div>
+            <h3>User Profile</h3>
+        </div>
+        <div class="btn-section">
+            <!-- <button type="submit" class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Edit
+      </button> -->
+            <button class="btn btn-primary rounded" (click)="openModal(0)" type="submit">Add Blog</button>
+        </div>
+    </div>
+
+    <form action="" [formGroup]="profileForm">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                    <label for="">First Name</label>
+                    <input type="text" class="form-control" formControlName="firstName" />
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                    <label for="">Last Name</label>
+                    <input type="text" class="form-control" formControlName="lastName" />
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                    <label for="">Phone</label>
+                    <input type="text" class="form-control" formControlName="phone" />
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <label for="">Country</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="country" />
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <label for="">Gender</label>
+                <select class="form-control" formControlName="gender">
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+        </select>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+<div class="row">
+    <modal #myModal>
+        <modal-header>
+            <h6>Update Profile</h6>
+        </modal-header>
+        <modal-content>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-md-offset-2 col-sm-offset-1">
+                        <form [formGroup]="profileForm">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="">First Name</label>
+                                <input type="text" class="form-control"
+                                formControlName="firstName" >
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="">Last Name</label>
+        
+                                    <input type="text" class="form-control" formControlName="lastName">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+        
+                                    <label for="">Phone</label>
+        
+                                    <input type="text" class="form-control" formControlName="phone">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="">country</label>
+        
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="country">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </modal-content>
+        <modal-footer>
+            <!-- <button class="btn btn-primary" (click)="submitBlog()">submit</button>
+            <button class="btn btn-secondary ml-2" (click)="closeModal()">close</button> -->
+        </modal-footer>
+    </modal>
+</div>

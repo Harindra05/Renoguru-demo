@@ -2,21 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-blogs',
-  templateUrl: './blogs.component.html',
-  styleUrls: ['./blogs.component.scss']
+  selector: 'app-inspirations',
+  templateUrl: './inspirations.component.html',
+  styleUrls: ['./inspirations.component.scss']
 })
-export class BlogsComponent implements OnInit {
+export class InspirationsComponent implements OnInit {
+
   listDetails: Array<any>=[];
-  img='assets/images/image_1.jpg'
+  img='assets/images/image_1.jpg';
   constructor(private api:ApiService) { }
 
   ngOnInit(): void {
-    this.getBlogList();
+    this.getInspirationList();
   }
-  async getBlogList() {
+  async getInspirationList() {
     try {
-      let data = await this.api.post("blogs",{
+      let data = await this.api.post("inspirations",{
         "limit": 10000,
         "offset": 0
     });
@@ -28,5 +29,4 @@ export class BlogsComponent implements OnInit {
       
     }
   }
-
 }

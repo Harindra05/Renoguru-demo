@@ -1,0 +1,262 @@
+<section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/bg_4.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 pt-5 text-center">
+                <p class="breadcrumbs">
+                    <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
+                    <span>Enquiry <i class="fa fa-chevron-right"></i></span>
+                </p>
+                <h1 class="mb-0 bread">Enquiry</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12">
+                <div class="wrapper">
+                    <div class="contact-wrap w-100 p-md-5 p-4">
+                        <form id="contactForm" class="contactForm" [formGroup]="enquiryForm">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <label for="" class="font-bold">How many designers do you wish to get in touch with?
+                                    <span class="text-danger"> *</span>
+                                </label>
+                                    <div class="form-group">
+                                        <select id="" class="form-control" formControlName="designerNeed">
+                                        <option value="" selected>How many designer need</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <label for="" class="font-bold">Property Type
+                                    <span class="text-danger"> *</span>
+                                </label>
+                                    <div class="form-group">
+                                        <select id="" class="form-control" formControlName="propertyTypeId">
+                                        <option value="" selected>Select property</option>
+                                        <option value="1">Apartment</option>
+                                        <option value="2">Condo</option>
+                                        <option value="3">HDB</option>
+                                        <option value="4">Landed</option>
+                                        <option value="5">Office</option>
+                                        <option value="6">Private House</option>
+                                        <option value="7">Retail</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-details">
+                                <h3 class="mt-3">Project Details</h3>
+                                <small>Tell us about your home</small>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="" class="font-bold">No. of bedrooms <span class="text-danger">
+                                                *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <select id="" class="form-control" formControlName="noOfBedrooms">
+                                                <option value=""  selected default>Please Select</option>
+                                                <option value="1">Studio</option>
+                                                <option value="2">2 Rooms</option>
+                                                <option value="3">3 Rooms</option>
+                                                <option value="4">4 Rooms</option>
+                                                <option value="5">5 Rooms</option>
+                                                <option value="6">5+ Rooms</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="" class="font-bold">Property status<span class="text-danger">
+                                                *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <select id="" class="form-control" formControlName="propertyStatus">
+                                                <option value="" selected>Select Your Property Status</option>
+                                                <option value="1">New</option>
+                                                <option value="2">Resale</option>
+                                                <option value="3">Existing</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="" class="font-bold mb-2">Area(s) you need to renovate
+                                            <span class="text-danger"> *</span>
+                                        </label>
+                                        <div class="row">
+                                            <ng-container *ngFor="let item of options;let i=index">
+                                                <label class="main" [ngClass]="{'active':item.isPushed}">{{item.name}}
+                                                <input type="checkbox" (change)="updateCheckedOptions(i)" [value]="item.id" [checked]="item.isPushed"  
+                                                 />
+                                            </label>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="" class="font-bold">Property address to renovate
+                                            <span class="text-danger"> *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <input type="text" formControlName="propertyAddress" class="form-control" placeholder="Street name / Postal Code / Development Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="" class="font-bold">Budget <span class="text-danger"> *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <select id="" class="form-control" formControlName="budget">
+                                                <option value="" selected>Select a budget</option>
+                                                <option value="1" selected>Not fixed</option>
+                                                <option value="2">$10000-$20000</option>
+                                                <option value="3">$20001-$30000</option>
+                                                <option value="4">$30001-$40000</option>
+                                                <option value="5">$40001-$60000</option>
+                                                <option value="6">$60001-$80000</option>
+                                                <option value="7">$80001-$100000</option>
+                                                <option value="8">More than $100000</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="" class="font-bold">Keys Collection Period
+                                            <span class="text-danger"> *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <select id="" class="form-control" formControlName="keyCollectionPeriod">
+                                                <option value="" selected>
+                                                    Select keys collection period
+                                                </option>
+                                                <option value="0">Within 3 Months</option>
+                                                <option value="1">Within 6 Months</option>
+                                                <option value="2">More than 6 Months</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="" class="font-bold">Renovation loan <span class="text-danger">
+                                                *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <select id="" class="form-control" formControlName="renovationLoan">
+                                                <option value="" default>Select</option>
+                                                <option value="true">Yes</option>
+                                                <option value="false">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="project-priorty">
+                                        <label for="" class="font-bold">Project priority <span class="text-danger">
+                                                *</span>
+                                        </label>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <div class="property-type-section">
+                                                    <label class="property-type">
+                                                        <img src="https://www.renonation.sg/front/img/good-design.svg"
+                                                            alt="" />
+                                                        <span>
+                                                            <b>Aesthetically Nice</b>
+                                                            <br>
+                                                            <small>I want good design</small>
+                                                        </span>
+                                                        <input type="radio"  formControlName="priority" />
+                                                        <!-- {{enquiryForm.value.priority}} -->
+                                                    </label>
+                                                </div>
+                                                <!-- <div class="property-type-section">
+                                                    <label class="property-type">
+                                                        <img src="https://www.renonation.sg/front/img/good-design.svg"
+                                                            alt="" />
+                                                        <span>
+                                                            <b>Cost Effectiveness</b>
+                                                            <br>
+                                                            <small>I want good design</small>
+                                                        </span>
+                                                        <input type="checkbox" formControlName="priority" />
+                                                        <span class="geekmark"></span>
+                                                    </label>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="col-sm-12 col-md-6">
+                                        <label for="" class="font-bold">Upload your floor plans
+                                            <span class="text-danger"> *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <span>
+                                                <label for="" class="upload-sec">
+                                                    <input type="file" class="form-control upload-file" />
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="" class="font-bold">Area Size(m2) <span class="text-danger">
+                                                *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="name" placeholder="Enter area of size" />
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="contact-info">
+                                <h3 class="mb-0">Contact Information</h3>
+                                <div class="row contact-inner">
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="" class="font-bold">Full Name <span class="text-danger"> *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <input type="text" formControlName="fullName" class="form-control" id="name" placeholder="Full Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="" class="font-bold">Email <span class="text-danger"> *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="email" placeholder="Email" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="" class="font-bold">Mobile <span class="text-danger"> *</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <input type="text" [min]="8" onkeypress='return event.charCode >= 48 && event.charCode <= 57' [max]="11" [minlength]="8" [maxlength]="11" class="form-control" formControlName="phone" id="name" placeholder="Mobile Number" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="" class="font-bold">Other Information</label>
+                                        <div class="form-group">
+                                            <textarea class="form-control" formControlName="otherInformation" id="message" cols="30" rows="4" placeholder="Create a message here"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for=""></label>
+                                        <div class="form-group">
+                                            <input type="submit" (click)="enquiryFormSubmited()" value="GET QUOTATIONS NOW" class="btn btn-primary" />
+                                            <div class="submitting"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

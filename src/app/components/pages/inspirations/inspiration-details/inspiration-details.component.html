@@ -1,0 +1,36 @@
+<section class="ftco-section bg-light" *ngIf="blog_id">
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-md-12 d-flex">
+                <div class="blog-entry justify-content-end" data-aos="" data-aos-duration="1000" data-aos-delay="100">
+                    <a class="block-20 img d-flex align-items-end" style="background-image:url({{blogDetails&&blogDetails.image?blogDetails.image:img}})">
+                    </a>
+                    <div class="text">
+                        <p class="meta"><span>{{blogDetails?.createdAt | date}}</span></p>
+                        <h3 class="heading mb-3"><a>{{blogDetails?.title}}</a></h3>
+                        <p class="blog_details" innerHtml="{{blogDetails?.description}}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section bg-light" *ngIf="!blog_id">
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-md-4 d-flex" *ngFor="let data of listDetails">
+                <div class="blog-entry justify-content-end" data-aos="" data-aos-duration="1000" data-aos-delay="100" [routerLink]="['/inspirations',data.type==2 ? 'living' : data.type==3 ? 'dining' : data.type==4 ? 'bedroom' : 'kitchen',data.id]">
+                    <!-- [routerLink]="['/blogs-details',data.id]" -->
+                    <a class="block-20 img d-flex align-items-end" style="background-image:url({{data.image?data.image:img}})">
+                    </a>
+                    <div class="text">
+                        <p class="meta"><span>{{data.createdAt | date}}</span>
+                        </p>
+                        <h3 class="heading mb-3"><a>{{data.title}}</a></h3>
+                        <p class="blog_details" innerHtml="{{data.description}}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

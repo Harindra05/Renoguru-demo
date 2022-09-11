@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { SimpleLayoutRoutingModule } from './simple-layout-routing.module';
 import { SimpleLayoutComponent } from './simple-layout.component';
 import { HomeComponent } from 'src/app/components/pages/home/home.component';
-import { PropertiesComponent, AboutUsComponent, AgentsComponent, BlogsComponent, ContactComponent } from 'src/app/components/pages/pages';
+import { PropertiesComponent, AboutUsComponent, AgentsComponent, BlogsComponent, ContactComponent, ProfileComponent, InspirationsComponent, TrendingComponent,  } from 'src/app/components/pages/pages';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SharedModule } from 'src/app/shared/shared.module';
-
-
+import { EnquiryComponent } from 'src/app/components/pages/enquiry/enquiry.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BlogDetailsComponent } from 'src/app/components/pages/blogs/blog-details/blog-details.component';
+import { ModalModule } from 'ngb-modal';
+import { DetailsComponent } from 'src/app/components/pages/trending/details/details.component';
+import { InspirationDetailsComponent } from 'src/app/components/pages/inspirations/inspiration-details/inspiration-details.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,23 @@ import { SharedModule } from 'src/app/shared/shared.module';
     AboutUsComponent,
     AgentsComponent,
     BlogsComponent,
-    ContactComponent
+    BlogDetailsComponent,
+    ContactComponent,
+    EnquiryComponent,
+    ProfileComponent,
+    TrendingComponent,
+    InspirationsComponent,
+    DetailsComponent,
+    InspirationDetailsComponent
   ],
   imports: [
     CommonModule,
     CarouselModule,
     SharedModule,
-    SimpleLayoutRoutingModule
+    ModalModule,
+    SimpleLayoutRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,    
   ]
 })
 export class SimpleLayoutModule { }
