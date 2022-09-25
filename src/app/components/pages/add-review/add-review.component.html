@@ -1,0 +1,147 @@
+<section class="hero-wrap hero-wrap-2" style="background-image: url(assets/images/bg_4.jpg)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 pt-5 text-center">
+                <p class="breadcrumbs">
+                    <span class="mr-2"><a routerLink="/">Home <i class="fa fa-chevron-right"></i></a
+          ></span>
+                    <span routerLink="/designs-view">Submit Review <i class="fa fa-chevron-right"></i></span>
+                </p>
+                <h1 class="mb-0 bread">Submit Review</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="profile-header">
+        <div class="contact-wrap    contact-wrap w-100 p-md-5 p-4">
+            <h1>Submit Review</h1>
+            <div class="contactForm">
+                <form [formGroup]="reviewForm" (ngSubmit)="addReviewSubmit()">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <input type="name" formControlName="fullName" placeholder="- Enter your Designer's Name -" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <input type="email" formControlName="email" placeholder="- Enter your  Email -" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <input type="number" formControlName="phoneNumber" placeholder="- Enter your Number -" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <select name="" class="form-control" id="" formControlName="houseTypeId">
+                        <option value="" selected>- Select House Type -</option>
+                        <option value="1">HDB 1 &amp; 2 Rooms</option>
+                        <option value="2">HDB 3-Room</option>
+                        <option value="3">HDB 4-Room</option>
+                        <option value="4">
+                          HDB 5-Room/Exec/Mansionette
+                        </option>
+                        <option value="5">HUDC</option>
+                        <option value="6">Private apartment</option>
+                        <option value="7">Condominium</option>
+                        <option value="8">
+                          Bungalow/Semi-Detached
+                        </option>
+                        <option value="9">Terrace/Rowhouse</option>
+                        <option value="10">Shophouse</option>
+                        <option value="11">Others</option>
+                      </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <select name="inputCost" formControlName="renovationCost" id="inputCost" class="form-control">
+                        <option value="">
+                          - Select Renovation Cost (exclude furnishings) -
+                        </option>
+                        <option value="10">Under $10k</option>
+                        <option value="20"> $20k</option>
+                        <option value="30"> $30k</option>
+                        <option value="40"> $40k</option>
+                        <option value="50"> $50k</option>
+                        <option value="60"> $60k</option>
+                        <option value="70"> $70k</option>
+                        <option value="80"> $80k</option>
+                        <option value="90"> $90k</option>
+                        <option value="100">$90k and above</option>
+                      </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group d-flex">
+                                        <input type="number" formControlName="renovationDuration" placeholder="Duration of Renovation" class="form-control" />
+                                        <select class="form-control" formControlName="renovationDurationType" name="duration-of-renovation-date">
+                            <option value="">
+                              - Select type of Days -
+                            </option>
+                            <option value="weeks" >Weeks</option>
+                            <option value="months">Months</option>
+                            <option value="years">Years</option>
+                          </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 mx-auto">
+                            <div class="col-sm-12 col-md-12">
+                                <b>Upload images of your renovated home</b>
+                                <ngx-dropzone [multiple]="true" (change)="onSelect($event)">
+                                    <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                                        <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+                                    </ngx-dropzone-image-preview>
+                                </ngx-dropzone>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-group pt-3">
+                                    <label for="">Service Rendered by ID</label>
+                                    <ngx-slider [(value)]="value" [options]="options" formControlName='serviceRendered'></ngx-slider>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-group pt-3">
+                                    <label for="">Design Concept</label>
+                                    <ngx-slider [(value)]="value1" [options]="options1" formControlName='designConcept'></ngx-slider>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-group pt-3">
+                                    <label for="">Quality of Renovation</label>
+                                    <ngx-slider [(value)]="value2" [options]="options2" formControlName='qualityOfRenovation'></ngx-slider>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-group pt-3">
+                                    <label for="">Value for Money</label>
+                                    <ngx-slider [(value)]="value3" [options]="options3" formControlName='valueForMoney'></ngx-slider>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <textarea type="text" rows="5" formControlName="review" placeholder="Add comment/review" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+.profile-header{
+        background: #F8FBFD;
+        margin-top: -100px;
+        position: relative;
+        z-index: 1;
+        padding: 30px;
+}
+.list-section {
+    padding: 2rem 0;
+    #myTab{
+        margin-bottom: 2rem;
+    }
+}
+.review{
+    height: 200px;
+    border-radius: 50%;
+    background-color: #5ea51d;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .text-sec h1{
+        color: #fff;
+        font-weight: bolder;
+
+    }
+}
+.second_setion{
+    padding: 2rem 0;
+}
+.property-wrap .img p.price {
+    position: absolute;
+    /* bottom: 0; */
+    left: 25px;
+    right: 25px;
+    top: 25px;
+}
+.heart_icon{
+    cursor: pointer;
+}
+.right_box{
+    border: 1px solid gray;
+    // display: flex;
+    align-items: center;
+    // justify-content: center;
+}
+.text_sec {
+    padding-left: 15px;
+}
+.review_space{
+    padding-bottom: 4rem;
+}
+
+span.orig-price {
+    background: #ffffffab;
+    padding: 4px 6px;
+    border-radius: 5px;
+}

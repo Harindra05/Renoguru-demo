@@ -30,4 +30,8 @@ export class HeaderComponent implements OnInit,DoCheck {
     this.router.navigate(['/home'])
     // window.location.reload()
   }
+  navigate(){
+    console.log('navigate');
+    
+  }
 }

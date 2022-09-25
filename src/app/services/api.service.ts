@@ -30,6 +30,13 @@ export class ApiService {
         ).toPromise()
     }
 
+    patch(url: any, body: any): Promise<any> {
+        return this.http.patch<any>(this.endpoint + url, body, this.getHeaders()).pipe(
+            map(this.extractData),
+            catchError(this.handleError)
+        ).toPromise()
+    }
+
     handleError(error: any) {
         console.log(error)
         let errorMessage = '';

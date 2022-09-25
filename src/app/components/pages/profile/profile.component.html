@@ -22,7 +22,7 @@
             <!-- <button type="submit" class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Edit
       </button> -->
-            <button class="btn btn-primary rounded" (click)="openModal(0)" type="submit">Add Blog</button>
+            <button class="btn btn-primary rounded" (click)="openModal()" type="submit">Edit </button>
         </div>
     </div>
 
@@ -60,6 +60,12 @@
             <option value="2">Female</option>
         </select>
             </div>
+            <div class="col-sm-12 col-md-6">
+                <label for="">About</label>
+                <div class="form-group">
+                    <textarea type="text" class="form-control" formControlName="about"></textarea>
+                </div>
+            </div>
         </div>
     </form>
 </div>
@@ -68,52 +74,55 @@
 
 
 <div class="row">
-    <modal #myModal>
-        <modal-header>
-            <h6>Update Profile</h6>
-        </modal-header>
-        <modal-content>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-md-offset-2 col-sm-offset-1">
-                        <form [formGroup]="profileForm">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="">First Name</label>
-                                <input type="text" class="form-control"
-                                formControlName="firstName" >
-                            </div>
+    <form [formGroup]="profileForm">
+        <modal #myModal>
+            <modal-header>
+                <h6>Update Profile</h6>
+            </modal-header>
+            <modal-content>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-md-offset-2 col-sm-offset-1">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="">Last Name</label>
-        
-                                    <input type="text" class="form-control" formControlName="lastName">
+                                    <label for="">First Name</label>
+                                    <input type="text" class="form-control" formControlName="firstName">
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="">Last Name</label>
+                                        <input type="text" class="form-control" formControlName="lastName">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="">Phone</label>
+                                        <input type="text" class="form-control" formControlName="phone">
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="">country</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" formControlName="country">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="">about</label>
+                                        <textarea type="text" class="form-control" formControlName="about"></textarea>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-group">
-        
-                                    <label for="">Phone</label>
-        
-                                    <input type="text" class="form-control" formControlName="phone">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <label for="">country</label>
-        
-                                <div class="form-group">
-                                    <input type="text" class="form-control" formControlName="country">
-                                </div>
-                            </div>
+
                         </div>
-                    </form>
+                    </div>
                 </div>
-                </div>
-            </div>
-        </modal-content>
-        <modal-footer>
-            <!-- <button class="btn btn-primary" (click)="submitBlog()">submit</button>
-            <button class="btn btn-secondary ml-2" (click)="closeModal()">close</button> -->
-        </modal-footer>
-    </modal>
+            </modal-content>
+            <modal-footer>
+                <button type="submit" class="btn btn-primary" (click)="editFormSubmit()">submit</button>
+                <!-- <button class="btn btn-secondary ml-2" (click)="closeModal()">close</button> -->
+            </modal-footer>
+        </modal>
+    </form>
 </div>

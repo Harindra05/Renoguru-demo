@@ -1,0 +1,228 @@
+<section class="hero-wrap hero-wrap-2" style="background-image: url({{designerDetails?.coverImage}})">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 pt-5 text-center">
+                <p class="breadcrumbs">
+                    <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
+                    <span>Designs <i class="fa fa-chevron-right"></i></span>
+                </p>
+                <h1 class="mb-0 bread">Designs View</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container mb-3">
+    <div class="profile-header">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-sm-12 col-md-8 mt-2">
+                <img src="{{designerDetails?.logo}}" alt="no image found" />
+                <h1 class="mb-0 bread">{{ designerDetails?.companyName }}</h1>
+                <div class="star-sec">
+                    <i class="fa fa-star" aria-hidden="true" howu-index="175"></i>
+                    <i class="fa fa-star" aria-hidden="true" howu-index="175"></i>
+                    <i class="fa fa-star-o" aria-hidden="true" howu-index="175"></i>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <button class="btn btn-primary rounded" routerLink="/enquiry">
+          Speak to us
+        </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="list-section">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="project-tab" data-toggle="tab" href="#project" role="tab" aria-controls="project" aria-selected="true">Project</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Review</a
+        >
+      </li>
+      <li class="nav-item">
+              <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false">About</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="project" role="tabpanel" aria-labelledby="project-tab">
+                <div class="row">
+                    <div class="col-md-3" data-aos="" data-aos-delay="100" data-aos-duration="1000" *ngFor="let data of designList">
+                        <div class="property-wrap">
+                            <a class="img img-property" style="background-image: url(assets/images/work-1.jpg)">
+                                <p class="price"><span class="orig-price">${{data.price}}</span></p>
+                                <p class="heart_icon" (click)="likeUnlike(data.id)">
+                                    <span class="orig-price">
+                    <i class="fa" [ngClass]="{'fa-heart-o':data.likes==1,'fa-heart':data.likes==0}"></i>
+                  </span>
+                                </p>
+                            </a>
+                            <div class="text">
+                                <!-- <div class="list-team d-flex align-items-center mb-4">
+                  <div class="d-flex align-items-center">
+                    <h3 class="ml-2">John Dorf</h3>
+                  </div>
+                  <span class="text-right">2 weeks ago</span>
+                </div> -->
+                                <h3 class="text_single_line">
+                                    <a href="#">{{data.description}}</a
+                  >
+                </h3>
+
+                <ul class="property_list mt-3 mb-0">
+                  <li>
+                    <span>20 Projects</span>
+                  </li>
+                  <li>
+                    <span>20 Photos</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="review"
+        role="tabpanel"
+        aria-labelledby="review-tab"
+      >
+        <p>Homeowner Reviews ({{ reviewDetails?.length }})</p>
+        <div class="row justify-content-center align-items-center">
+          <div class="col-sm-12 col-md-2">
+            <div class="review">
+              <div class="text-sec">
+                <h1>9.5</h1>
+                <p>{{ reviewDetails?.length }} review</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-7"></div>
+          <div class="col-sm-12 col-md-3">
+            <div>
+              <button
+                type="submit"
+                routerLink="add-review"
+                class="btn btn-primary rounded"
+              >
+                Add your review
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="second_setion">
+          <p>Reviewed by 164 homeowners {{ reviewDetails?.length }}</p>
+          <div
+            class="row review_space"
+            *ngFor="let data of reviewDetails"
+          >
+            <div class="col-sm-12 col-md-3">
+              <div class="user_sec">
+                <div class="d-flex ">
+                  <img
+                    src="https://www.homerenoguru.sg/wp-content/themes/homerenoguru/images/profile-avatar.png"
+                    class="img-fluid rounded-circle profile-image pr-4"
+                    height="100px"
+                    width="100px"
+                  />
+                 
+
+                  <div class="text_sec">
+                    <p>
+                      <b>{{ data.fullName }}</b>
+                    </p>
+                    <small>{{ data.createdAt | date: "dd/MM/yyyy" }}</small>
+                  </div>
+                </div>
+                <div class="user_details">
+                
+                  <div>House Type: {{data?.houseTypeId}}</div>
+                  <div>House Type: {{data?.phoneNumber}}</div>
+                  <div>Budget: {{data?.renovationCost}}</div>
+                  <div>Duration of Renovation: {{data?.renovationDuration}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <b><p>Share your review:</p></b>
+              <small>
+                {{ data.review }}
+              </small>
+            </div>
+            <div class="col-sm-12 col-md-3 right_box">
+              <div class="right_box_1">
+                <div class="top-sec d-flex">
+                  <div>Review Score:</div>
+                  <div style="margin-top:-7px">
+                    <bar-rating [(rate)]="data.average" [max]="10" [readOnly]="true"></bar-rating></div>
+                </div>
+                <hr />
+                <div class="botom_sec">
+                  <div class="d-flex">
+                    <span>Service:</span>
+                    <span class="bar-ratings">
+                        <bar-rating [(rate)]="data.serviceRendered" [max]="10" [readOnly]="true"></bar-rating></span>
+                  </div>
+                  <div class="d-flex">
+                    <span>Design:</span>
+                    <span class="bar-ratings">
+                        <bar-rating [(rate)]="data.designConcept" [max]="10" [readOnly]="true"></bar-rating></span>
+                  </div>
+                  <div class="d-flex">
+                    <span>Quality:</span>
+                    <span class="bar-ratings"><bar-rating [(rate)]="data.qualityOfRenovation" [max]="10" [readOnly]="true"></bar-rating></span>
+                  </div>
+                  <div class="d-flex">
+                    <span>Value:</span>
+                    <span class="bar-ratings"><bar-rating [(rate)]="data.valueForMoney" [max]="10" [readOnly]="true"></bar-rating></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="about"
+        role="tabpanel"
+        aria-labelledby="about-tab"
+      >
+   
+      <div class="row mt-2">
+        <div class="col-sm-12 col-md-8">
+          <div class="about_sec">
+            <h5>About Us</h5>
+            {{designerDetails?.description}}
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+        <div class="d-flex">
+          <img [src]="designerDetails?.logo" alt="">
+          {{designerDetails?.companyName}}
+        </div>
+        <div class="rating">
+          <!-- <bar-rating [(rate)]="designerDetails.averageRating" [max]="10" [readOnly]="true"></bar-rating> -->
+        </div>
+          
+          <div class="details_sec">
+            <div> <b>Main Address </b></div>
+          <div>{{designerDetails?.address}}</div>
+          </div>
+          <div class="details_sec">
+            <div> <b>Email</b></div>
+          <div>{{designerDetails?.email}}</div>
+          </div>
+          <div class="details_sec">
+            <div> <b>Phone / Fax</b></div>
+          <div>{{designerDetails?.phoneNumber}}</div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

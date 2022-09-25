@@ -1,4 +1,5 @@
 @import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+@import '~ngx-bar-rating/themes/br-default-theme';
 @font-face {
     font-family: "Flaticon";
     src: url(assets/font/Flaticon.eot);
@@ -5311,6 +5312,13 @@ button:focus {
     outline: none!important
 }
 
+.text_single_line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
 h1,
 .h1,
 h2,
@@ -6135,6 +6143,12 @@ textarea.form-control {
     right: 25px
 }
 
+.property-wrap .img p.heart_icon {
+    position: absolute;
+    top: 25px;
+    right: 25px
+}
+
 .property-wrap .img p.price span {
     font-size: 16px;
     font-weight: 600;
@@ -6904,7 +6918,7 @@ textarea.form-control {
 .ftco-footer .ftco-footer-widget h2,
 .ftco-footer .ftco-footer-widget .h2 {
     color: #fff;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     font-size: 20px;
     font-weight: 700;
     font-family: "Nunito Sans", Arial, sans-serif

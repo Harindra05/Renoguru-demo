@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from "../components/pages/home/home.component";
 import { GalleryComponent } from './gallery/gallery.component';
 import { CarouselModule } from "ngx-owl-carousel-o";
+import { AdvertisementComponent } from "../directives/advertisement/advertisement.component";
+import { AddReviewComponent } from "../components/pages/pages";
 
 
 
@@ -16,21 +18,26 @@ import { CarouselModule } from "ngx-owl-carousel-o";
         HeaderComponent,
         SideBarComponent,
         FooterComponent,
-        GalleryComponent
+        GalleryComponent,
+        AdvertisementComponent,
 
     ],
 
     imports: [
         CommonModule,
         RouterModule,
+        CarouselModule,
+
     ],
     exports: [
         CommonModule,
+        CarouselModule,
         HeaderComponent,
         RouterModule,
         SideBarComponent,
         FooterComponent,
-        GalleryComponent
+        GalleryComponent,
+        AdvertisementComponent,
 
     ],
     providers: [

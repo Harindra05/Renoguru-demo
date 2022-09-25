@@ -13,7 +13,11 @@
  *
  * Learn more in https://angular.io/guide/browser-support
  */
-
+ import 'zone.js';  // Included with Angular CLI.
+ if (typeof (window as any).global === 'undefined') {
+     (window as any).global = window;
+     }
+ 
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */

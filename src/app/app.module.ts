@@ -13,10 +13,16 @@ import {
 import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
 import { SimpleLayoutModule } from './layout/simple-layout/simple-layout.module';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { BarRatingModule } from 'ngx-bar-rating';
+import { DesignerViewComponent } from './components/pages/designer-view/designer-view.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -29,6 +35,8 @@ import { SimpleLayoutModule } from './layout/simple-layout/simple-layout.module'
     FullLayoutModule,
     AuthorizationRoutingModule,
     ToastrModule.forRoot(),
+    NgxDropzoneModule,
+    BarRatingModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

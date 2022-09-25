@@ -3,12 +3,56 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 pt-5 text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index-2.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Our Designers <i class="fa fa-chevron-right"></i></span></p>
-                <h1 class="mb-0 bread">Our Designers</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="index-2.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Our Designs <i class="fa fa-chevron-right"></i></span></p>
+                <h1 class="mb-0 bread">Our Designs</h1>
             </div>
         </div>
     </div>
 </section>
+
+<section class="ftco-section ftco-agent">
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-md-3" data-aos="" data-aos-delay="100" data-aos-duration="1000" *ngFor="let data of designList">
+                <div class="property-wrap">
+                    <a class="img img-property" style="background-image: url(assets/images/work-1.jpg)">
+                        <p class="price"><span class="orig-price">${{data.price}}</span></p>
+                        <p class="heart_icon" (click)="likeUnlike(data.id)">
+                            <span class="orig-price">
+            <i class="fa" [ngClass]="{'fa-heart-o':data.likes==0,'fa-heart':data.likes==1}"></i>
+          </span>
+                        </p>
+                    </a>
+                    <div class="text"[routerLink]="['design-view',data.id]">
+                        <div class="list-team d-flex align-items-center mb-4">
+          <!-- <div class="d-flex align-items-center">
+            <span class="package_box  d-flex">
+                {{data.packageIncludes}}
+            </span>
+          </div> -->
+         
+        </div>
+                        <h3 class="text_single_line">
+                            <a>{{data.description}}</a
+          >
+        </h3>
+
+        <ul class="property_list mt-3 mb-0">
+          <li>
+            <span>20 Projects</span>
+          </li>
+          <li>
+            <span>20 Photos</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+
 <section class="ftco-section ftco-agent">
     <div class="container-xl">
         <div class="row">

@@ -4,7 +4,7 @@ import { BlogDetailsComponent } from 'src/app/components/pages/blogs/blog-detail
 import { EnquiryComponent } from 'src/app/components/pages/enquiry/enquiry.component';
 import { HomeComponent } from 'src/app/components/pages/home/home.component';
 import { InspirationDetailsComponent } from 'src/app/components/pages/inspirations/inspiration-details/inspiration-details.component';
-import { AboutUsComponent, AgentsComponent, BlogsComponent, ContactComponent, InspirationsComponent, ProfileComponent, PropertiesComponent, TrendingComponent,  } from 'src/app/components/pages/pages';
+import { AboutUsComponent, AddReviewComponent, AgentsComponent, BlogsComponent, ContactComponent, DesignerViewComponent, DesignsViewComponent, InspirationsComponent, ProfileComponent, PropertiesComponent, TrendingComponent,  } from 'src/app/components/pages/pages';
 import { DetailsComponent } from 'src/app/components/pages/trending/details/details.component';
 import { SimpleLayoutComponent } from './simple-layout.component';
 
@@ -27,7 +27,7 @@ const routes: Routes = [
         component:AboutUsComponent
       },
       {
-        path:'agents',
+        path:'design',
         component:AgentsComponent
       },
       {
@@ -39,8 +39,20 @@ const routes: Routes = [
         component:BlogDetailsComponent
       },
       {
-        path:'designs',
+        path:'designer',
         component:PropertiesComponent
+      },
+      {
+        path:'design/design-view/:id',
+        component:DesignsViewComponent
+      },
+      {
+        path:'designer/designer-view/:id',
+        component:DesignerViewComponent
+      },
+      {
+        path:'designer/designer-view/:id/add-review',
+        component:AddReviewComponent
       },
       {
         path:'contact',

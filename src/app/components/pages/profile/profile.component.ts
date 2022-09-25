@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   profileForm!: FormGroup;
   editprofile ! :FormGroup
   profileDetails:any;
+  editDetails :any
   @ViewChild('myModal') myModal:any;
   private modalRef:any;
   constructor(
@@ -32,21 +33,19 @@ export class ProfileComponent implements OnInit {
       about: [""],
       phone: [""],
       gender: [""],
-      // isEmailVerified: true
-      // singUpType: 1
       userImage: [""],
     });
-    this.editprofile = this.fb.group({
-      firstName: [""],
-      lastName: [""],
-      country: [""],
-      about: [""],
-      phone: [""],
-      gender: [""],
-      // isEmailVerified: true
-      // singUpType: 1
-      userImage: [""],
-    });
+    // this.editprofile = this.fb.group({
+    //   firstName: [""],
+    //   lastName: [""],
+    //   country: [""],
+    //   about: [""],
+    //   phone: [""],
+    //   gender: [""],
+    //   // isEmailVerified: true
+    //   // singUpType: 1
+    //   userImage: [""],
+    // });
 
     let data = JSON.parse(this.cookie.get("renoWeb"));
     this.user_id = data.id;
@@ -58,10 +57,7 @@ export class ProfileComponent implements OnInit {
   // }
   // async addHeaderServicePopup(){
   //   this.modal.open(AddServiceHeaderComponent,{size :'sm',centered:true})
-
-
   // }
-
 
   async setProfileForm() {
     try {
@@ -75,13 +71,14 @@ export class ProfileComponent implements OnInit {
           country: this.profileDetails.country,
           gender: this.profileDetails.gender,
           phone: this.profileDetails.phone,
+          about:this.profileDetails.about
         });
       }
     } catch (error) {
       console.error();
     }
   }
-  openModal(item:any){
+  openModal(){
     this.modalRef = this.modalService.open(this.myModal, {
       size: "lg",
       modalClass: 'mymodal',
@@ -94,15 +91,19 @@ export class ProfileComponent implements OnInit {
       backdropClass: "modal-backdrop"
   })
   }
+  async editFormSubmit(){
+    try{
+      this.profileForm.value.userImage='abc'
+      let data = await this.api.post("auth/edit-profile", this.profileForm.value);
+        if (data.success) {
+          this.editDetails=data.data
+          this.setProfileForm();
+        }
+    }catch(error){
+      console.error()
+    }
+  }
 }
-//  editProfileForm(){
 
-//   try{
-
-//   }catch(error){
-//     console.error()
-//   }
-
-// }
 
 
