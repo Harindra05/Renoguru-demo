@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url({{designerDetails?.coverImage}})">
+<section class="hero-wrap hero-wrap-2" style="background-image: url({{design.design_images[0].imageUrl}})">
   <div class="overlay"></div>
   <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -12,3 +12,53 @@
       </div>
   </div>
 </section>
+<div class="container mb-3">
+    <div class="profile-header">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-sm-12 col-md-8 mt-2">
+                <div class="sub_details_section d-flex align-items-center justify-content-between">
+                    <h5>{{design?.description}}</h5>
+                    <span class="btn btn-primary rounded">{{design.price}}</span>
+                </div>
+                <owl-carousel-o [options]="featuredDesigner">
+                    <ng-template *ngFor="let item of design.design_images" carouselSlide>
+                        <div class="property-wrap" >
+                            <a
+                              class="img img-property"
+                              style="background-image: url({{item.imageUrl}})"
+                            >
+                              <!-- <p class="price"><span class="orig-price">$300,000</span></p> -->
+                            </a>
+                          </div>
+                    </ng-template>
+                </owl-carousel-o>
+                <div class="sub_details_section ">
+                  <div class="d-flex align-items-center justify-content-between pt-2 pb-2">
+                    <span>
+                        <i class="fa fa-eye"> &nbsp;View</i> &nbsp; &nbsp;
+    
+                        <i class="fa fa-heart"> &nbsp;Favorite</i>
+                       </span>
+                       <span (click)="likeUnlike(design.id)">
+                        <i
+                        class="fa"
+                        [ngClass]="{
+                          'fa-heart-o': design.likes == 0,
+                          'fa-heart': design.likes == 1
+                        }"
+                      > &nbsp; Like</i>
+    
+                       </span>
+                  </div>
+                  <div class="package_direction">
+                  <div class="package_section" *ngFor="let pack of packageIncludes">
+                        <span  class="btn btn-primary rounded ml-2">{{pack}}</span>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            

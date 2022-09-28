@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AgentsComponent implements OnInit {
     offset :0
   }
   designList :any;
-  constructor(public api :ApiService) { }
+  constructor(public api :ApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.getDesignList()
@@ -21,7 +22,9 @@ export class AgentsComponent implements OnInit {
     try{
       let data = await this.api.post('designs/get-designs',{limit:this.Object.limit,offset:this.Object.offset})
       if(data.success){
-        this.designList =data.data.rows  
+        this.designList =data.data.rows
+        console.log(this.designList,'get-design');
+       
       }
     }
     catch(error){
@@ -38,4 +41,10 @@ export class AgentsComponent implements OnInit {
       console.error()
     }
   }
+
+  openDetail(data: any){
+    localStorage.setItem('detailItem', JSON.stringify(data));
+    this.router.navigate(['design/design-view',data.id]);
+  }
+
 }

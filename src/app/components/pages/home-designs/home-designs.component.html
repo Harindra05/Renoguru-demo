@@ -1,0 +1,49 @@
+<section class="ftco-section bg-light">
+    <div class="container-xl">
+        <div class="row justify-content-center">
+            <div class="col-md-8 heading-section text-center mb-5" data-aos-duration="1000">
+                <span class="subheading">Our Properties</span>
+                <h2 class="mb-4">Featured Design</h2>
+            </div>
+        </div>
+        <owl-carousel-o [options]="featuredDesign">
+            <ng-template *ngFor="let data of designList" carouselSlide>
+                <div class="property-wrap">
+                    <a class="img img-property" style="background-image: url(assets/images/work-1.jpg)">
+                        <p class="price"><span class="orig-price">${{data.price}}</span></p>
+                        <p class="heart_icon" (click)="likeUnlike(data.id)">
+                            <span class="orig-price">
+                    <i class="fa" [ngClass]="{'fa-heart-o':data.likes==0,'fa-heart':data.likes==1}"></i>
+                  </span>
+                        </p>
+                    </a>
+                    <div style="cursor: pointer;" class="text" [routerLink]="['design/design-view',data.id]">
+                        <div class="list-team d-flex align-items-center mb-4">
+                            <!-- <div class="d-flex align-items-center">
+                    <span class="package_box  d-flex">
+                        {{data.packageIncludes}}
+                    </span>
+                  </div> -->
+
+                        </div>
+                        <h3 class="text_single_line">
+                            <a>{{data.description}}</a
+                  >
+                </h3>
+        
+                <ul class="property_list mt-3 mb-0">
+                  <li>
+                    <span>20 Projects</span>
+                  </li>
+                  <li>
+                    <span>20 Photos</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+                </ng-template>
+                </owl-carousel-o>
+           
+    </div>
+</section>

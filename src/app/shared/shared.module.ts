@@ -9,7 +9,8 @@ import { HomeComponent } from "../components/pages/home/home.component";
 import { GalleryComponent } from './gallery/gallery.component';
 import { CarouselModule } from "ngx-owl-carousel-o";
 import { AdvertisementComponent } from "../directives/advertisement/advertisement.component";
-import { AddReviewComponent } from "../components/pages/pages";
+import { AddReviewComponent, HomeBlogsComponent, HomeDesignersComponent, HomeDesignsComponent } from "../components/pages/pages";
+import { BarRatingModule } from "ngx-bar-rating";
 
 
 
@@ -20,6 +21,10 @@ import { AddReviewComponent } from "../components/pages/pages";
         FooterComponent,
         GalleryComponent,
         AdvertisementComponent,
+        HomeDesignersComponent,
+        HomeDesignsComponent,
+        HomeBlogsComponent
+
 
     ],
 
@@ -27,6 +32,7 @@ import { AddReviewComponent } from "../components/pages/pages";
         CommonModule,
         RouterModule,
         CarouselModule,
+        BarRatingModule
 
     ],
     exports: [
@@ -38,6 +44,9 @@ import { AddReviewComponent } from "../components/pages/pages";
         FooterComponent,
         GalleryComponent,
         AdvertisementComponent,
+        HomeDesignersComponent,
+        HomeDesignsComponent,
+        HomeBlogsComponent
 
     ],
     providers: [

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -19,74 +20,71 @@ export class DesignsViewComponent implements OnInit {
     offset :0
   }
 
+  design: any;
+  featuredDesigner: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    autoplay:true,
+    pullDrag: true,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 3
+      }
+    },
+    nav: true
+  }
+  Object = {
+    limit: 10,
+    offset :0
+  }
+  packageIncludes :any
   constructor( private api :ApiService ,public param :ActivatedRoute ,private toster :ToastrService) { }
 
   ngOnInit(): void {
-
     this.designer_id  = this.param.snapshot.params.id;
-    this.getDesiner()
-    this.designerReviews()
-    this.getDesignDetails()
+    this.design = JSON.parse(localStorage.getItem('detailItem') || '{}');
+    this.packageIncludes = this.design.packageIncludes.split(',')
+    this.getDesignList()
     
   }
-
-  async getDesiner(){
+  async getDesignList(){
     try{
-      let data = await this.api.post("designs/get-designer",{designerId:this.designer_id})
-      if(data){
-       this.designerDetails =data.data.data
-       console.log(this.designerDetails);
-       
-      }
-
-    }catch(error){
-
-    }
-  }
-
-  async getDesignDetails(){
-    
-    try{
-      let data = await this.api.post('designs/get-designs',{designerId:this.designer_id,limit:this.obj.limit,offset:this.obj.offset})
+      let data = await this.api.post('designs/get-designs',{limit:this.Object.limit,offset:this.Object.offset})
       if(data.success){
-        this.designList=data.data.rows
-        console.log(this.designList,'design view list');
-        
-
+        this.designList =data.data.rows
       }
-
+    }
+    catch(error){
+      console.error(error);
+    }
+  }
+  async likeUnlike(id:any){
+    try{
+      let data = await this.api.post('designs/like-unlike-design',{designId:id})
+      if(data.success){
+        this.getDesignList()
+      }
     }catch(error){
-
+      console.error()
     }
   }
 
- async likeUnlike(id:any){
-  let body ={
-    designId: id
-  }
-  try{
-    let data = await this.api.post("designs/like-unlike-design",body)
-    if(data.success){
-      this.toster.success(data.message)
-      this.getDesignDetails()
-      console.log(data);
-    }
 
-  }catch(error){
 
-  }
- }
- async designerReviews(){
-  try{
-    let data = await this.api.post("designs/designer-reviews",{designerId:this.designer_id,limit:this.obj.limit,offset:this.obj.offset})
-    if(data.success){
-      this.reviewDetails =data.data.rows
-    }
 
-  }catch(error){
-    console.error()
-  }
 
- }
 
 }

@@ -1,0 +1,49 @@
+<section class="ftco-section ftco-agent ftco-no-pb">
+    <div class="overlay"></div>
+    <div class="container-xl">
+        <div class="row justify-content-center pb-5">
+            <div class="col-md-10 heading-section heading-section-white" data-aos-duration="1000">
+                <span class="subheading">Meets Our Designers</span>
+                <h2 class="mb-4">Our Designers</h2>
+            </div>
+        </div>
+        
+        <owl-carousel-o [options]="featuredDesigner">
+            <ng-template *ngFor="let item of desinerList" carouselSlide>
+                <div class="property-wrap" style="cursor: pointer;"   [routerLink]="['designer/designer-view',item.id]">
+                    <a
+                      class="img img-property"
+                      style="background-image: url({{item.coverImage}})"
+                    >
+                      <!-- <p class="price"><span class="orig-price">$300,000</span></p> -->
+                    </a>
+                    <div class="text">
+                      <div class="list-team d-flex align-items-center mb-4">
+                        <div class="d-flex align-items-center">
+                          <img src="{{item?.logo}}" height="30" width="30" />
+          
+                          <h3 class="ml-2 text_single_line">{{item.companyName}}</h3>
+                        </div>
+                        <span class="text-right">{{item.createdAt |  date: 'dd/MM/yyyy'}}</span>
+                      </div>
+                      <h3 class="text_single_line"><a >{{item?.description}}</a></h3>
+                      <span class="location"
+                        >
+                        <bar-rating [(rate)]="item.averageRating" [max]="5" [readOnly]="true"></bar-rating>
+                        <span class="sale">{{item?.totalReviewCount || '0'}} /10 Review</span></span
+                      >
+                      <ul class="property_list mt-3 mb-0">
+                        <li>
+                          <span>{{item?.totalDesigns || '0'}} Projects</span>
+                        </li>
+                        <li>
+                          <span>{{item?.totalPhotosUploaded || '0'}} Photos</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              </ng-template>
+              </owl-carousel-o>
+           
+    </div>
+</section>

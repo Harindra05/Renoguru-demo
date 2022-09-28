@@ -1,0 +1,10 @@
+.property-wrap{
+    margin: 5px;
+}
+::ng-deep .owl-carousel .owl-item  {
+    .list-team img{
+        height: 30px !important;
+        width: 30px !important;
+
+    }
+}
