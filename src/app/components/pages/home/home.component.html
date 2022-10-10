@@ -1,219 +1,191 @@
 <section class="slider-hero">
-  <div class="overlay"></div>
-  <div class="hero-slider">
-    <div class="item">
-      <div class="work">
-        <div
-          class="img d-flex align-items-center js-fullheight"
-          style="background-image: url(assets/images/bg_1.jpg)"
-        >
-          <div class="container-xl">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-xl-6">
-                <div class="text text-center" data-aos-duration="1000">
-                  <h2>Interior Design Is Our Priority</h2>
-                  <p class="mb-5">
-                    A small river named Duden flows by their place and supplies
-                    it with the necessary regelialia. It is a paradisematic
-                    country, in which roasted parts of sentences fly into your
-                    mouth.
-                  </p>
-                  <p></p>
+    <div class="overlay"></div>
+    <div class="hero-slider">
+        <div class="item">
+            <div class="work">
+                <div class="img d-flex align-items-center js-fullheight" style="background-image: url(assets/images/bg_1.jpg)">
+                    <div class="container-xl">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-xl-6">
+                                <div class="text text-center" data-aos-duration="1000">
+                                    <h2>Interior Design Is Our Priority</h2>
+                                    <p class="mb-5">
+                                        A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
+                                    </p>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 <section class="ftco-section ftco-no-pb ftco-no-pt">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="ftco-search d-flex justify-content-center">
-          <div class="row">
-            <div class="col-md-12 nav-link-wrap d-flex justify-content-center">
-              <div
-                class="nav nav-pills text-center"
-                id="v-pills-tab"
-                role="tablist"
-                aria-orientation="vertical"
-              ></div>
-            </div>
-            <div class="col-md-12 tab-wrap">
-              <div class="tab-content" id="v-pills-tabContent">
-                <div
-                  class="tab-pane fade show active"
-                  id="v-pills-1"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-nextgen-tab"
-                >
-                  <form action="#" class="search-property-1">
-                    <div class="row g-0">
-                      <div class="col-md d-flex">
-                        <div class="form-group p-4 border-0">
-                          <label for="#">Enter Keyword</label>
-                          <div class="form-field">
-                            <div class="icon">
-                              <span class="fa fa-search"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ftco-search d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col-md-12 nav-link-wrap d-flex justify-content-center">
+                            <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical"></div>
+                        </div>
+                        <div class="col-md-12 tab-wrap">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                                    <form action="#" class="search-property-1">
+                                        <div class="row g-0">
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4 border-0">
+                                                    <label for="#">Enter Keyword</label>
+                                                    <div class="form-field">
+                                                        <div class="icon">
+                                                            <span class="fa fa-search"></span>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Enter Keyword" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Location</label>
+                                                    <div class="form-field">
+                                                        <div class="icon">
+                                                            <span class="ion-ios-pin"></span>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Search Location" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">areaRange Limit</label>
+                                                    <div class="form-field">
+                                                        <div class="select-wrap">
+                                                            <div class="icon">
+                                                                <span class="fa fa-chevron-down"></span>
+                                                            </div>
+                                                            <select type="text" class="form-control" id="title">
+                                                            <option value="0-30">0-30m</option>
+                                                            <option value="30-60">0-60m</option>
+                                                            <option value="60-90">60-90m</option>
+                                                            <option value="90-120">90-120m</option>
+                                                            <option value="120-150">120-150m</option>
+                                                            <option value="150-180">150-180m</option>
+                                                            <option value="180-200">180-200m</option>
+                                                        </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Trending Type</label>
+                                                    <div class="form-field">
+                                                        <div class="select-wrap">
+                                                            <div class="icon">
+                                                                <span class="fa fa-chevron-down"></span>
+                                                            </div>
+                                                            <ng-select formControlName="trendingTypes" [multiple]="true">
+                                                                <ng-option *ngFor="let data of trendingData" [value]="data.id">{{data.title}}</ng-option>
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Inspiration Limit</label>
+                                                    <div class="form-field">
+                                                        <div class="select-wrap">
+                                                            <div class="icon">
+                                                                <span class="fa fa-chevron-down"></span>
+                                                            </div>
+                                                            <select type="text" class="form-control" id="title">
+                                <option value="1">All</option>
+                                <option value="2">Living</option>
+                                <option value="3">Dining</option>
+                                <option value="4">Bedroom</option>
+                                <option value="5">Bathroom</option>
+                                <option value="6">Kitchen</option>
+                                <option value="7">Others</option>
+                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md d-flex">
+                                                <div class="form-group d-flex w-100 border-0">
+                                                    <div class="form-field w-100 align-items-center d-flex">
+                                                        <input type="submit" value="Search" class="align-self-stretch form-control btn btn-primary" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter Keyword"
-                            />
-                          </div>
                         </div>
-                      </div>
-                      <div class="col-md d-flex">
-                        <div class="form-group p-4">
-                          <label for="#">Property Type</label>
-                          <div class="form-field">
-                            <div class="select-wrap">
-                              <div class="icon">
-                                <span class="fa fa-chevron-down"></span>
-                              </div>
-                              <select name="" id="" class="form-control">
-                                <option value="">Residential</option>
-                                <option value="">Commercial</option>
-                                <option value="">Land</option>
-                                <option value="">Industrial</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md d-flex">
-                        <div class="form-group p-4">
-                          <label for="#">Location</label>
-                          <div class="form-field">
-                            <div class="icon">
-                              <span class="ion-ios-pin"></span>
-                            </div>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Search Location"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md d-flex">
-                        <div class="form-group p-4">
-                          <label for="#">Price Limit</label>
-                          <div class="form-field">
-                            <div class="select-wrap">
-                              <div class="icon">
-                                <span class="fa fa-chevron-down"></span>
-                              </div>
-                              <select name="" id="" class="form-control">
-                                <option value="">$100</option>
-                                <option value="">$10,000</option>
-                                <option value="">$50,000</option>
-                                <option value="">$100,000</option>
-                                <option value="">$200,000</option>
-                                <option value="">$300,000</option>
-                                <option value="">$400,000</option>
-                                <option value="">$500,000</option>
-                                <option value="">$600,000</option>
-                                <option value="">$700,000</option>
-                                <option value="">$800,000</option>
-                                <option value="">$900,000</option>
-                                <option value="">$1,000,000</option>
-                                <option value="">$2,000,000</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md d-flex">
-                        <div class="form-group d-flex w-100 border-0">
-                          <div
-                            class="form-field w-100 align-items-center d-flex"
-                          >
-                            <input
-                              type="submit"
-                              value="Search"
-                              class="align-self-stretch form-control btn btn-primary"
-                            />
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                  </form>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <app-advertisement [add]="section_type"></app-advertisement>
 <app-home-designs></app-home-designs>
-<section
-  class="img vid-section"
-  style="background-image: url(assets/images/bg_4.jpg)"
->
-  <div class="overlay"></div>
-  <div class="container-xl">
-    <div class="row justify-content-center">
-      <div
-        class="col-md-6 vid-height d-flex align-items-center justify-content-center text-center"
-      >
-        <div class="video-wrap">
-          <h3>Modern House Video</h3>
-          <p>
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live the blind texts.
-          </p>
-          <a
+<section class="img vid-section" style="background-image: url(assets/images/bg_4.jpg)">
+
+    <div class="overlay"></div>
+    <div class="container-xl">
+        <div class="row justify-content-center" *ngFor="let data of videoData">
+            <div class="col-md-6 vid-height d-flex align-items-center justify-content-center text-center">
+                <div class="video-wrap">
+                    <h3>{{data.title}}</h3>
+                    <p>
+                        {{data.description}}
+                    </p>
+
+                    <div class="video">
+                        <video controls (click)="toggleVideo()" #videoPlayer>
+              <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+              Browser not supported
+            </video>
+                    </div>
+
+                    <iframe src="{{data.video_url}}" frameborder="0"></iframe>
+                    <!-- <a
             href="https://vimeo.com/115041822"
             class="video-icon glightbox d-flex align-items-center justify-content-center"
           >
             <span class="ion-ios-play"></span>
-          </a>
+          </a> -->
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 <section class="ftco-section ftco-about-section">
-  <div class="container-xl">
-    <div class="row g-xl-5">
-      <div
-        class="col-md-4 d-flex align-items-stretch"
-        data-aos-delay="100"
-        data-aos-duration="1000"
-      >
-        <div
-          class="img w-100"
-          style="background-image: url(assets/images/about.jpg)"
-        ></div>
-      </div>
-      <div
-        class="col-md-8 heading-section"
-        data-aos-delay="200"
-        data-aos-duration="1000"
-      >
-        <span class="subheading">About Us</span>
-        <h2 class="mb-4">RenoGuru A Renovation Company</h2>
-        <p>
-          Far far away, behind the word mountains, far from the countries
-          Vokalia and Consonantia, there live the blind texts. Separated they
-          live in Bookmarksgrove right at the coast of the Semantics, a large
-          language ocean.
-        </p>
-        <div class="row py-5">
-          <div class="col-md-6 col-lg-3">
-            <div class="counter-wrap" data-aos-duration="1000">
-              <div class="text">
-                <span class="d-block number gradient-text"
-                  ><span id="count1" class="counter" data-count="50"
+    <div class="container-xl">
+        <div class="row g-xl-5">
+            <div class="col-md-4 d-flex align-items-stretch" data-aos-delay="100" data-aos-duration="1000">
+                <div class="img w-100" style="background-image: url(assets/images/about.jpg)"></div>
+            </div>
+            <div class="col-md-8 heading-section" data-aos-delay="200" data-aos-duration="1000">
+                <span class="subheading">About Us</span>
+                <h2 class="mb-4">RenoGuru A Renovation Company</h2>
+                <p>
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+                </p>
+                <div class="row py-5">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="counter-wrap" data-aos-duration="1000">
+                            <div class="text">
+                                <span class="d-block number gradient-text"><span id="count1" class="counter" data-count="50"
                     >0</span
                   ></span
                 >
@@ -314,168 +286,133 @@
         data-aos-duration="1000"
       >
         <span class="subheading">Testimonial</span>
-        <h2 class="mb-3">Clients We Help</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12" data-aos-duration="1000" data-aos-delay="100">
-        <div class="carousel-testimony">
-          <owl-carousel-o [options]="customOptions">
-            <ng-template carouselSlide>
-              <div class="item">
-                <div class="testimony-wrap">
-                  <div
-                    class="icon d-flex align-items-center justify-content-center"
-                  >
-                    <span class="fa fa-quote-left"></span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-4 msg">
-                      Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind
-                      texts.
-                    </p>
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="user-img"
-                        style="
+                                <h2 class="mb-3">Clients We Help</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" data-aos-duration="1000" data-aos-delay="100">
+                                <div class="carousel-testimony">
+                                    <owl-carousel-o [options]="customOptions">
+                                        <ng-template carouselSlide>
+                                            <div class="item">
+                                                <div class="testimony-wrap">
+                                                    <div class="icon d-flex align-items-center justify-content-center">
+                                                        <span class="fa fa-quote-left"></span>
+                                                    </div>
+                                                    <div class="text">
+                                                        <p class="mb-4 msg">
+                                                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                                                        </p>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="user-img" style="
                           background-image: url(assets/images/person_1.jpg);
-                        "
-                      ></div>
-                      <div class="pl-3 tx">
-                        <p class="name">Roger Scott</p>
-                        <span class="position">Marketing Manager</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="item">
-                <div class="testimony-wrap">
-                  <div
-                    class="icon d-flex align-items-center justify-content-center"
-                  >
-                    <span class="fa fa-quote-left"></span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-4 msg">
-                      Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind
-                      texts.
-                    </p>
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="user-img"
-                        style="
+                        "></div>
+                                                            <div class="pl-3 tx">
+                                                                <p class="name">Roger Scott</p>
+                                                                <span class="position">Marketing Manager</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template carouselSlide>
+                                            <div class="item">
+                                                <div class="testimony-wrap">
+                                                    <div class="icon d-flex align-items-center justify-content-center">
+                                                        <span class="fa fa-quote-left"></span>
+                                                    </div>
+                                                    <div class="text">
+                                                        <p class="mb-4 msg">
+                                                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                                                        </p>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="user-img" style="
                           background-image: url(assets/images/person_2.jpg);
-                        "
-                      ></div>
-                      <div class="pl-3 tx">
-                        <p class="name">Roger Scott</p>
-                        <span class="position">Marketing Manager</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="item">
-                <div class="testimony-wrap">
-                  <div
-                    class="icon d-flex align-items-center justify-content-center"
-                  >
-                    <span class="fa fa-quote-left"></span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-4 msg">
-                      Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind
-                      texts.
-                    </p>
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="user-img"
-                        style="
+                        "></div>
+                                                            <div class="pl-3 tx">
+                                                                <p class="name">Roger Scott</p>
+                                                                <span class="position">Marketing Manager</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template carouselSlide>
+                                            <div class="item">
+                                                <div class="testimony-wrap">
+                                                    <div class="icon d-flex align-items-center justify-content-center">
+                                                        <span class="fa fa-quote-left"></span>
+                                                    </div>
+                                                    <div class="text">
+                                                        <p class="mb-4 msg">
+                                                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                                                        </p>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="user-img" style="
                           background-image: url(assets/images/person_3.jpg);
-                        "
-                      ></div>
-                      <div class="pl-3 tx">
-                        <p class="name">Roger Scott</p>
-                        <span class="position">Marketing Manager</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="item">
-                <div class="testimony-wrap">
-                  <div
-                    class="icon d-flex align-items-center justify-content-center"
-                  >
-                    <span class="fa fa-quote-left"></span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-4 msg">
-                      Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind
-                      texts.
-                    </p>
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="user-img"
-                        style="
+                        "></div>
+                                                            <div class="pl-3 tx">
+                                                                <p class="name">Roger Scott</p>
+                                                                <span class="position">Marketing Manager</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template carouselSlide>
+                                            <div class="item">
+                                                <div class="testimony-wrap">
+                                                    <div class="icon d-flex align-items-center justify-content-center">
+                                                        <span class="fa fa-quote-left"></span>
+                                                    </div>
+                                                    <div class="text">
+                                                        <p class="mb-4 msg">
+                                                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                                                        </p>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="user-img" style="
                           background-image: url(assets/images/person_1.jpg);
-                        "
-                      ></div>
-                      <div class="pl-3 tx">
-                        <p class="name">Roger Scott</p>
-                        <span class="position">Marketing Manager</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="item">
-                <div class="testimony-wrap">
-                  <div
-                    class="icon d-flex align-items-center justify-content-center"
-                  >
-                    <span class="fa fa-quote-left"></span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-4 msg">
-                      Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind
-                      texts.
-                    </p>
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="user-img"
-                        style="
+                        "></div>
+                                                            <div class="pl-3 tx">
+                                                                <p class="name">Roger Scott</p>
+                                                                <span class="position">Marketing Manager</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template carouselSlide>
+                                            <div class="item">
+                                                <div class="testimony-wrap">
+                                                    <div class="icon d-flex align-items-center justify-content-center">
+                                                        <span class="fa fa-quote-left"></span>
+                                                    </div>
+                                                    <div class="text">
+                                                        <p class="mb-4 msg">
+                                                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                                                        </p>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="user-img" style="
                           background-image: url(assets/images/person_2.jpg);
-                        "
-                      ></div>
-                      <div class="pl-3 tx">
-                        <p class="name">Roger Scott</p>
-                        <span class="position">Marketing Manager</span>
-                      </div>
+                        "></div>
+                                                            <div class="pl-3 tx">
+                                                                <p class="name">Roger Scott</p>
+                                                                <span class="position">Marketing Manager</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </owl-carousel-o>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </owl-carousel-o>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 <app-home-designers></app-home-designers>
 <app-home-blogs></app-home-blogs>

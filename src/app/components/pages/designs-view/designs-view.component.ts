@@ -56,6 +56,8 @@ export class DesignsViewComponent implements OnInit {
   ngOnInit(): void {
     this.designer_id  = this.param.snapshot.params.id;
     this.design = JSON.parse(localStorage.getItem('detailItem') || '{}');
+    console.log(this.design);
+    
     this.packageIncludes = this.design.packageIncludes.split(',')
     this.getDesignList()
     
@@ -72,9 +74,12 @@ export class DesignsViewComponent implements OnInit {
     }
   }
   async likeUnlike(id:any){
+    console.log(id);
+    
     try{
       let data = await this.api.post('designs/like-unlike-design',{designId:id})
       if(data.success){
+        this.toster.success(data.message)
         this.getDesignList()
       }
     }catch(error){

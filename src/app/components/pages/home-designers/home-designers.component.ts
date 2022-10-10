@@ -48,15 +48,11 @@ export class HomeDesignersComponent implements OnInit {
     this.designList()
   }
  async designList(){
-  
     try{
        let data =  await this.api.post('designs/get-designers',this.Object)
-       
        if(data.success){
          console.log(data);
          this.desinerList=data.data.rows
-         console.log(this.desinerList);
-        
        }
 
     }catch(error){
