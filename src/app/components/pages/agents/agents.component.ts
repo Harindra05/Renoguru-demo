@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -7,20 +7,29 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './agents.component.html',
   styleUrls: ['./agents.component.scss']
 })
-export class AgentsComponent implements OnInit {
-  Object = {
-    limit: 10,
-    offset :0
+export class AgentsComponent implements OnInit,OnDestroy {
+  Object:any = {
+    limit: 10000,
+    offset :0,
   }
   designList :any;
   constructor(public api :ApiService, private router: Router) { }
 
-  ngOnInit(): void {
-    this.getDesignList()
+ async ngOnInit() {
+    if(localStorage.getItem('advanceSearch')){
+      let items:any = localStorage.getItem('advanceSearch');
+      let b=JSON.parse(items);
+      this.Object.budget=b.budget
+      this.Object.areaRange=b.areaRange
+      this.Object.imageInspirationType=b.imageInspirationType
+      this.Object.trendingTypes=b.trendingTypes
+    }
+    await this.getDesignList();
+
   }
   async getDesignList(){
     try{
-      let data = await this.api.post('designs/get-designs',{limit:this.Object.limit,offset:this.Object.offset})
+      let data = await this.api.post('designs/get-designs',this.Object)
       if(data.success){
         this.designList =data.data.rows
         console.log(this.designList,'get-design');
@@ -46,5 +55,7 @@ export class AgentsComponent implements OnInit {
     localStorage.setItem('detailItem', JSON.stringify(data));
     this.router.navigate(['design/design-view',data.id]);
   }
-
+ngOnDestroy(): void {
+  localStorage.removeItem('advanceSearch');
+}
 }

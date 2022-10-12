@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/services/api.service';
 @Component({
@@ -7,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  searchForm!:FormGroup
   videoData :any
   section_type=1;
   customOptions: OwlOptions = {
@@ -37,15 +39,27 @@ export class HomeComponent implements OnInit {
   }
   @ViewChild("videoPlayer", 
   { static: false }) videoplayer !: ElementRef;
-  constructor(private api :ApiService) { }
+  constructor(private api :ApiService,private router:Router,
+    private fb :FormBuilder) { }
   isPlay: boolean = false;
   trendingData:any;
 
   ngOnInit(): void {
+    this.searchForm = this.fb.group({
+      trendingTypes :'',
+      imageInspirationType:'',
+      areaRange:'',
+      budget:'',
+    })
     this.getVideo();
     this.getTrendingTypes()
   }
-
+  searchSubmit(){
+    let data = this.searchForm.value
+    console.log(data);
+    localStorage.setItem('advanceSearch', JSON.stringify(data));
+    this.router.navigateByUrl("/design");
+  }
 
   toggleVideo() {
     this.videoplayer.nativeElement.play();

@@ -1,209 +1,189 @@
-<section
-  class="hero-wrap hero-wrap-2"
-  style="background-image: url(assets/images/bg_4.jpg)"
->
-  <div class="overlay"></div>
-  <div class="container">
-    <div
-      class="row no-gutters slider-text align-items-center justify-content-center"
-    >
-      <div class="col-md-9 pt-5 text-center">
-        <p class="breadcrumbs">
-          <span class="mr-2"
-            ><a href="index.html">Home <i class="fa fa-chevron-right"></i></a
+<section class="hero-wrap hero-wrap-2" style="background-image: url(assets/images/bg_4.jpg)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 pt-5 text-center">
+                <p class="breadcrumbs">
+                    <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a
           ></span>
-          <span>Designer <i class="fa fa-chevron-right"></i></span>
-        </p>
-        <h1 class="mb-0 bread">Designer</h1>
-      </div>
+                    <span>Designer <i class="fa fa-chevron-right"></i></span>
+                </p>
+                <h1 class="mb-0 bread">Designer</h1>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 <section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="ftco-search d-flex justify-content-center">
-          <div class="row">
-            <div class="col-md-12 nav-link-wrap d-flex justify-content-center">
-              <div
-                class="nav nav-pills text-center"
-                id="v-pills-tab"
-                role="tablist"
-                aria-orientation="vertical"
-              ></div>
-            </div>
-            <div class="col-md-12 tab-wrap">
-              <div class="tab-content" id="v-pills-tabContent">
-                <div
-                  class="tab-pane fade show active"
-                  id="v-pills-1"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-nextgen-tab"
-                >
-                  <form action="#" class="search-property-1">
-                    <div class="row g-0">
-                      <div class="col-md d-flex">
-                        <div class="form-group p-4 border-0">
-                          <label for="#">Enter Keyword</label>
-                          <div class="form-field">
-                            <div class="icon">
-                              <span class="fa fa-search"></span>
-                            </div>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter Keyword"
-                            />
-                          </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ftco-search d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col-md-12 nav-link-wrap d-flex justify-content-center">
+                            <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical"></div>
                         </div>
-                      </div>
-                      <div class="col-md d-flex">
-                        <div class="form-group p-4">
-                          <label for="#">Property Type</label>
-                          <div class="form-field">
-                            <div class="select-wrap">
-                              <div class="icon">
-                                <span class="fa fa-chevron-down"></span>
+                        <div class="col-md-12 tab-wrap">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                                    <form action="#" class="search-property-1" [formGroup]="searchForm">
+                                        <div class="row g-0">
+                                            <!-- <div class="col-md d-flex">
+                          <div class="form-group p-4 border-0">
+                              <label for="#">Enter Keyword</label>
+                              <div class="form-field">
+                                  <div class="icon">
+                                      <span class="fa fa-search"></span>
+                                  </div>
+                                  <input type="text" class="form-control" placeholder="Enter Keyword" formControlName="kerword" />
                               </div>
-                              <select name="" id="" class="form-control">
-                                <option value="">Residential</option>
-                                <option value="">Commercial</option>
-                                <option value="">Land</option>
-                                <option value="">Industrial</option>
-                              </select>
+                          </div>
+                      </div> -->
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Budget</label>
+                                                    <div class="form-field">
+                                                        <div class="icon">
+                                                            <span class="ion-ios-pin"></span>
+                                                        </div>
+                                                        <select type="text" class="form-control" formControlName="budget" id="title">
+                                      <option value="1">100-500</option>
+                                      <option value="2">500-1000</option>
+                                      <option value="3">1000-5000</option>
+                                      <option value="4">5000-10000</option>
+                                      <option value="5">10000-20000</option>
+                                      <option value="6">20000-50000</option>
+                                      <option value="7">50000+</option>
+                                  </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Area Range</label>
+                                                    <div class="form-field">
+                                                        <div class="select-wrap">
+                                                            <div class="icon">
+                                                                <span class="fa fa-chevron-down"></span>
+                                                            </div>
+                                                            <select type="text" class="form-control" formControlName="areaRange" id="title">
+                                          <option value="30-50">30-50sqm</option>
+                                          <option value="51-80">51-80sqm</option>
+                                          <option value="81-120">81-120sqm</option>
+                                          <option value="121-180">121-180sqm</option>
+                                          <option value="181-250">181-250sqm</option>
+                                          <option value="251-350">251-350sqm</option>
+                                          <option value="351-500">351-500sqm</option>
+                                          <option value="501-700">501-700sqm</option>
+                                          <option value="701-900">701-900sqm</option>
+                                          <option value="901-150000">951sqm & more</option>
+                                          </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Trending Type</label>
+                                                    <div class="form-field">
+                                                        <div class="select-wrap">
+                                                            <div class="icon">
+                                                                <span class="fa fa-chevron-down"></span>
+                                                            </div>
+                                                            <ng-select formControlName="trendingTypes" [multiple]="true">
+                                                                <ng-option *ngFor="let data of trendingData" [value]="data.id">{{ data.title }}</ng-option>
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Image Keywords</label>
+                                                    <div class="form-field">
+                                                        <div class="select-wrap">
+                                                            <div class="icon">
+                                                                <span class="fa fa-chevron-down"></span>
+                                                            </div>
+                                                            <select type="text" class="form-control" formControlName="imageInspirationType" id="title">
+                                          <option value="1">All</option>
+                                          <option value="2">Living</option>
+                                          <option value="3">Dining</option>
+                                          <option value="4">Bedroom</option>
+                                          <option value="5">Bathroom</option>
+                                          <option value="6">Kitchen</option>
+                                          <option value="7">Others</option>
+                                      </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md d-flex">
+                                                <div class="form-group d-flex w-100 border-0">
+                                                    <div class="form-field w-100 align-items-center d-flex">
+                                                        <input type="submit" value="Search" (click)="searchSubmit()" class="align-self-stretch form-control btn btn-primary" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      <div class="col-md d-flex">
-                        <div class="form-group p-4">
-                          <label for="#">Location</label>
-                          <div class="form-field">
-                            <div class="icon">
-                              <span class="ion-ios-pin"></span>
-                            </div>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Search Location"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md d-flex">
-                        <div class="form-group p-4">
-                          <label for="#">Price Limit</label>
-                          <div class="form-field">
-                            <div class="select-wrap">
-                              <div class="icon">
-                                <span class="fa fa-chevron-down"></span>
-                              </div>
-                              <select name="" id="" class="form-control">
-                                <option value="">$100</option>
-                                <option value="">$10,000</option>
-                                <option value="">$50,000</option>
-                                <option value="">$100,000</option>
-                                <option value="">$200,000</option>
-                                <option value="">$300,000</option>
-                                <option value="">$400,000</option>
-                                <option value="">$500,000</option>
-                                <option value="">$600,000</option>
-                                <option value="">$700,000</option>
-                                <option value="">$800,000</option>
-                                <option value="">$900,000</option>
-                                <option value="">$1,000,000</option>
-                                <option value="">$2,000,000</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md d-flex">
-                        <div class="form-group d-flex w-100 border-0">
-                          <div
-                            class="form-field w-100 align-items-center d-flex"
-                          >
-                            <input
-                              type="submit"
-                              value="Search"
-                              class="align-self-stretch form-control btn btn-primary"
-                            />
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                  </form>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 <section class="ftco-section bg-light">
-  <div class="container-xl">
-    <div class="row" >
-      <div
-        class="col-md-3"
-        data-aos=""
-        data-aos-delay="100"
-        data-aos-duration="1000"
-        style="cursor: pointer;"
-        [routerLink]="['designer-view',item.id]"
-        *ngFor="let item of desinerList"
-      >
-        <div class="property-wrap">
-          <a
-            class="img img-property"
-            style="background-image: url({{item.coverImage}})"
-          >
-            <!-- <p class="price"><span class="orig-price">$300,000</span></p> -->
-          </a>
-          <div class="text">
-            <div class="list-team d-flex align-items-center mb-4">
-              <div class="d-flex align-items-center">
-                <img src="{{item?.logo}}" height="30" width="30" />
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-md-3" data-aos="" data-aos-delay="100" data-aos-duration="1000" style="cursor: pointer;" [routerLink]="['designer-view',item.id]" *ngFor="let item of desinerList">
+                <div class="property-wrap">
+                    <a class="img img-property" style="background-image: url({{item.coverImage}})">
+                        <!-- <p class="price"><span class="orig-price">$300,000</span></p> -->
+                    </a>
+                    <div class="text">
+                        <div class="list-team d-flex align-items-center mb-4">
+                            <div class="d-flex align-items-center">
+                                <img src="{{item?.logo}}" height="30" width="30" />
 
-                <h3 class="ml-2 text_single_line">{{item.companyName}}</h3>
-              </div>
-              <span class="text-right">{{item.createdAt |  date: 'dd/MM/yyyy'}}</span>
-            </div>
-            <h3 class="text_single_line"><a >{{item?.description}}</a></h3>
-            <span class="location"
-              >
+                                <h3 class="ml-2 text_single_line">{{item.companyName}}</h3>
+                            </div>
+                            <span class="text-right">{{item.createdAt |  date: 'dd/MM/yyyy'}}</span>
+                        </div>
+                        <h3 class="text_single_line"><a>{{item?.description}}</a></h3>
+                        <span class="location">
               <bar-rating [(rate)]="item.averageRating" [max]="5" [readOnly]="true"></bar-rating>
-              <span class="sale">{{item?.totalReviewCount || '0'}} /10 Review</span></span
-            >
-            <ul class="property_list mt-3 mb-0">
-              <li>
-                <span>{{item?.totalDesigns || '0'}} Projects</span>
-              </li>
-              <li>
-                <span>{{item?.totalPhotosUploaded || '0'}} Photos</span>
-              </li>
-            </ul>
-          </div>
+              <span class="sale">{{item?.totalReviewCount || '0'}} /10 Review</span></span>
+                        <ul class="property_list mt-3 mb-0">
+                            <li>
+                                <span>{{item?.totalDesigns || '0'}} Projects</span>
+                            </li>
+                            <li>
+                                <span>{{item?.totalPhotosUploaded || '0'}} Photos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
-     
-    </div>
-    <div class="row mt-5">
-      <div class="col text-center">
-        <div class="block-27">
-          <ul>
-            <li><a href="#">&lt;</a></li>
-            <li class="active"><span>1</span></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&gt;</a></li>
-          </ul>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
