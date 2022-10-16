@@ -15,6 +15,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { BarRatingModule } from "ngx-bar-rating";
 import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     SimpleLayoutComponent,

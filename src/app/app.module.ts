@@ -15,6 +15,8 @@ import { RouterModule } from '@angular/router';
 import { SimpleLayoutModule } from './layout/simple-layout/simple-layout.module';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { BarRatingModule } from 'ngx-bar-rating';
+import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 
 
 @NgModule({
@@ -35,9 +37,31 @@ import { BarRatingModule } from 'ngx-bar-rating';
     AuthorizationRoutingModule,
     ToastrModule.forRoot(),
     NgxDropzoneModule,
-    BarRatingModule
+    BarRatingModule,
+    SocialLoginModule
   ],
-  providers: [ApiService],
+  providers: [ApiService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              'Google-Client-ID'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              '2022228064834010'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

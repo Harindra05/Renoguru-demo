@@ -5,6 +5,7 @@ import { CookieService } from "ngx-cookie-service";
 import { ToastrService } from "ngx-toastr";
 import { ApiService } from "src/app/services/api.service";
 import { Md5 } from "ts-md5";
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from "angularx-social-login";
 
 
 @Component({
@@ -14,13 +15,16 @@ import { Md5 } from "ts-md5";
 })
 export class SignupComponent implements OnInit {
   public signupForm!: FormGroup;
-
+  user!: SocialUser;
+  isSignedin!: boolean;
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
     private route: Router,
     private cookie:CookieService,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private socialAuthService: SocialAuthService
+
   ) {}
 
   ngOnInit(): void {
@@ -34,11 +38,6 @@ export class SignupComponent implements OnInit {
         email: ["", [Validators.required, Validators.email]],
         "phone": ['',Validators.required],
         "gender": [''],
-        // "country": [''],
-        // "about":[''],
-        // "hoursTypeIds": [],
-        // "favouriteStyleTypeIds": [],
-        // "userImage": [''],
         password: ["", Validators.required],
         confirm_password: ["", Validators.required],
       },
@@ -46,7 +45,12 @@ export class SignupComponent implements OnInit {
         validators: this.MustMatch("password", "confirm_password"),
       }
     );
-
+    this.socialAuthService.authState.subscribe((user) => {
+      this.user = user;
+      this.isSignedin = (user != null);
+      console.log(this.user);
+      this.socialLogin(this.user)
+    });
   }
 
   MustMatch(controlName: string, matchingControlName: string) {
@@ -81,11 +85,34 @@ export class SignupComponent implements OnInit {
       let data = await this.api.post('auth/signup-with-email',this.signupForm.value)
       if(data.success){
         this.toastr.success(data.message);
+        this.cookie.set('renoWeb',JSON.stringify(data.data));
         this.route.navigate(['/otp']);
       }
 
     } catch (error) {
       console.error(error);
+    }
+  }
+  async googleSignin() {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+  async facebookSignin() {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+  async socialLogin(user:any){
+    let req={
+      "socialId": user.id,
+      "firstName": user.firstName,
+      "lastName": user.lastName,
+      "email": user.email,
+      "userImage":user.photoUrl
+    }
+    try {
+      let data = await this.api.post('auth/social-signup',req)
+      if(data.success){
+        this.cookie.set('renoWeb',JSON.stringify(data.data));
+      }  
+    } catch (error) { 
     }
   }
 }
