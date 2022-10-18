@@ -2,6 +2,7 @@ import { Component, DoCheck, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
 import { CookieService } from 'ngx-cookie-service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +11,26 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class HeaderComponent implements OnInit,DoCheck {
   userData:boolean=false;
-  constructor(private cookie:CookieService,private router:Router,private socialAuthService: SocialAuthService) { }
+  inspirationTypes:Array<any>=[]
+  constructor(private cookie:CookieService,private router:Router,private socialAuthService: SocialAuthService,private api:ApiService) { }
 
-  ngOnInit(): void {
+ async ngOnInit(){
 
+    await this.getInspirationType();
+  }
+  async getInspirationType() {
+    try {
+      let data = await this.api.post("house-types",{
+        "limit": 10000,
+        "offset": 0
+    });
+    if(data.success){
+      this.inspirationTypes=data.data.rows;
+      console.log(this.inspirationTypes);
+      
+    }
+    } catch (error) {
+    }
   }
   ngDoCheck(): void {
     if (this.cookie.check('renoWeb')) {

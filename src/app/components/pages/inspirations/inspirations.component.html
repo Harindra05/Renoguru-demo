@@ -16,8 +16,8 @@
 <section class="ftco-section bg-light">
     <div class="container-xl">
         <div class="row">
-            <div class="col-md-4 d-flex" *ngFor="let data of listDetails">
-                <div class="blog-entry justify-content-end" data-aos="" data-aos-duration="1000" data-aos-delay="100" [routerLink]="['/inspirations',data.type==2 ? 'living' : data.type==3 ? 'dining' : data.type==4 ? 'bedroom' : 'kitchen',data.id]">
+            <div class="col-md-12 d-flex" *ngFor="let data of listDetails">
+                <div class="blog-entry justify-content-end" data-aos="" data-aos-duration="1000" data-aos-delay="100" [routerLink]="['/inspirations',data.master_insipiration.title]">
                     <!-- [routerLink]="['/blogs-details',data.id]" -->
                     <a class="block-20 img d-flex align-items-end" style="background-image:url({{data.image?data.image:img}})">
                     </a>

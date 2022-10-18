@@ -24,7 +24,6 @@ export class InspirationsComponent implements OnInit {
     if(data.success){
       this.listDetails=data.data.rows
     }
-      // console.log(this.listDetails);
     } catch (error) {
       
     }

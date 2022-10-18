@@ -15,43 +15,52 @@ export class InspirationDetailsComponent implements OnInit {
   listDetails:Array<any>=[];
   typeIdToString:any;
   currentRoute: any;
+  Object:any = {
+    limit: 10000,
+    offset :0,
+  }
+  designList :Array<any>=[];
   constructor(private route:ActivatedRoute,private api:ApiService,private router: Router) { 
     this.router.events.subscribe(async(event: any) => {
       if (event instanceof NavigationStart) {
           console.log('Route change detected');
       }
-
       if (event instanceof NavigationEnd) {
-         await this.ngOnInit()
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        setTimeout(() => {
+         this.ngOnInit()
+        }, 500);
       }
     });
   }
 
   async ngOnInit(){
-    this.type = this.route.snapshot.paramMap.get('data');    
-    this.blog_id = this.route.snapshot.paramMap.get('id');
+    this.type = this.route.snapshot.paramMap.get('data'); 
+    // this.blog_id = this.route.snapshot.paramMap.get('id');
     if(this.type){
-      this.typeIdToString=this.type=='living' ? 2 : this.type=='dining' ? 3 : this.type=='bedroom' ? 4 : 5
+      this.typeIdToString=this.type
     }
-    if(this.blog_id){
-      await this.getInspirations()
-    }
-    else{
+    // if(this.blog_id){
+    //   await this.getInspirations()
+    // }
+    // else{
       await this.getInspirationList()
-    }
+      await this.getDesignList();
+    // }
     window.scrollTo({
       top:0
     })
+
   }
-    async getInspirations(){
-      this.blogDetails=[]
-      try {
-        let data = await this.api.get('inspirations/'+this.blog_id)
-        this.blogDetails=data.data
-      } catch (error) {
+    // async getInspirations(){
+    //   this.blogDetails=[]
+    //   try {
+    //     let data = await this.api.get('inspirations/'+this.blog_id)
+    //     this.blogDetails=data.data
+    //   } catch (error) {
         
-      }
-    }
+    //   }
+    // }
     async getInspirationList() {
       try {
         let data = await this.api.post("inspirations",{
@@ -63,12 +72,46 @@ export class InspirationDetailsComponent implements OnInit {
         let a=[]
          a =data.data.rows
         a.map((e:any)=>{
-          if(this.typeIdToString==e.type)
+          if(this.typeIdToString==e.master_insipiration.title)
             this.listDetails.push(e)
-        })
+        })          
       }
       } catch (error) {
         
       }
     }
-}
+    async getDesignList(){
+      this.designList=[]
+      try{
+        let data = await this.api.post('designs/get-designs',this.Object)
+        if(data.success){
+          const abc:any =data.data.rows;
+          abc.map(async(e:any)=>{            
+            e.design_images.map(async(f:any)=>{
+              if(f.imageInspirationType===this.listDetails[0].master_insipiration.id){
+               this.designList.push(e)
+              }
+            })
+          }) 
+        }
+      }
+      catch(error){
+        console.error(error);
+      }
+    }
+    async likeUnlike(id:any){
+      try{
+        let data = await this.api.post('designs/like-unlike-design',{designId:id})
+        if(data.success){
+          this.getDesignList()
+        }
+      }catch(error){
+        console.error()
+      }
+    }
+  
+    openDetail(data: any){
+      localStorage.setItem('detailItem', JSON.stringify(data));
+      this.router.navigate(['design/design-view',data.id]);
+    }
+  }

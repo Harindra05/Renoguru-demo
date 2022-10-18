@@ -82,10 +82,10 @@ const routes: Routes = [
         path:'inspirations/:data',
         component:InspirationDetailsComponent
       },
-      {
-        path:'inspirations/:data/:id',
-        component:InspirationDetailsComponent
-      },
+      // {
+      //   path:'inspirations/:data/:id',
+      //   component:InspirationDetailsComponent
+      // },
     ]
   }
 ];

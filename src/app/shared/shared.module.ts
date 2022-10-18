@@ -24,8 +24,6 @@ import { BarRatingModule } from "ngx-bar-rating";
         HomeDesignersComponent,
         HomeDesignsComponent,
         HomeBlogsComponent
-
-
     ],
 
     imports: [
@@ -33,7 +31,6 @@ import { BarRatingModule } from "ngx-bar-rating";
         RouterModule,
         CarouselModule,
         BarRatingModule
-
     ],
     exports: [
         CommonModule,
@@ -47,7 +44,6 @@ import { BarRatingModule } from "ngx-bar-rating";
         HomeDesignersComponent,
         HomeDesignsComponent,
         HomeBlogsComponent
-
     ],
     providers: [
         CustomPaginationService

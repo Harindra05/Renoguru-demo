@@ -18,10 +18,12 @@
                   </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <!-- <a class="dropdown-item">All</a> -->
-                        <a class="dropdown-item" [routerLink]="['/inspirations','living']">Living</a>
-                        <a class="dropdown-item" [routerLink]="['/inspirations','dining']">Dining</a>
+                        <ng-container *ngFor="let data of inspirationTypes">
+                            <a class="dropdown-item" [routerLink]="['/inspirations',data.title]">{{data.title}}</a>
+                            <!-- <a class="dropdown-item" [routerLink]="['/inspirations','dining']">Dining</a>
                         <a class="dropdown-item" [routerLink]="['/inspirations','bedroom']">Bedroom</a>
-                        <a class="dropdown-item" [routerLink]="['/inspirations','kitchen']">Kitchen</a>
+                        <a class="dropdown-item" [routerLink]="['/inspirations','kitchen']">Kitchen</a> -->
+                        </ng-container>
                     </div>
                 </li>
                 <li class="nav-item"><a class="nav-link" routerLink="/design">Design</a></li>

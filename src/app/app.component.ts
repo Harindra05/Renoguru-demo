@@ -12,8 +12,7 @@ export class AppComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
-    this.facebookSignin();
-    this.googleSignin();
+  
   } 
   googleSignin(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
