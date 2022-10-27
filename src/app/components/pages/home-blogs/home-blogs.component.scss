@@ -1,3 +1,13 @@
-::ng-deep.property-wrap{
+::ng-deep.property-wrap {
     margin: 5px;
+}
+
+.blog-entry .text {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 0;
+    padding: 30px;
+    max-height: 195px !important;
+    cursor: pointer;
 }
