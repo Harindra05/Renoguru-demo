@@ -27,95 +27,9 @@
                                 <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
                                     <form action="#" class="search-property-1" [formGroup]="searchForm">
                                         <div class="row g-0">
-                                            <!-- <div class="col-md d-flex">
-                          <div class="form-group p-4 border-0">
-                              <label for="#">Enter Keyword</label>
-                              <div class="form-field">
-                                  <div class="icon">
-                                      <span class="fa fa-search"></span>
-                                  </div>
-                                  <input type="text" class="form-control" placeholder="Enter Keyword" formControlName="kerword" />
-                              </div>
-                          </div>
-                      </div> -->
                                             <div class="col-md d-flex">
                                                 <div class="form-group p-4">
-                                                    <label for="#">Budget</label>
-                                                    <div class="form-field">
-                                                        <div class="icon">
-                                                            <span class="ion-ios-pin"></span>
-                                                        </div>
-                                                        <select type="text" class="form-control" formControlName="budget" id="title">
-                                      <option value="1">100-500</option>
-                                      <option value="2">500-1000</option>
-                                      <option value="3">1000-5000</option>
-                                      <option value="4">5000-10000</option>
-                                      <option value="5">10000-20000</option>
-                                      <option value="6">20000-50000</option>
-                                      <option value="7">50000+</option>
-                                  </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md d-flex">
-                                                <div class="form-group p-4">
-                                                    <label for="#">Area Range</label>
-                                                    <div class="form-field">
-                                                        <div class="select-wrap">
-                                                            <div class="icon">
-                                                                <span class="fa fa-chevron-down"></span>
-                                                            </div>
-                                                            <select type="text" class="form-control" formControlName="areaRange" id="title">
-                                          <option value="30-50">30-50sqm</option>
-                                          <option value="51-80">51-80sqm</option>
-                                          <option value="81-120">81-120sqm</option>
-                                          <option value="121-180">121-180sqm</option>
-                                          <option value="181-250">181-250sqm</option>
-                                          <option value="251-350">251-350sqm</option>
-                                          <option value="351-500">351-500sqm</option>
-                                          <option value="501-700">501-700sqm</option>
-                                          <option value="701-900">701-900sqm</option>
-                                          <option value="901-150000">951sqm & more</option>
-                                          </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md d-flex">
-                                                <div class="form-group p-4">
-                                                    <label for="#">Trending Type</label>
-                                                    <div class="form-field">
-                                                        <div class="select-wrap">
-                                                            <div class="icon">
-                                                                <span class="fa fa-chevron-down"></span>
-                                                            </div>
-                                                            <ng-select formControlName="trendingTypes" [multiple]="true">
-                                                                <ng-option *ngFor="let data of trendingData" [value]="data.id">{{ data.title }}</ng-option>
-                                                            </ng-select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md d-flex">
-                                                <div class="form-group p-4">
-                                                    <label for="#">Image Keywords</label>
-                                                    <div class="form-field">
-                                                        <div class="select-wrap">
-                                                            <div class="icon">
-                                                                <span class="fa fa-chevron-down"></span>
-                                                            </div>
-                                                            <select type="text" class="form-control" formControlName="imageInspirationType" id="title">
-                                          <option value="1">All</option>
-                                          <option value="2">Living</option>
-                                          <option value="3">Dining</option>
-                                          <option value="4">Bedroom</option>
-                                          <option value="5">Bathroom</option>
-                                          <option value="6">Kitchen</option>
-                                          <option value="7">Others</option>
-                                      </select>
-                                                        </div>
-                                                    </div>
+                                                    <input type="search" class="form-control" placeholder="search">
                                                 </div>
                                             </div>
                                             <div class="col-md d-flex">
@@ -153,7 +67,7 @@
                             </div>
                             <span class="text-right">{{item.createdAt |  date: 'dd/MM/yyyy'}}</span>
                         </div>
-                        <h3 class="text_single_line"><a>{{item?.description}}</a></h3>
+                        <h3 class="text_single_line"><a class="text_single_line" [innerHtml]="item?.description"></a></h3>
                         <span class="location">
               <bar-rating [(rate)]="item.averageRating" [max]="5" [readOnly]="true"></bar-rating>
               <span class="sale">{{item?.totalReviewCount || '0'}} /10 Review</span></span>

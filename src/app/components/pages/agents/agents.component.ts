@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -13,7 +14,9 @@ export class AgentsComponent implements OnInit,OnDestroy {
     offset :0,
   }
   designList :any;
-  constructor(public api :ApiService, private router: Router) { }
+  searchForm ! :FormGroup;
+  trendingData :any;
+  constructor(public api :ApiService, private router: Router,private fb:FormBuilder) { }
 
  async ngOnInit() {
     if(localStorage.getItem('advanceSearch')){
@@ -24,7 +27,15 @@ export class AgentsComponent implements OnInit,OnDestroy {
       this.Object.imageInspirationType=b.imageInspirationType
       this.Object.trendingTypes=b.trendingTypes
     }
+    this.searchForm = this.fb.group({
+      trendingTypes :'',
+      imageInspirationType:'',
+      areaRange:'',
+      budget:'',
+    })
     await this.getDesignList();
+    this.getTrendingTypes()
+
 
   }
   async getDesignList(){
@@ -50,6 +61,15 @@ export class AgentsComponent implements OnInit,OnDestroy {
       console.error()
     }
   }
+  async searchSubmit(){
+    let data = this.searchForm.value;
+    this.Object.budget=data.budget
+    this.Object.areaRange=data.areaRange
+    this.Object.imageInspirationType=data.imageInspirationType
+    this.Object.trendingTypes=data.trendingTypes
+    await this.getDesignList()
+    console.log(data);
+  }
 
   openDetail(data: any){
     localStorage.setItem('detailItem', JSON.stringify(data));
@@ -57,5 +77,17 @@ export class AgentsComponent implements OnInit,OnDestroy {
   }
 ngOnDestroy(): void {
   localStorage.removeItem('advanceSearch');
+}
+async getTrendingTypes(){
+  try {
+    let data = await this.api.post("trending-types",{
+      "limit": 10000,
+      "offset": 0
+  });
+  if(data.success){
+    this.trendingData=data.data.rows;
+  }
+  } catch (error) {
+  }
 }
 }

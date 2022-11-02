@@ -5,9 +5,9 @@
             <div class="col-md-9 pt-5 text-center">
                 <p class="breadcrumbs">
                     <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
-                    <span>Designs <i class="fa fa-chevron-right"></i></span>
+                    <span>Designer <i class="fa fa-chevron-right"></i></span>
                 </p>
-                <h1 class="mb-0 bread">Designs View</h1>
+                <h1 class="mb-0 bread">Designer View</h1>
             </div>
         </div>
     </div>
@@ -16,8 +16,11 @@
     <div class="profile-header">
         <div class="row align-items-center justify-content-center">
             <div class="col-sm-12 col-md-8 mt-2">
-                <img src="{{designerDetails?.logo}}" alt="no image found" />
+              <span class="d-flex align-items-center">
+                <img src="{{designerDetails?.logo}}" class="logo_img" alt="no image found" /> &nbsp;
                 <h1 class="mb-0 bread">{{ designerDetails?.companyName }}</h1>
+              </span>
+              
                 <div class="star-sec">
                     <i class="fa fa-star" aria-hidden="true" howu-index="175"></i>
                     <i class="fa fa-star" aria-hidden="true" howu-index="175"></i>
@@ -38,15 +41,7 @@
                 <a class="nav-link active" id="project-tab" data-toggle="tab" href="#project" role="tab" aria-controls="project" aria-selected="true">Project</a>
       </li>
       <li class="nav-item">
-        <a
-          class="nav-link"
-          id="review-tab"
-          data-toggle="tab"
-          role="tab"
-          aria-controls="review"
-          aria-selected="false"
-          >Review</a
-        >
+        <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Review</a>
       </li>
       <li class="nav-item">
               <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false">About</a>
@@ -203,12 +198,12 @@
         <div class="col-sm-12 col-md-8">
           <div class="about_sec">
             <h5>About Us</h5>
-            {{designerDetails?.description}}
+           <p [innerHtml]="designerDetails?.description"></p>
           </div>
         </div>
         <div class="col-sm-12 col-md-4">
         <div class="d-flex">
-          <img [src]="designerDetails?.logo" alt="">
+          <img [src]="designerDetails?.logo" class="logo_img" alt=""> &nbsp;  
           {{designerDetails?.companyName}}
         </div>
         <div class="rating">
