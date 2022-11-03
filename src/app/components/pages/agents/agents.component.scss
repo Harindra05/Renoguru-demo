@@ -13,3 +13,8 @@ span.orig-price {
     border-radius: 4px;
     padding: 3px 7px;
 }
+::ng-deep .ng-select .ng-select-container {
+   
+    border:1px solid #fff !important; 
+   
+}

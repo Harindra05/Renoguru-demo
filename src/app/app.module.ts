@@ -17,6 +17,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+import { AngularFireModule } from '@angular/fire/compat';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { GoogleLoginProvider } from 'angularx-social-login';
     ToastrModule.forRoot(),
     NgxDropzoneModule,
     BarRatingModule,
-    SocialLoginModule
+    SocialLoginModule,
+    // AngularFireModule.initializeApp(),
   ],
   providers: [ApiService,
     {

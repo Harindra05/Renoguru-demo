@@ -285,3 +285,8 @@ body {
         margin-right: 0;
     }
 }
+::ng-deep .ng-select .ng-select-container {
+   
+    border:1px solid #fff !important; 
+   
+}

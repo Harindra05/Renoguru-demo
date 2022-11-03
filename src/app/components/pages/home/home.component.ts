@@ -18,9 +18,9 @@ export class HomeComponent implements OnInit {
     touchDrag: true,
     autoplay:true,
     pullDrag: true,
-    dots: true,
+    dots: false,
     navSpeed: 700,
-    navText: ['', ''],
+    navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
     responsive: {
       0: {
         items: 1

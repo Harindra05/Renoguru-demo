@@ -96,10 +96,10 @@
                                                     <label for="#">Trending Type</label>
                                                     <div class="form-field">
                                                         <div class="select-wrap">
-                                                            <div class="icon">
+                                                            <!-- <div class="icon">
                                                                 <span class="fa fa-chevron-down"></span>
-                                                            </div>
-                                                            <ng-select formControlName="trendingTypes" [multiple]="true">
+                                                            </div> -->
+                                                            <ng-select formControlName="trendingTypes" class="form-control" [multiple]="true">
                                                                 <ng-option *ngFor="let data of trendingData" [value]="data.id">{{ data.title }}</ng-option>
                                                             </ng-select>
                                                         </div>

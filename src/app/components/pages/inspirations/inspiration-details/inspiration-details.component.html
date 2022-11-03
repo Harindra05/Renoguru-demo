@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-12 d-flex" *ngFor="let data of listDetails">
 
-                <div class="blog-entry justify-content-end" data-aos="" data-aos-duration="1000" data-aos-delay="100" [routerLink]="['/inspirations',data.id]">
+                <div class="blog-entry justify-content-end" data-aos="" data-aos-duration="1000" data-aos-delay="100">
                     <!-- [routerLink]="['/blogs-details',data.id]" -->
                     <div class="text text-center">
                         <!-- <p class="meta"><span>{{data.createdAt | date}}</span>
@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-md-3" data-aos="" data-aos-delay="100" data-aos-duration="1000" *ngFor="let datas of designList">
                                 <div class="property-wrap">
-                                    <a class="img img-property" style="background-image: url({{datas.design_images[0].imageUrl}})">
+                                    <div class="img img-property" style="background-image: url({{datas?.design_images[0]?.imageUrl}});">
                                         <p class="price">
                                             <span class="orig-price">${{ datas.price }}</span>
                                         </p>
@@ -50,8 +50,8 @@
                                     ></i>
                                   </span>
                                         </p>
-                                    </a>
-                                    <div class="text" style="cursor: pointer;" (click)="openDetail(datas)">
+                                    </div>
+                                    <div class="text" style="cursor: pointer;" (click)="openDetail(datas)"  [routerLink]="['/inspirations',data.id]">
                                         <div class="list-team d-flex align-items-center mb-4">
                                             <!-- <div class="d-flex align-items-center">
                                 <span class="package_box  d-flex">
@@ -65,10 +65,10 @@
 
                                         <ul class="property_list mt-3 mb-0">
                                             <li>
-                                                <span>20 Projects</span>
+                                                <!-- <span>20 Projects</span> -->
                                             </li>
                                             <li>
-                                                <span>{{datas.design_images.length}} Photos</span>
+                                                <span>{{datas?.design_images?.length}} Photos</span>
                                             </li>
                                         </ul>
                                     </div>
