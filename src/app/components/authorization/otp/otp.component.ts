@@ -36,8 +36,6 @@ export class OtpComponent implements OnInit {
   submitted = false;
   async otpverifiyMethod() {
     try {
-      console.log(this.receviedotpForm.value);
-      
       let data = await this.api.post('auth/verify-otp',this.receviedotpForm.value)
       if(data.success){
         this.toastr.success(data.message);

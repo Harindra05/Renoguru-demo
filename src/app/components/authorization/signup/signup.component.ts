@@ -85,7 +85,6 @@ export class SignupComponent implements OnInit {
       let data = await this.api.post('auth/signup-with-email',this.signupForm.value)
       if(data.success){
         this.toastr.success(data.message);
-        this.cookie.set('renoWeb',JSON.stringify(data.data));
         this.route.navigate(['/otp']);
       }
 
