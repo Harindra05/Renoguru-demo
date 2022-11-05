@@ -2,7 +2,6 @@
     <div class="container-xl">
         <a class="navbar-brand align-items-center" href="index-2.html">
             <img class="logo" src="assets/images/logo-1.jpg" alt="">
-            <!-- <span class="">RenoGuru <small>Interior Design</small></span> -->
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="fa fa-bars"></span> Menu
@@ -17,26 +16,22 @@
                     Inspirations
                   </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <!-- <a class="dropdown-item">All</a> -->
                         <ng-container *ngFor="let data of inspirationTypes">
                             <a class="dropdown-item" [routerLink]="['/inspirations',data.title]">{{data.title}}</a>
-                            <!-- <a class="dropdown-item" [routerLink]="['/inspirations','dining']">Dining</a>
-                        <a class="dropdown-item" [routerLink]="['/inspirations','bedroom']">Bedroom</a>
-                        <a class="dropdown-item" [routerLink]="['/inspirations','kitchen']">Kitchen</a> -->
                         </ng-container>
                     </div>
                 </li>
                 <li class="nav-item"><a class="nav-link" routerLink="/design">Design</a></li>
-                <!-- <li class="nav-item"><a class="nav-link">Videos</a></li> -->
                 <li class="nav-item"><a class="nav-link" routerLink="/blogs">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="/contact">Contact</a></li>
             </ul>
-            <p class="mb-0"><a routerLink="/enquiry" class="btn btn-primary rounded">Submit An Enquiry</a></p>
-            <p class="mb-0 ml-2" routerLink="/login" *ngIf="!userData"><a class="btn btn-primary rounded">Login</a></p>
+            <p class="mb-0">
+                <a class="btn btn-primary rounded" (click)="openModal()">Submit An Enquiry</a></p>
+            <p class="mb-0 ml-2" routerLink="/login" *ngIf="!userData "><a class="btn btn-primary rounded ">Login</a></p>
         </div>
-        <span class="mr-2 ml-2" *ngIf="userData" routerLink="/profile" style="cursor: pointer;">
-            <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+        <span class="mr-2 ml-2" *ngIf="userData" routerLink="/profile" style="cursor: pointer; ">
+            <i class="fa fa-user-circle fa-2x" aria-hidden="true "></i>
         </span>
-        <p class="mb-0 ml-2" (click)="logout()" *ngIf="userData"><a class="btn btn-primary rounded logout"><i class='fa fa-sign-out'></i></a></p>
+        <p class="mb-0 ml-2" (click)="logout()" *ngIf="userData "><a class="btn btn-primary rounded logout "><i class='fa fa-sign-out'></i></a></p>
     </div>
 </nav>

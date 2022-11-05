@@ -13,7 +13,7 @@
                         <p class="price"><span class="orig-price">${{data.price}}</span></p>
                         <p class="heart_icon" (click)="likeUnlike(data.id)">
                             <span class="orig-price">
-                    <i class="fa" [ngClass]="{'fa-heart-o':data.likes==0,'fa-heart':data.likes==1}"></i>
+                    <i class="fa" [ngClass]="{'fa-heart-o':!data.isLike,'fa-heart':data.isLike}"></i>
                   </span>
                         </p>
                     </a>

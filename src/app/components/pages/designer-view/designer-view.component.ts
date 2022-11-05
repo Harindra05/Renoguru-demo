@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/services/api.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginModalComponent } from '../../modal/login-modal/login-modal.component';
+
 
 @Component({
   selector: 'app-designer-view',
@@ -19,7 +23,8 @@ export class DesignerViewComponent implements OnInit {
     offset :0
   }
 
-  constructor( private api :ApiService ,public param :ActivatedRoute ,private toster :ToastrService) { }
+  constructor( private api :ApiService ,
+    private modalService:NgbModal,private cookie:CookieService,public param :ActivatedRoute ,private toster :ToastrService) { }
 
   ngOnInit(): void {
 
@@ -59,7 +64,12 @@ export class DesignerViewComponent implements OnInit {
     }
   }
 
- async likeUnlike(id:any){
+  modalRef:any
+  async likeUnlike(id:any){
+    if(!this.cookie.check('renoWeb')){
+      this.modalRef = this.modalService.open(LoginModalComponent);
+  }
+  else{
   let body ={
     designId: id
   }
@@ -74,6 +84,7 @@ export class DesignerViewComponent implements OnInit {
   }catch(error){
 
   }
+}
  }
  async designerReviews(){
   try{

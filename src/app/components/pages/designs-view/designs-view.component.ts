@@ -3,6 +3,10 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/services/api.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginModalComponent } from '../../modal/login-modal/login-modal.component';
+
 
 @Component({
   selector: 'app-designs-view',
@@ -51,7 +55,8 @@ export class DesignsViewComponent implements OnInit {
     offset :0
   }
   packageIncludes :any
-  constructor( private api :ApiService ,public param :ActivatedRoute ,private toster :ToastrService) { }
+  constructor( private api :ApiService ,
+    private modalService:NgbModal,private cookie:CookieService,public param :ActivatedRoute ,private toster :ToastrService) { }
 
   ngOnInit(): void {
     this.designer_id  = this.param.snapshot.params.id;
@@ -73,9 +78,12 @@ export class DesignsViewComponent implements OnInit {
       console.error(error);
     }
   }
+  modalRef:any
   async likeUnlike(id:any){
-    console.log(id);
-    
+    if(!this.cookie.check('renoWeb')){
+      this.modalRef = this.modalService.open(LoginModalComponent);
+  }
+  else{
     try{
       let data = await this.api.post('designs/like-unlike-design',{designId:id})
       if(data.success){
@@ -86,10 +94,5 @@ export class DesignsViewComponent implements OnInit {
       console.error()
     }
   }
-
-
-
-
-
-
+  }
 }

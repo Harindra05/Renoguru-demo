@@ -11,6 +11,8 @@ import { CarouselModule } from "ngx-owl-carousel-o";
 import { AdvertisementComponent } from "../directives/advertisement/advertisement.component";
 import { AddReviewComponent, HomeBlogsComponent, HomeDesignersComponent, HomeDesignsComponent } from "../components/pages/pages";
 import { BarRatingModule } from "ngx-bar-rating";
+import { LoginModalComponent } from "../components/modal/login-modal/login-modal.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 
 
@@ -23,11 +25,14 @@ import { BarRatingModule } from "ngx-bar-rating";
         AdvertisementComponent,
         HomeDesignersComponent,
         HomeDesignsComponent,
-        HomeBlogsComponent
+        HomeBlogsComponent,
+        LoginModalComponent
     ],
 
     imports: [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule,
         CarouselModule,
         BarRatingModule
@@ -43,7 +48,8 @@ import { BarRatingModule } from "ngx-bar-rating";
         AdvertisementComponent,
         HomeDesignersComponent,
         HomeDesignsComponent,
-        HomeBlogsComponent
+        HomeBlogsComponent,
+        LoginModalComponent
     ],
     providers: [
         CustomPaginationService

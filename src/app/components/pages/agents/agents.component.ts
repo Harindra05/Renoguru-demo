@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/app/services/api.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginModalComponent } from '../../modal/login-modal/login-modal.component';
 
 @Component({
   selector: 'app-agents',
@@ -16,7 +19,8 @@ export class AgentsComponent implements OnInit,OnDestroy {
   designList :any;
   searchForm ! :FormGroup;
   trendingData :any;
-  constructor(public api :ApiService, private router: Router,private fb:FormBuilder) { }
+  constructor(public api :ApiService,
+    private modalService:NgbModal,private cookie:CookieService, private router: Router,private fb:FormBuilder,) { }
 
  async ngOnInit() {
     if(localStorage.getItem('advanceSearch')){
@@ -51,7 +55,12 @@ export class AgentsComponent implements OnInit,OnDestroy {
       console.error(error);
     }
   }
+  modalRef:any
   async likeUnlike(id:any){
+    if(!this.cookie.check('renoWeb')){
+      this.modalRef = this.modalService.open(LoginModalComponent);
+  }
+  else{
     try{
       let data = await this.api.post('designs/like-unlike-design',{designId:id})
       if(data.success){
@@ -60,6 +69,7 @@ export class AgentsComponent implements OnInit,OnDestroy {
     }catch(error){
       console.error()
     }
+  }
   }
   async searchSubmit(){
     let data = this.searchForm.value;

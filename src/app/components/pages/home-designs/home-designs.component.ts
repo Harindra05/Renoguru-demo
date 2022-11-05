@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/services/api.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginModalComponent } from '../../modal/login-modal/login-modal.component';
+
 
 @Component({
   selector: 'app-home-designs',
@@ -41,7 +45,8 @@ export class HomeDesignsComponent implements OnInit {
   }
   designList :any;
   
-  constructor(public api :ApiService) { }
+  constructor(public api :ApiService,
+    private modalService:NgbModal,private cookie:CookieService,) { }
 
   ngOnInit(): void {
     this.getDesignList()
@@ -59,7 +64,12 @@ export class HomeDesignsComponent implements OnInit {
       
     }
   }
-  likeUnlike(id:any){
+  modalRef:any
+  async likeUnlike(id:any){
+    if(!this.cookie.check('renoWeb')){
+      this.modalRef = this.modalService.open(LoginModalComponent);
+  }
+  else{
     try{
       let data = this.api.post('designs/like-unlike-design',{designId:id})
   console.log(data);
@@ -70,5 +80,5 @@ export class HomeDesignsComponent implements OnInit {
     }
 
   }
-
+  }
 }

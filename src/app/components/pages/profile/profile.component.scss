@@ -1,5 +1,16 @@
-.form-section{
+.form-section {
     width: 70%;
     margin: auto;
     padding: 2rem 0;
+}
+
+span.orig-price {
+    background: #ffffffab;
+    padding: 4px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fa-heart {
+    color: #5ea51d;
 }

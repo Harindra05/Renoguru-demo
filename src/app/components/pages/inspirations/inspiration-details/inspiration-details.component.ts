@@ -1,6 +1,10 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginModalComponent } from 'src/app/components/modal/login-modal/login-modal.component';
+
 
 @Component({
   selector: 'app-inspiration-details',
@@ -18,15 +22,15 @@ export class InspirationDetailsComponent implements OnInit {
   Object:any = {
     limit: 10000,
     offset :0,
+    imageInspirationType:null
   }
   designList :Array<any>=[];
-  constructor(private route:ActivatedRoute,private api:ApiService,private router: Router) { 
+  constructor(private route:ActivatedRoute,private api:ApiService,private router: Router, private modalService:NgbModal,private cookie:CookieService) { 
     this.router.events.subscribe(async(event: any) => {
       if (event instanceof NavigationStart) {
           console.log('Route change detected');
       }
       if (event instanceof NavigationEnd) {
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         setTimeout(() => {
          this.ngOnInit()
         }, 500);
@@ -68,38 +72,45 @@ export class InspirationDetailsComponent implements OnInit {
           "offset": 0
       });
       if(data.success){
+        
         this.listDetails=[]
         let a=[]
          a =data.data.rows
         a.map((e:any)=>{
-          if(this.typeIdToString==e.master_insipiration.title)
-            this.listDetails.push(e)
-        })          
+          if(this.typeIdToString==e.master_insipiration.title){
+          this.listDetails.push(e)
+          }
+        })   
+        this.Object.imageInspirationType=this.listDetails[0].type         
       }
       } catch (error) {
         
       }
     }
     async getDesignList(){
-      this.designList=[]
+      this.designList=[];
       try{
         let data = await this.api.post('designs/get-designs',this.Object)
         if(data.success){
           const abc:any =data.data.rows;
           abc.map(async(e:any)=>{            
             e.design_images.map(async(f:any)=>{
-              if(f.imageInspirationType===this.listDetails[0].master_insipiration.id){
                this.designList.push(e)
-              }
-            })
-          }) 
+            })  
+          })  
         }
+        this.designList=[...new Set(this.designList)];
       }
       catch(error){
         console.error(error);
       }
     }
+    modalRef:any
     async likeUnlike(id:any){
+      if(!this.cookie.check('renoWeb')){
+        this.modalRef = this.modalService.open(LoginModalComponent);
+    }
+    else{
       try{
         let data = await this.api.post('designs/like-unlike-design',{designId:id})
         if(data.success){
@@ -108,6 +119,7 @@ export class InspirationDetailsComponent implements OnInit {
       }catch(error){
         console.error()
       }
+    }
     }
   
     openDetail(data: any){

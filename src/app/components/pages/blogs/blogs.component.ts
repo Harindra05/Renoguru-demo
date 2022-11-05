@@ -13,6 +13,9 @@ export class BlogsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBlogList();
+    window.scrollTo({
+      top:0
+    })
   }
   async getBlogList() {
     try {

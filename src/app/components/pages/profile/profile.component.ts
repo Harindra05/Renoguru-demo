@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
 import { ModalManager } from "ngb-modal";
 import { CookieService } from "ngx-cookie-service";
 import { ApiService } from "src/app/services/api.service";
@@ -18,11 +19,18 @@ export class ProfileComponent implements OnInit {
   editDetails :any
   @ViewChild('myModal') myModal:any;
   private modalRef:any;
+  designList:Array<any>=[]
+  Object:any = {
+    limit: 10000,
+    offset :0,
+    // user_id:null
+  }
   constructor(
     public api: ApiService,
     public cookie: CookieService,
     public fb: FormBuilder,
-    private modalService: ModalManager,
+    private router:Router,
+    private modalService:ModalManager
   ) {}
 
   ngOnInit() {
@@ -51,6 +59,8 @@ export class ProfileComponent implements OnInit {
     this.user_id = data.id;
     console.log(this.user_id);
     this.setProfileForm();
+    this.getDesignList()
+    // this.Object.user_id=this.user_id
   }
   // async addServicePopup(){
   //   this.modal.open(AddServiceComponent,{size :'sm',centered:true})
@@ -102,6 +112,38 @@ export class ProfileComponent implements OnInit {
     }catch(error){
       console.error()
     }
+  }
+  async getLikedDesigns(){
+    try {
+      let data = await this.api.post('',{})
+    } catch (error) {
+      
+    }
+  }
+  async getDesignList(){
+    try{
+      let data = await this.api.post('designs/get-designs',this.Object)
+      if(data.success){
+        this.designList =data.data.rows; 
+      }
+    }
+    catch(error){
+      console.error(error);
+    }
+  }
+  async likeUnlike(id:any){
+    try{
+      let data = await this.api.post('designs/like-unlike-design',{designId:id})
+      if(data.success){
+        this.getDesignList()
+      }
+    }catch(error){
+      console.error()
+    }
+  }
+  openDetail(data: any){
+    localStorage.setItem('detailItem', JSON.stringify(data));
+    this.router.navigate(['design/design-view',data.id]);
   }
 }
 

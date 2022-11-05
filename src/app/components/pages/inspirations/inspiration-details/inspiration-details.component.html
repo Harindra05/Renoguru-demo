@@ -44,14 +44,14 @@
                                     <i
                                       class="fa"
                                       [ngClass]="{
-                                        'fa-heart-o': datas.likes == 0,
-                                        'fa-heart': datas.likes == 1
+                                        'fa-heart-o': !datas.isLike,
+                                        'fa-heart': datas.isLike
                                       }"
                                     ></i>
                                   </span>
                                         </p>
                                     </div>
-                                    <div class="text" style="cursor: pointer;" (click)="openDetail(datas)"  [routerLink]="['/inspirations',data.id]">
+                                    <div class="text" style="cursor: pointer;" (click)="openDetail(datas)" [routerLink]="['/inspirations',data.id]">
                                         <div class="list-team d-flex align-items-center mb-4">
                                             <!-- <div class="d-flex align-items-center">
                                 <span class="package_box  d-flex">

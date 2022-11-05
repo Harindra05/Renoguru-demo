@@ -68,6 +68,67 @@
             </div>
         </div>
     </form>
+    <hr>
+    <div class="container-xl p-0 mt-4">
+        <h3 class="heading mb-4"><a>Likes</a></h3>
+        <div class="row">
+            <div class="blog-entry justify-content-end" data-aos="" data-aos-duration="1000" data-aos-delay="100">
+                <!-- [routerLink]="['/blogs-details',data.id]" -->
+                <!-- <div class="text text-center">
+                        <h3 class="heading mb-3"><a>{{data.title}}</a></h3>
+                        <p class="blog_details" innerHtml="{{data.description}}"></p>
+                    </div> -->
+                <!-- <a class="block-20 img d-flex align-items-end" style="background-image:url({{data.image?data.image:img}})">
+                        </a> -->
+                <div class="container-xl">
+                    <div class="row">
+                        <div class="col-md-3" data-aos="" data-aos-delay="100" data-aos-duration="1000" *ngFor="let datas of designList">
+                            <div class="property-wrap">
+                                <div class="img img-property" style="background-image: url({{datas?.design_images[0]?.imageUrl}});">
+                                    <p class="price">
+                                        <span class="orig-price">${{ datas.price }}</span>
+                                    </p>
+                                    <p class="heart_icon" (click)="likeUnlike(datas.id)">
+                                        <span class="orig-price">
+                                    <i
+                                      class="fa"
+                                      [ngClass]="{
+                                        'fa-heart-o': !datas.isLike,
+                                        'fa-heart': datas.isLike
+                                      }"
+                                    ></i>
+                                  </span>
+                                    </p>
+                                </div>
+                                <div class="text" style="cursor: pointer;" (click)="openDetail(datas)" [routerLink]="['/inspirations',datas.id]">
+                                    <div class="list-team d-flex align-items-center mb-4">
+                                        <!-- <div class="d-flex align-items-center">
+                                <span class="package_box  d-flex">
+                                    {{data.packageIncludes}}
+                                </span>
+                              </div> -->
+                                    </div>
+                                    <h3 class="text_single_line">
+                                        <a>{{ datas.title }}</a>
+                                    </h3>
+
+                                    <ul class="property_list mt-3 mb-0">
+                                        <li>
+                                            <!-- <span>20 Projects</span> -->
+                                        </li>
+                                        <li>
+                                            <span>{{datas?.design_images?.length}} Photos</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 

@@ -1,0 +1,31 @@
+<div class="popup-modal">
+    <div class="modal-header  text-center">
+        <h5 class="modal-title">You need to login First</h5>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        <section>
+            <div class="">
+                <div class="container" id="container">
+                    <div class="form-container log-in-container">
+                        <form [formGroup]="loginForm">
+                            <h2>Login</h2>
+                            <div class="social-container">
+                                <a class="social" (click)="facebookSignin()"><i class="fa fa-facebook fa-2x"></i></a>
+                                <a class="social" (click)="googleSignin()"><i class="fab fa fa-google fa-2x"></i></a>
+                            </div>
+                            <span>or use your account</span>
+                            <input name="email" formControlName="email" class="form-control" type="email" placeholder="Email" />
+                            <input name="password" formControlName="password" class="form-control" placeholder="Password" />
+                            <p class="signup" routerLink="/sign-up">Don't have an account? <span class="">SignUP</span></p>
+                            <a routerLink="forget-password">Forgot your password?</a>
+                            <button type="submit" [disabled]="!loginForm.valid" (click)="loginMethod()">Log In</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

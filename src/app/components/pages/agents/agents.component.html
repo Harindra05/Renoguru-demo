@@ -151,8 +151,8 @@
                 <i
                   class="fa"
                   [ngClass]="{
-                    'fa-heart-o': data.likes == 0,
-                    'fa-heart': data.likes == 1
+                    'fa-heart-o': !data.isLike,
+                    'fa-heart': data.isLike
                   }"
                 ></i>
               </span>

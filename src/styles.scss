@@ -4901,7 +4901,7 @@ textarea.form-control {
 
 .contactForm .form-control {
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    border-bottom: 1px solid rgb(0 0 0 / 26%);
     padding: 0
 }
 
@@ -4981,19 +4981,19 @@ textarea.form-control {
 }
 
 .comment-form-wrap .form-control::-webkit-input-placeholder {
-    color: rgba(0, 0, 0, .3)!important
+    color: rgba(0, 0, 0, 0.48)!important
 }
 
 .comment-form-wrap .form-control::-moz-placeholder {
-    color: rgba(0, 0, 0, .3)!important
+    color: rgba(0, 0, 0, 0.48)!important
 }
 
 .comment-form-wrap .form-control:-ms-input-placeholder {
-    color: rgba(0, 0, 0, .3)!important
+    color: rgba(0, 0, 0, 0.48)!important
 }
 
 .comment-form-wrap .form-control:-moz-placeholder {
-    color: rgba(0, 0, 0, .3)!important
+    color: rgba(0, 0, 0, 0.48)!important
 }
 
 .comment-form-wrap .form-control:focus,

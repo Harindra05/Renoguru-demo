@@ -18,13 +18,9 @@ import { BarRatingModule } from 'ngx-bar-rating';
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { AngularFireModule } from '@angular/fire/compat';
-
-
 @NgModule({
   declarations: [
-    AppComponent,
-
-   
+    AppComponent,  
   ],
   imports: [
     BrowserModule,
