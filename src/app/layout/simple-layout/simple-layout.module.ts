@@ -15,6 +15,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { BarRatingModule } from "ngx-bar-rating";
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AdvertisementComponent } from 'src/app/directives/advertisement/advertisement.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     InspirationDetailsComponent,
     DesignsViewComponent,
     AddReviewComponent,
-    DesignerViewComponent
+    DesignerViewComponent,
   ],
   imports: [
     CommonModule,

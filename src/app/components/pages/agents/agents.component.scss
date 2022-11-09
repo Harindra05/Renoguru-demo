@@ -18,3 +18,16 @@ span.orig-price {
     border:1px solid #fff !important; 
    
 }
+.advertisment_sec{
+    position: absolute;
+    top: 10%;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    .advertisment{
+        border: 1px solid red;
+        height: 450px;
+        width: 650px;
+    }
+}

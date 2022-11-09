@@ -1,9 +1,9 @@
 <div class="carousel-testimony">
     <owl-carousel-o [options]="customOptions">
-        <ng-template carouselSlide *ngFor="let data of listDetails">
+        <ng-template carouselSlide *ngFor="let data of listFilter">
             <div class="item">
                 <a href="{{data.link}}" target="_blank" rel="noopener noreferrer">
-                    <div class="testimony-wrap" style="background-image: url({{data.image}});">
+                    <div class="testimony-wrap" style="background-image: url({{data.image}});background-position: center !important;">
                         <div class="text">
                             <p class="mb-4 msg">
                                 {{data.title}}

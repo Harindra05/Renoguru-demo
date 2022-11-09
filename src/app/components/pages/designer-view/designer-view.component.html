@@ -56,7 +56,7 @@
                                 <p class="price"><span class="orig-price">${{data.price}}</span></p>
                                 <p class="heart_icon" (click)="likeUnlike(data.id)">
                                     <span class="orig-price">
-                    <i class="fa" [ngClass]="{'fa-heart-o':data.likes==1,'fa-heart':data.likes==0}"></i>
+                    <i class="fa heart-selected" [ngClass]="{'fa-heart-o':data.likes==1,'fa-heart':data.likes==0}"></i>
                   </span>
                                 </p>
                             </a>
@@ -68,7 +68,7 @@
                   <span class="text-right">2 weeks ago</span>
                 </div> -->
                                 <h3 class="text_single_line">
-                                    <a href="#">{{data.description}}</a
+                                    <a href="#" [innerHtml]="data.description"></a
                   >
                 </h3>
 

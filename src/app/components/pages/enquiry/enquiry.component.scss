@@ -1,74 +1,121 @@
- .property-type-section {
-     .property-type {
-         display: flex;
-         align-items: center;
-         position: relative;
-         width: fit-content;
-         margin-bottom: 15px;
-         cursor: pointer;
-         border: 1px solid #5ea51d;
-         padding: 1rem;
-         border-radius: 20px;
-         margin-right: 10px
-     }
- }
- 
- .main {
-     display: block;
-     position: relative;
-     width: fit-content;
-     margin-bottom: 15px;
-     cursor: pointer;
-     border: 1px solid #5ea51d;
-     padding: 0.5rem 1rem;
-     border-radius: 20px;
-     margin-right: 10px
- }
- 
- .main.active {
-     color: #fff;
-     background: black;
- }
- 
- .button-group-pills {
-     .btn {
-         //  border-radius: $pill-border-radius;
-         line-height: 1.2;
-         //  margin-bottom: $pill-margin-y;
-         //  margin-left: $pill-margin-x;
-         //  border-color: $pill-border;
-         //  background-color: $pill-bg;
-         //  color: $pill-font;
-         &.active {
-             //  border-color: $pill-active-border;
-             //  background-color: $pill-active-bg;
-             //  color: $pill-active-font;
-             box-shadow: none;
-         }
-         &:hover {
-             //  border-color: $pill-hover-border;
-             //  background-color: $pill-hover-bg;
-             //  color: $pill-hover-font;
-         }
-     }
- }
- 
- input[type="radio"],
- input[type="checkbox"] {
-     box-sizing: border-box;
-     padding: 0;
-     display: none;
- }
- 
- .text-danger {
-     color: red;
- }
- 
- .font-bold {
-     padding-top: 2rem;
-     font-weight: bold;
- }
- 
- .contact-info {
-     padding-top: 2rem;
- }
+@use '/src/assets/css/_vars.scss' as _var;
+
+.property-type-section {
+    .property-type {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: fit-content;
+        margin-bottom: 15px;
+        cursor: pointer;
+        border: 1px solid _var.$ocean_blue;
+        padding: 1rem;
+        border-radius: 20px;
+        margin-right: 10px
+    }
+}
+
+.main {
+    display: block;
+    position: relative;
+    width: fit-content;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border: 1px solid _var.$ocean_blue;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin-right: 10px
+}
+
+.main.active {
+    color: #fff;
+    background: black;
+}
+
+.button-group-pills {
+    .btn {
+        //  border-radius: $pill-border-radius;
+        line-height: 1.2;
+
+        //  margin-bottom: $pill-margin-y;
+        //  margin-left: $pill-margin-x;
+        //  border-color: $pill-border;
+        //  background-color: $pill-bg;
+        //  color: $pill-font;
+        &.active {
+            //  border-color: $pill-active-border;
+            //  background-color: $pill-active-bg;
+            //  color: $pill-active-font;
+            box-shadow: none;
+        }
+
+        &:hover {
+            //  border-color: $pill-hover-border;
+            //  background-color: $pill-hover-bg;
+            //  color: $pill-hover-font;
+        }
+    }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    box-sizing: border-box;
+    padding: 0;
+    display: none;
+}
+
+.text-danger {
+    color: red;
+}
+
+.font-bold {
+    padding-top: 2rem;
+    font-weight: bold;
+}
+
+.contact-info {
+    padding-top: 2rem;
+}
+
+.form-group {
+    padding: 30px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    img {
+        width: auto;
+        max-width: 70%;
+        height: auto;
+        max-height: 200px;
+        margin-right: 20px;
+    }
+
+    button {
+        border: none;
+        background: transparent;
+    }
+
+    button[data-type="file"] {
+        background: transparent;
+        height: 100px;
+        border: dashed;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    button[data-type="remove"] {
+        margin-top: 20px;
+    }
+
+    .error-msg {
+
+        margin-top: 20px;
+
+        p {
+            color: red;
+        }
+    }
+}

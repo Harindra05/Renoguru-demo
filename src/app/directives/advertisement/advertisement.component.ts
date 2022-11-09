@@ -36,20 +36,25 @@ export class AdvertisementComponent implements OnInit {
   constructor(private api:ApiService) { }
   @Input() add:any
   listDetails: Array<any>=[];
+  listFilter :any;
   ngOnInit(): void {
     this.getAdvertisement()
   }
   async getAdvertisement() {
-    try {
+      try {
       let data = await this.api.post("advertisements",{
         "limit": 10000,
         "offset": 0
     });
     if(data.success){
       this.listDetails=data.data.rows;
-      this.listDetails= this.listDetails.filter((e:any)=>{
+      console.log(this.listDetails);
+      
+      this.listFilter= this.listDetails.filter((e:any)=>{
         return e.section_type==this.add
       })
+      console.log(this.listFilter);
+      
     }
     } catch (error) {
     }

@@ -9,26 +9,26 @@
                         <a class="social" (click)="googleSignin()"><i class="fab fa fa-google fa-2x"></i></a>
                     </div>
                     <span>or use your account</span>
-                    <input type="text" class="form-control" formControlName="firstName" placeholder="first name" />
+                    <input type="text" class="form-control" formControlName="firstName" placeholder="First name" />
                     <small class="text-danger" *ngIf="f.firstName.invalid && f.firstName.touched">*please enter your first name in characters</small>
-                    <input type="text" class="form-control" formControlName="lastName" placeholder="last name" />
+                    <input type="text" class="form-control" formControlName="lastName" placeholder="Last name" />
                     <small class="text-danger" *ngIf="f.lastName.invalid && f.lastName.touched">*please enter your first name in characters</small>
-                    <input type="email" class="form-control" formControlName="email" placeholder="email" />
+                    <input type="email" class="form-control" formControlName="email" placeholder="Email" />
                     <small class="text-danger" *ngIf="f.email.invalid && f.email.touched">*  please enter your Email
                     </small>
                     <select name="gender" formControlName="gender" for id="gender">
-                        <option value="" selected  disabled>select gender</option>
+                        <option value="" selected  disabled>Select Gender</option>
                         <option value="1">Male</option>
                         <option value="2">Female</option>
                     </select>
                     <input type="new text" minlength="8" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="11" class="form-control" formControlName="phone" placeholder="Phone Number" />
                     <small class="text-danger" *ngIf="f.phone.invalid && f.phone.touched">*please enter your phone number</small>
-                    <input type="password" class="form-control" formControlName="password" placeholder="password" />
-                    <input type="password" class="form-control" formControlName="confirm_password" placeholder="confirm password" />
+                    <input type="password" class="form-control" formControlName="password" placeholder="Password" />
+                    <input type="password" class="form-control" formControlName="confirm_password" placeholder="Confirm password" />
                     <small class="text-danger" *ngIf="f.confirm_password.errors?.mustMatch">*Your password is not matched </small>
                     <p class="signup" routerLink="/login">Already have an account? <span class="">Login</span></p>
 
-                    <a routerLink="forget-password">Forgot your password?</a>
+                    <a routerLink="/login/forget-password">Forgot your password?</a>
                     <button>Sign Up</button>
                 </form>
             </div>

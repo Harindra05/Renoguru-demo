@@ -26,7 +26,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         HomeDesignersComponent,
         HomeDesignsComponent,
         HomeBlogsComponent,
-        LoginModalComponent
+        LoginModalComponent,
     ],
 
     imports: [

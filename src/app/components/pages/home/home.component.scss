@@ -290,3 +290,24 @@ body {
     border:1px solid #fff !important; 
    
 }
+.advertisment_sec{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    .advertisment{
+        border: 1px solid red;
+        height: 450px;
+        width: 650px;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .advertisment_sec .advertisment {
+        height: 260px;
+        width: 370px;
+    }
+    
+}

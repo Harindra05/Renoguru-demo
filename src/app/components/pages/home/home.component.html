@@ -3,6 +3,7 @@
     <div class="hero-slider">
         <div class="item">
             <div class="work">
+
                 <div class="img d-flex align-items-center js-fullheight" style="background-image: url(assets/images/bg_1.jpg)">
                     <div class="container-xl">
                         <div class="row justify-content-center">
@@ -22,6 +23,8 @@
         </div>
     </div>
 </section>
+
+
 <section class="ftco-section ftco-no-pb ftco-no-pt">
     <div class="container">
         <div class="row">
@@ -145,8 +148,12 @@
         </div>
     </div>
 </section>
-
-<app-advertisement [add]="section_type"></app-advertisement>
+<div class="advertisment_sec">
+    <div class="advertisment">
+        <app-advertisement [add]="section_type"></app-advertisement>
+    </div>
+</div>
+<!-- <app-advertisement></app-advertisement> -->
 <app-home-designs></app-home-designs>
 <section class="img vid-section" style="background-image: url(assets/images/bg_4.jpg)">
     <div class="overlay"></div>
@@ -160,7 +167,7 @@
                     </p>
 
                     <div class="video">
-                        <video controls (click)="toggleVideo()" #videoPlayer>
+                        <video autoplay [muted]="true" loop (click)="toggleVideo()" #videoPlayer>
               <source
                 src="https://vjs.zencdn.net/v/oceans.mp4"
                 type="video/mp4"

@@ -250,6 +250,24 @@
                                             <textarea class="form-control" formControlName="otherInformation" id="message" cols="30" rows="4" placeholder="Create a message here"></textarea>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <label for="" class="font-bold">Floor Plan</label>
+                                        <div class="form-group">
+                                            <ng-container *ngIf="!f['floor_plan'].value; else floorPlanImage">
+                                                <input #file style="display: none;" (change)="inputFile($event)" type="file" accept=".png, .jpg, .jpeg">
+                                                <button (click)="file.click()" type="button" data-type="file">Choose File</button>
+                                            </ng-container>
+                                            <ng-template #floorPlanImage>
+                                                <img [src]="imageFile" alt="">
+                                                <button (click)="removeFile()" type="button" data-type="remove">Remove</button>
+                                            </ng-template>
+                                            <div *ngIf="f['floor_plan'].invalid" class="error-msg">
+                                                <p *ngIf="f['floor_plan'].hasError('size')">File size should not exceed 5MB</p>
+                                                <p *ngIf="f['floor_plan'].hasError('format')">Accepted image file format (.png, .jpg, .jpeg)</p>
+                                            </div>
+                                            <!-- <textarea class="form-control" formControlName="otherInformation" id="message" cols="30" rows="4" placeholder="Create a message here"></textarea> -->
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <label for=""></label>
                                         <div class="form-group">
