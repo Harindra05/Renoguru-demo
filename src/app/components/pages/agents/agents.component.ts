@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/app/services/api.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModalComponent } from '../../modal/login-modal/login-modal.component';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-agents',
@@ -12,6 +13,32 @@ import { LoginModalComponent } from '../../modal/login-modal/login-modal.compone
   styleUrls: ['./agents.component.scss']
 })
 export class AgentsComponent implements OnInit,OnDestroy {
+  section_type =3;
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    autoplayHoverPause: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 3
+      }
+    },
+    nav: true
+  }
   Object:any = {
     limit: 10000,
     offset :0,

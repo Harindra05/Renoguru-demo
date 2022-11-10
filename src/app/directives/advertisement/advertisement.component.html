@@ -1,17 +1,28 @@
-<div class="carousel-testimony">
-    <owl-carousel-o [options]="customOptions">
-        <ng-template carouselSlide *ngFor="let data of listFilter">
-            <div class="item">
-                <a href="{{data.link}}" target="_blank" rel="noopener noreferrer">
-                    <div class="testimony-wrap" style="background-image: url({{data.image}});background-position: center !important;">
-                        <div class="text">
-                            <p class="mb-4 msg">
-                                {{data.title}}
-                            </p>
+<ng-container *ngIf="listFilter && listFilter.length>0">
+    <div class="advertisment_sec" [ngClass]="addSectionHide ? 'addHide' : 'addShow' ">
+        <div class="advertisment">
+            <div class="carousel-testimony">
+                <div class="cross-section" (click)="addHide()">
+                    <i class="fa fa-times"></i>
+                </div>
+                <owl-carousel-o [options]="customOptions">
+                    <ng-template carouselSlide *ngFor="let data of listFilter">
+                        <div class="item">
+                            <div class="testimony-wrap">
+                                <img src="{{data.image}}" alt="" srcset="">
+                                <div class="text">
+                                    <p class="mb-4 msg">
+                                        <!-- {{data.title}} -->
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="{{data.link}}" target="_blank" rel="noopener noreferrer">{{data.link}} </a>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </ng-template>
+                </owl-carousel-o>
             </div>
-        </ng-template>
-    </owl-carousel-o>
-</div>
+        </div>
+    </div>
+</ng-container>

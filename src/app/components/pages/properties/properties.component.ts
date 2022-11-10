@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class PropertiesComponent implements OnInit {
   desinerList :any;
   trendingData:any;
+  section_type =4;
   searchForm!:FormGroup
   Object:any = {
     limit: 1000,

@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./inspirations.component.scss']
 })
 export class InspirationsComponent implements OnInit {
-
+  section_type=7;
   listDetails: Array<any>=[];
   img='assets/images/image_1.jpg';
   constructor(private api:ApiService) { }

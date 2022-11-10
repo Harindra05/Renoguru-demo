@@ -1,10 +1,33 @@
-// .item {
-//     min-height: 200px;
-// }
-// .testimony-wrap {
-//     min-height: 200px;
-// }
+.item {
+    min-height: 200px;
+}
+
 .testimony-wrap {
-    background-image: cover !important;
-    padding: 0px;
+    min-height: 200px;
+}
+
+.cross-section {
+    display: flex;
+    justify-content: end;
+    margin-right: 10px;
+}
+
+i.fa.fa-times {
+    z-index: .999999;
+    color: #4c9abf;
+    background: pink;
+    padding: .5rem;
+    border-radius: 30px;
+}
+
+.addHide {
+    display: none;
+}
+
+.advertisment_sec {
+    background-color: #fff;
+}
+
+.testimony-wrap {
+    padding: 0 !important;
 }

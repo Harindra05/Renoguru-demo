@@ -140,7 +140,7 @@
 </section>
 <div class="advertisment_sec">
     <div class="advertisment">
-        <app-advertisement></app-advertisement>
+        <app-advertisement [add]="section_type"></app-advertisement>
                         </div>
 </div>
 
@@ -150,42 +150,46 @@
         <div class="row">
             <div class="col-md-3" data-aos="" data-aos-delay="100" data-aos-duration="1000" *ngFor="let data of designList">
                 <div class="property-wrap">
-                    <a class="img img-property" style="background-image: url({{data.design_images[0].imageUrl}})">
-                        <p class="price">
-                            <span class="orig-price">${{ data.price }}</span>
-                        </p>
-                        <p class="heart_icon" (click)="likeUnlike(data.id)">
-                            <span class="orig-price">
-                <i
-                  class="fa"
-                  [ngClass]="{
-                    'fa-heart-o': !data.isLike,
-                    'fa-heart': data.isLike
-                  }"
-                ></i>
-              </span>
-                        </p>
-                    </a>
-                    <div class="text" style="cursor: pointer;" (click)="openDetail(data)">
-                        <div class="list-team d-flex align-items-center mb-4">
-                            <!-- <div class="d-flex align-items-center">
-            <span class="package_box  d-flex">
-                {{data.packageIncludes}}
-            </span>
-          </div> -->
-                        </div>
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-template *ngFor="let img of data?.design_images" carouselSlide>
+                            <a class="img img-property" style="background-image: url({{img.imageUrl}}); height: 200px;">
+                                <p class="price">
+                                    <span class="orig-price">${{ data.price }}</span>
+                                </p>
+                                <p class="heart_icon" (click)="likeUnlike(data.id)">
+                                    <span class="orig-price">
+                                        <i class="fa" [ngClass]="{ 'fa-heart-o': !data.isLike, 'fa-heart': data.isLike }"></i>
+                                    </span>
+                                </p>
+                            </a>
+                        </ng-template>
+                    </owl-carousel-o>
+                    <div class="text" style="cursor: pointer; padding: 15px" (click)="openDetail(data)">
+                        <!-- <div class="list-team d-flex align-items-center mb-4">
+                            <div class="d-flex align-items-center">
+                                <span class="package_box  d-flex">
+                                    {{data.packageIncludes}}
+                                </span>
+                            </div>
+                        </div> -->
                         <h3 class="text_single_line">
                             <a>{{ data.title }}</a>
                         </h3>
+                        <p class="design-description" [innerHTML]="data?.description"></p>
+                        <strong>Villa</strong>
+                        <div class="trend-type">
+                            <p class="tag">New</p>
+                            <p class="tag">Trending</p>
+                        </div>
 
-                        <ul class="property_list mt-3 mb-0">
-                            <!-- <li>
+                        <!-- <ul class="property_list mt-3 mb-0">
+                            <li>
                                 <span>20 Projects</span>
-                            </li> -->
+                            </li>
                             <li>
                                 <span>{{data.design_images.length}} Photos</span>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </div>

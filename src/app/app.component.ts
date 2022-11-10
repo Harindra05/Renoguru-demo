@@ -1,9 +1,14 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {
   FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthService,
 } from "angularx-social-login";
+import { CookieService } from "ngx-cookie-service";
+import { ToastrService } from "ngx-toastr";
+import { Md5 } from "ts-md5";
+import { ApiService } from "./services/api.service";
 declare var $: any;
 
 @Component({
@@ -12,8 +17,25 @@ declare var $: any;
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-  constructor(private socialAuthService: SocialAuthService) {}
+  constructor(private socialAuthService: SocialAuthService,public fb :FormBuilder,
+    public api :ApiService,public toster :ToastrService,
+    public cookie:CookieService
+    ) {};
+  MessageForm! :FormGroup;
+  messageEnquiryFrom!:FormGroup;
+  loginBtn : boolean =false
   ngOnInit(): void {
+    this.MessageForm =this.fb.group({
+      email: ["", Validators.required],
+      password: ["", Validators.required],
+    })
+
+    this.messageEnquiryFrom =this.fb.group({
+      property_type:[''],
+      area_renovate:[''],
+      budget:[''],
+
+    })
     var element = $(".floating-chat");
     var myStorage = localStorage;
 
@@ -108,6 +130,58 @@ export class AppComponent implements OnInit {
         sendNewMessage();
       }
     }
+  }
+
+  async loginSubmit(){
+    let req = {
+      email :this.MessageForm.value.email,
+      password :this.MessageForm.value.password,
+    }
+    try{
+      const md5 = Md5.hashStr(req.password)
+      req.password=md5
+      let res = await this.api.post('auth/signin',req);
+      if(res.success){ 
+        this.toster.success(res.message)
+        this.loginBtn =true;
+        this.MessageForm.reset();
+        this.cookie.set('renoWeb',JSON.stringify(res.data));
+      }else{
+        this.toster.error(res['message']);
+        this.MessageForm.reset();  
+      }
+
+    }catch(error: any){
+      this.toster.error(error['message']);
+      this.MessageForm.reset();
+
+    }
+  }
+  async submitEnquiryForm(){
+    let req = {
+      email :this.MessageForm.value.email,
+      password :this.MessageForm.value.password,
+    }
+    try{
+      let res = await this.api.post('auth/signin',req)
+      if(res.success){
+        
+        this.toster.success(res.message)
+        this.loginBtn =true;
+
+      }else{
+        this.toster.error(res['message']);
+
+        
+      }
+
+    }catch(error:any){
+      this.toster.error(error['message']);
+
+      
+
+    }
+
   }
   googleSignin(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);

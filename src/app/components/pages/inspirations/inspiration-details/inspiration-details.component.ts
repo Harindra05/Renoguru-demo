@@ -24,6 +24,7 @@ export class InspirationDetailsComponent implements OnInit {
     offset :0,
     imageInspirationType:null
   }
+  section_type=7;
   designList :Array<any>=[];
   constructor(private route:ActivatedRoute,private api:ApiService,private router: Router, private modalService:NgbModal,private cookie:CookieService) { 
     this.router.events.subscribe(async(event: any) => {

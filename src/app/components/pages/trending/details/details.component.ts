@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DetailsComponent implements OnInit {
   img='assets/images/image_1.jpg';
+  section_type=5;
   blog_id:any;
   blogDetails:any;
   constructor(private route:ActivatedRoute,private api:ApiService) { 

@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./trending.component.scss']
 })
 export class TrendingComponent implements OnInit {
-
+  section_type =5;
   listDetails: Array<any>=[];
   img='assets/images/image_1.jpg'
   constructor(private api:ApiService) { }

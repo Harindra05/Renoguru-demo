@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./advertisement.component.scss']
 })
 export class AdvertisementComponent implements OnInit {
+  addSectionHide :boolean =false;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -22,13 +23,13 @@ export class AdvertisementComponent implements OnInit {
         items: 1
       },
       400: {
-        items: 2
+        items: 1
       },
       740: {
-        items: 3
+        items: 1
       },
       940: {
-        items: 3
+        items: 1
       }
     },
     nav: true
@@ -36,7 +37,7 @@ export class AdvertisementComponent implements OnInit {
   constructor(private api:ApiService) { }
   @Input() add:any
   listDetails: Array<any>=[];
-  listFilter :any;
+  listFilter :Array<any>=[];
   ngOnInit(): void {
     this.getAdvertisement()
   }
@@ -48,8 +49,6 @@ export class AdvertisementComponent implements OnInit {
     });
     if(data.success){
       this.listDetails=data.data.rows;
-      console.log(this.listDetails);
-      
       this.listFilter= this.listDetails.filter((e:any)=>{
         return e.section_type==this.add
       })
@@ -58,5 +57,8 @@ export class AdvertisementComponent implements OnInit {
     }
     } catch (error) {
     }
+}
+addHide(){
+  this.addSectionHide=true
 }
 }

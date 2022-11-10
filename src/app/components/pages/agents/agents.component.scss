@@ -1,3 +1,4 @@
+@use '/src/assets/css/_vars.scss' as _var;
 
 span.orig-price {
     background: #ffffffab;
@@ -5,7 +6,8 @@ span.orig-price {
     border-radius: 5px;
     cursor: pointer;
 }
-.package_box{
+
+.package_box {
     font-size: 16px;
     font-weight: 600;
     background: #fff;
@@ -13,21 +15,41 @@ span.orig-price {
     border-radius: 4px;
     padding: 3px 7px;
 }
+
 ::ng-deep .ng-select .ng-select-container {
-   
-    border:1px solid #fff !important; 
-   
+
+    border: 1px solid #fff !important;
+
 }
-.advertisment_sec{
-    position: absolute;
-    top: 10%;
-    right: 0;
+
+
+
+::ng-deep .owl-carousel .owl-nav {
+    display: none;
+}
+
+::ng-deep .owl-carousel .owl-dots {
+    margin-top: 10px;
+}
+
+.design-description {
+    width: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.trend-type {
     display: flex;
-    align-items: flex-end;
-    justify-content: end;
-    .advertisment{
-        border: 1px solid red;
-        height: 450px;
-        width: 650px;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+
+    .tag {
+        padding: 5px 10px;
+        border-radius: 10px;
+        background: _var.$ocean-blue;
+        color: #fff;
     }
 }

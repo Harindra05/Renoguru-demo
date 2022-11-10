@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class BlogsComponent implements OnInit {
   listDetails: Array<any>=[];
+  section_type =6;
   img='assets/images/image_1.jpg'
   constructor(private api:ApiService) { }
 

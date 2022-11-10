@@ -14,11 +14,11 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
-// import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { SharedModule } from './shared/shared.module';
 import { FullLayoutModule } from './layout/full-layout/full-layout.module';
 import { SimpleLayoutModule } from './layout/simple-layout/simple-layout.module';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,8 +37,8 @@ import { SimpleLayoutModule } from './layout/simple-layout/simple-layout.module'
     ToastrModule.forRoot(),
     NgxDropzoneModule,
     BarRatingModule,
+    ReactiveFormsModule,
     SocialLoginModule,
-    // AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [ApiService,
     {
