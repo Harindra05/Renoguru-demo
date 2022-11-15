@@ -8,13 +8,13 @@
             <span class="title">
                 what's on your mind?
             </span>
-            <button>
+            <button (click)="close()">
                 <i class="fa fa-times" aria-hidden="true"></i>
             </button>
 
         </div>
         <ul class="messages">
-            <form *ngIf="!loginBtn" [formGroup]="MessageForm">
+            <!-- <form *ngIf="!loginBtn" [formGroup]="MessageForm">
 
                 <div class="form-group mb-2">
                     <input type="text" class="form-control" autocomplete="off" formControlName="email" placeholder="Email">
@@ -25,9 +25,9 @@
                 <div class="form-group mb-2">
                     <button type="submit" class="btn btn-primary" (click)="loginSubmit()">Login </button>
                 </div>
-            </form>
+            </form> -->
             <!-- -->
-            <form *ngIf="loginBtn" action="" [formGroup]="messageEnquiryFrom">
+            <form action="" [formGroup]="messageEnquiryFrom">
 
 
                 <div class="form-group mb-2">

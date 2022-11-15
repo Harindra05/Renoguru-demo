@@ -189,4 +189,9 @@ export class AppComponent implements OnInit {
   facebookSignin(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
+  close(){
+    $(".chat").removeClass("enter").toggle();
+    $('.floating-chat').toggle();
+    this.ngOnInit()
+  }
 }
