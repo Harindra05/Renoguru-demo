@@ -4,43 +4,38 @@
 <div class="floating-chat">
     <i class="fa fa-comments" aria-hidden="true"></i>
     <div class="chat">
-        <div class="header">
-            <span class="title">
-                what's on your mind?
-            </span>
+        <div class="header d-flex justify-content-between">
+            <span class="title"> what's on your mind?  <i class="fa fa-whatsapp pl-3" aria-hidden="true" (click)="openWhatsApp()"></i></span>
             <button (click)="close()">
-                <i class="fa fa-times" aria-hidden="true"></i>
-            </button>
-
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
         </div>
         <ul class="messages">
-            <!-- <form *ngIf="!loginBtn" [formGroup]="MessageForm">
+            <form *ngIf="!loginBtn" [formGroup]="MessageForm">
+                <div class="form-group mb-2">
+                    <input type="text" class="form-control" autocomplete="off" formControlName="email" placeholder="Email" />
+                </div>
+                <div class="form-group mb-2">
+                    <button type="submit" class="btn btn-primary" (click)="loginSubmit()">
+            Login
+          </button>
+                </div>
+            </form>
 
-                <div class="form-group mb-2">
-                    <input type="text" class="form-control" autocomplete="off" formControlName="email" placeholder="Email">
+            <form *ngIf="loginBtn" action="" [formGroup]="messageEnquiryFrom">
+                <div class="form-group mb-2" *ngIf="property_type">
+                    <input type="text" class="form-control" formControlName="property_type" placeholder="property type" />
+                </div>
+                <div class="form-group mb-2" *ngIf="area_renovate">
+                    <input type="text" class="form-control" formControlName="area_renovate" placeholder="area renovate" />
+                </div>
+                <div class="form-group mb-2" *ngIf="budget">
+                    <input type="number" class="form-control" formControlName="budget" placeholder="budget" />
                 </div>
                 <div class="form-group mb-2">
-                    <input type="password" class="form-control" autocomplete="off" formControlName="password" placeholder="password">
-                </div>
-                <div class="form-group mb-2">
-                    <button type="submit" class="btn btn-primary" (click)="loginSubmit()">Login </button>
-                </div>
-            </form> -->
-            <!-- -->
-            <form action="" [formGroup]="messageEnquiryFrom">
-
-
-                <div class="form-group mb-2">
-                    <input type="text" class="form-control" formControlName="property_type" placeholder="property type">
-                </div>
-                <div class="form-group mb-2">
-                    <input type="text" class="form-control" formControlName="area_renovate" placeholder="area renovate">
-                </div>
-                <div class="form-group mb-2">
-                    <input type="number" class="form-control" formControlName="budget" placeholder="budget">
-                </div>
-                <div class="form-group mb-2">
-                    <button type="submit" class="btn btn-primary" (click)="submitEnquiryForm()">Submit </button>
+                    <button type="submit" class="btn btn-primary" (click)="submitEnquiryForm()">
+            Submit
+          </button>
                 </div>
             </form>
             <!-- <li class="other">asdasdasasdasdasasdasdasasdasdasasdasdasasdasdasasdasdas</li>

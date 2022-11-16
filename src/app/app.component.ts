@@ -17,25 +17,28 @@ declare var $: any;
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-  constructor(private socialAuthService: SocialAuthService,public fb :FormBuilder,
-    public api :ApiService,public toster :ToastrService,
-    public cookie:CookieService
-    ) {};
-  MessageForm! :FormGroup;
-  messageEnquiryFrom!:FormGroup;
-  loginBtn : boolean =false
+  constructor(
+    private socialAuthService: SocialAuthService,
+    public fb: FormBuilder,
+    public api: ApiService,
+    public toster: ToastrService,
+    public cookie: CookieService
+  ) {}
+  MessageForm!: FormGroup;
+  messageEnquiryFrom!: FormGroup;
+  loginBtn: boolean = false;
+  emailId_set: any;
   ngOnInit(): void {
-    this.MessageForm =this.fb.group({
+    this.MessageForm = this.fb.group({
       email: ["", Validators.required],
-      password: ["", Validators.required],
-    })
+    });
 
-    this.messageEnquiryFrom =this.fb.group({
-      property_type:[''],
-      area_renovate:[''],
-      budget:[''],
-
-    })
+    this.messageEnquiryFrom = this.fb.group({
+      email: [""],
+      property_type: [""],
+      area_renovate: [""],
+      budget: [""],
+    });
     var element = $(".floating-chat");
     var myStorage = localStorage;
 
@@ -132,56 +135,73 @@ export class AppComponent implements OnInit {
     }
   }
 
-  async loginSubmit(){
-    let req = {
-      email :this.MessageForm.value.email,
-      password :this.MessageForm.value.password,
-    }
-    try{
-      const md5 = Md5.hashStr(req.password)
-      req.password=md5
-      let res = await this.api.post('auth/signin',req);
-      if(res.success){ 
-        this.toster.success(res.message)
-        this.loginBtn =true;
-        this.MessageForm.reset();
-        this.cookie.set('renoWeb',JSON.stringify(res.data));
-      }else{
-        this.toster.error(res['message']);
-        this.MessageForm.reset();  
-      }
+  enquiryData!: any;
 
-    }catch(error: any){
-      this.toster.error(error['message']);
-      this.MessageForm.reset();
-
+  ngOnChanges() {
+    let enquiryData = localStorage.getItem("enquiryData");
+    if (enquiryData) {
+      let val = JSON.parse(enquiryData);
+      this.enquiryData = val;
+      this.messageEnquiryFrom.setValue({
+        property_type: val.property_type ? val.property_type : null,
+        area_renovate: val.area_renovate ? val.area_renovate : null,
+        budget: val.budget ? val.budget : null,
+        email: val.email ? val.email : null,
+      });
     }
   }
-  async submitEnquiryForm(){
+  async loginSubmit() {
     let req = {
-      email :this.MessageForm.value.email,
-      password :this.MessageForm.value.password,
-    }
-    try{
-      let res = await this.api.post('auth/signin',req)
-      if(res.success){
-        
-        this.toster.success(res.message)
-        this.loginBtn =true;
+      email: this.MessageForm.value.email,
+    };
+    try {
+      let res = await this.api.post("chat-bot/upsert", req);
+      if (res.success) {
+        this.toster.success(res.message);
+        let email_set = localStorage.setItem("email_set", res.data.email);
 
-      }else{
-        this.toster.error(res['message']);
-
-        
+        this.emailId_set = localStorage.getItem("email_set");
+        this.loginBtn = true;
+        this.MessageForm.reset();
+      } else {
+        this.toster.error(res["message"]);
+        this.MessageForm.reset();
       }
-
-    }catch(error:any){
-      this.toster.error(error['message']);
-
-      
-
+    } catch (error: any) {
+      this.toster.error(error["message"]);
+      this.MessageForm.reset();
     }
-
+  }
+  property_type: boolean = true;
+  area_renovate: boolean = false;
+  budget: boolean = false;
+  async submitEnquiryForm() {
+    let req = {
+      email: this.emailId_set,
+      property_type: this.messageEnquiryFrom.value.property_type,
+      area_renovate: this.messageEnquiryFrom.value.area_renovate,
+      budget: this.messageEnquiryFrom.value.budget,
+    };
+    try {
+      let res = await this.api.post("chat-bot/upsert", req);
+      if (res.success) {
+        this.toster.success(res.message);
+        this.loginBtn = true;
+        if (res.property_type) {
+          this.property_type = false;
+          this.area_renovate = true;
+          this.budget = false;
+        } else if (res.area_renovate) {
+          this.property_type = false;
+          this.area_renovate = false;
+          this.budget = true;
+        }
+      } else {
+        this.toster.error(res["message"]);
+      }
+    } catch (error: any) {
+      this.toster.error(error["message"]);
+    }
   }
   googleSignin(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
@@ -192,6 +212,9 @@ export class AppComponent implements OnInit {
   close(){
     $(".chat").removeClass("enter").toggle();
     $('.floating-chat').toggle();
-    this.ngOnInit()
+    location.reload()
+  }
+  openWhatsApp(){
+    window.open('https://web.whatsapp.com/send?phone=+919617180607')
   }
 }

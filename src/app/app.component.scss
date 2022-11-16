@@ -289,3 +289,13 @@ body {
 .floating-chat {
     z-index: 99999999;
 }
+
+.fa-whatsapp {
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.fa-whatsapp:before {
+    content: "\f232";
+    font-size: 33px;
+}
