@@ -33,6 +33,7 @@
 
       <form *ngIf="loginBtn" action="" [formGroup]="messageEnquiryFrom">
         <div class="form-group mb-2" *ngIf="property_type">
+          <label for="">Your property type</label>
           <input
             type="text"
             class="form-control"
@@ -41,6 +42,7 @@
           />
         </div>
         <div class="form-group mb-2" *ngIf="area_renovate">
+          <label for="">Your renovate area</label>
           <input
             type="text"
             class="form-control"
@@ -48,15 +50,19 @@
             placeholder="area renovate"
           />
         </div>
-        <div class="form-group mb-2" *ngIf="budget">
-          <input
-            type="number"
-            class="form-control"
-            formControlName="budget"
-            placeholder="budget"
-          />
-        </div>
-        <div class="form-group mb-2">
+        <ng-container *ngIf="!enquuiry_sumited">
+          <div class="form-group mb-2" *ngIf="budget">
+            <label for="">Your budget</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="budget"
+              placeholder="budget"
+            />
+          </div>
+        </ng-container>
+
+        <div class="form-group mb-2" *ngIf="!enquuiry_sumited">
           <button
             type="submit"
             class="btn btn-primary"
@@ -65,6 +71,7 @@
             Submit
           </button>
         </div>
+        <div *ngIf="enquuiry_sumited">Your Enquiry has been submitted.</div>
       </form>
       <!-- <li class="other">asdasdasasdasdasasdasdasasdasdasasdasdasasdasdasasdasdas</li>
             <li class="other">Are we dogs??? 🐶</li>

@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
     public toster: ToastrService,
     public cookie: CookieService
   ) {}
+  enquuiry_sumited: boolean = false;
   MessageForm!: FormGroup;
   messageEnquiryFrom!: FormGroup;
   loginBtn: boolean = false;
@@ -158,8 +159,7 @@ export class AppComponent implements OnInit {
       let res = await this.api.post("chat-bot/upsert", req);
       if (res.success) {
         this.toster.success(res.message);
-        let email_set = localStorage.setItem("email_set", res.data.email);
-
+        let email_set = localStorage.setItem("email_set", res.data.data.email);
         this.emailId_set = localStorage.getItem("email_set");
         this.loginBtn = true;
         this.MessageForm.reset();
@@ -182,19 +182,33 @@ export class AppComponent implements OnInit {
       area_renovate: this.messageEnquiryFrom.value.area_renovate,
       budget: this.messageEnquiryFrom.value.budget,
     };
+    debugger;
+    if (req.property_type) {
+      delete req.budget;
+      delete req.area_renovate;
+      this.property_type = false;
+      this.area_renovate = true;
+      this.budget = false;
+    } else if (req.area_renovate) {
+      this.property_type = false;
+      this.area_renovate = false;
+      this.budget = true;
+      delete req.budget;
+      delete req.property_type;
+    } else if (req.budget) {
+      delete req.area_renovate;
+      delete req.property_type;
+      this.enquuiry_sumited = true;
+    }
+
     try {
       let res = await this.api.post("chat-bot/upsert", req);
       if (res.success) {
         this.toster.success(res.message);
         this.loginBtn = true;
+        this.messageEnquiryFrom.reset();
         if (res.property_type) {
-          this.property_type = false;
-          this.area_renovate = true;
-          this.budget = false;
         } else if (res.area_renovate) {
-          this.property_type = false;
-          this.area_renovate = false;
-          this.budget = true;
         }
       } else {
         this.toster.error(res["message"]);
