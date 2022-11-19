@@ -1,28 +1,99 @@
-h6{
-        font-weight: bolder;
+h6 {
+    font-weight: bolder;
 }
-.profile-header{
-        background: #F8FBFD;
-        margin-top: -100px;
-        position: relative;
-        z-index: 1;
-        padding: 30px;
+
+.profile-header {
+    background: #F8FBFD;
+    margin-top: -100px;
+    position: relative;
+    z-index: 1;
+    padding: 30px;
 }
-.sub_details_section{
+
+.sub_details_section {
     margin: 5px;
-    h5{
+
+    h5 {
         font-weight: bolder;
     }
 
 }
-.property-wrap{
+
+.property-wrap {
     margin: 5px;
 }
-.package_direction{
-    display: flex;
-    white-space: nowrap;
 
+.package_direction {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 100%;
 }
 
+::ng-deep .owl-carousel .owl-nav {
+    display: none;
+}
 
+::ng-deep .owl-carousel .owl-dots {
+    margin-top: 10px;
+}
 
+.design-property-type {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 500px;
+}
+
+.property-type-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.property-likes-views {
+    width: auto !important;
+}
+
+.design-card-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    gap: 15px;
+}
+
+.designer-review {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+}
+
+.card {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.similar-designs {
+    padding: 20px;
+
+    h6{
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.similar-design-card {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100vw;
+    justify-content: center;
+    gap: 20px;
+}
+
+.design-card {
+    max-width: 300px;
+    min-width: 200px;
+}

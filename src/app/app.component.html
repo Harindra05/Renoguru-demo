@@ -2,43 +2,71 @@
 <router-outlet></router-outlet>
 <app-footer></app-footer>
 <div class="floating-chat">
-    <i class="fa fa-comments" aria-hidden="true"></i>
-    <div class="chat">
-        <div class="header d-flex justify-content-between">
-            <span class="title"> what's on your mind?  <i class="fa fa-whatsapp pl-3" aria-hidden="true" (click)="openWhatsApp()"></i></span>
-            <button (click)="close()">
+  <i class="fa fa-comments" aria-hidden="true"></i>
+  <div class="chat">
+    <div class="header d-flex justify-content-between">
+      <span class="title" style="cursor: pointer" (click)="openWhatsApp()">
+        what's on your mind?
+        <i class="fa fa-whatsapp pl-3" aria-hidden="true"></i
+      ></span>
+      <button (click)="close()">
         <i class="fa fa-times" aria-hidden="true"></i>
       </button>
+    </div>
+    <ul class="messages">
+      <form *ngIf="!loginBtn" [formGroup]="MessageForm">
+        <div class="form-group mb-2">
+          <input
+            type="text"
+            class="form-control"
+            autocomplete="off"
+            formControlName="email"
+            placeholder="Email"
+          />
         </div>
-        <ul class="messages">
-            <form *ngIf="!loginBtn" [formGroup]="MessageForm">
-                <div class="form-group mb-2">
-                    <input type="text" class="form-control" autocomplete="off" formControlName="email" placeholder="Email" />
-                </div>
-                <div class="form-group mb-2">
-                    <button type="submit" class="btn btn-primary" (click)="loginSubmit()">
+        <div class="form-group mb-2">
+          <button type="submit" class="btn btn-primary" (click)="loginSubmit()">
             Login
           </button>
-                </div>
-            </form>
+        </div>
+      </form>
 
-            <form *ngIf="loginBtn" action="" [formGroup]="messageEnquiryFrom">
-                <div class="form-group mb-2" *ngIf="property_type">
-                    <input type="text" class="form-control" formControlName="property_type" placeholder="property type" />
-                </div>
-                <div class="form-group mb-2" *ngIf="area_renovate">
-                    <input type="text" class="form-control" formControlName="area_renovate" placeholder="area renovate" />
-                </div>
-                <div class="form-group mb-2" *ngIf="budget">
-                    <input type="number" class="form-control" formControlName="budget" placeholder="budget" />
-                </div>
-                <div class="form-group mb-2">
-                    <button type="submit" class="btn btn-primary" (click)="submitEnquiryForm()">
+      <form *ngIf="loginBtn" action="" [formGroup]="messageEnquiryFrom">
+        <div class="form-group mb-2" *ngIf="property_type">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="property_type"
+            placeholder="property type"
+          />
+        </div>
+        <div class="form-group mb-2" *ngIf="area_renovate">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="area_renovate"
+            placeholder="area renovate"
+          />
+        </div>
+        <div class="form-group mb-2" *ngIf="budget">
+          <input
+            type="number"
+            class="form-control"
+            formControlName="budget"
+            placeholder="budget"
+          />
+        </div>
+        <div class="form-group mb-2">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="submitEnquiryForm()"
+          >
             Submit
           </button>
-                </div>
-            </form>
-            <!-- <li class="other">asdasdasasdasdasasdasdasasdasdasasdasdasasdasdasasdasdas</li>
+        </div>
+      </form>
+      <!-- <li class="other">asdasdasasdasdasasdasdasasdasdasasdasdasasdasdasasdasdas</li>
             <li class="other">Are we dogs??? 🐶</li>
             <li class="self">no... we're human</li>
             <li class="other">are you sure???</li>
@@ -47,10 +75,10 @@
             <li class="self">i hate you</li>
             <li class="other">don't be so negative! here's a banana 🍌</li>
             <li class="self">......... -___-</li> -->
-        </ul>
-        <!-- <div class="footer">
+    </ul>
+    <!-- <div class="footer">
             <div class="text-box" contenteditable="true" disabled="true"></div>
             <button id="sendMessage">send</button>
         </div> -->
-    </div>
+  </div>
 </div>

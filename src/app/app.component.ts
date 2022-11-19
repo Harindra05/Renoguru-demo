@@ -209,12 +209,12 @@ export class AppComponent implements OnInit {
   facebookSignin(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
-  close(){
+  close() {
     $(".chat").removeClass("enter").toggle();
-    $('.floating-chat').toggle();
-    location.reload()
+    $(".floating-chat").toggle();
+    location.reload();
   }
-  openWhatsApp(){
-    window.open('https://web.whatsapp.com/send?phone=+919617180607')
+  openWhatsApp() {
+    window.open("https://web.whatsapp.com/send?phone=+917089966284");
   }
 }

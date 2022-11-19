@@ -1,77 +1,93 @@
 <section class="hero-wrap hero-wrap-2" style="background-image: url('{{design.design_images[0].imageUrl}}')">
   <div class="overlay"></div>
   <div class="container">
-      <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 pt-5 text-center">
-              <p class="breadcrumbs">
-                  <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
-                  <span>Designs <i class="fa fa-chevron-right"></i></span>
-              </p>
-              <h1 class="mb-0 bread">Designs View</h1>
-          </div>
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+      <div class="col-md-9 pt-5 text-center">
+        <p class="breadcrumbs">
+          <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
+          <span>Designs <i class="fa fa-chevron-right"></i></span>
+        </p>
+        <h1 class="mb-0 bread">{{design?.title}}</h1>
+        <small>{{design?.designer?.companyName}}</small>
       </div>
+    </div>
   </div>
 </section>
 <div class="container mb-3">
-    <div class="profile-header">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-sm-12 col-md-8 mt-2">
-                <div class="sub_details_section d-flex align-items-center justify-content-between">
-                    <div>
-                      <h4>{{design?.title}}</h4>
-                    <small>
-                     By {{design?.designer.companyName}}
-                    </small>
-                    </div>
-                    <span class="btn btn-primary rounded">${{design.price}}</span>
-                </div>
-                <owl-carousel-o [options]="featuredDesigner">
-                    <ng-template *ngFor="let item of design.design_images" carouselSlide>
-                        <div class="property-wrap" >
-                            <a
-                              class="img img-property"
-                              style="background-image: url({{item.imageUrl}})"
-                            >
-                              <!-- <p class="price"><span class="orig-price">$300,000</span></p> -->
-                            </a>
-                          </div>
-                    </ng-template>
-                </owl-carousel-o>
-                <div class="sub_details_section ">
-                  <div class="d-flex align-items-center justify-content-between pt-2 pb-2">
-                    <span>
-                        <i class="fa fa-eye"> &nbsp;{{design.views}} &nbsp;View</i> &nbsp; &nbsp;
-    
-                        <!-- <i class="fa fa-heart"> &nbsp;Favorite</i> likes -->
-                       </span>
-                       <span (click)="likeUnlike(design.id)" style="cursor: pointer;">
-                        <!-- <i
-                        class="fa"
-                        [ngClass]="{
-                          'fa-heart-o': design.likes == 0,
-                          'fa-heart': design.likes == 1
-                        }"
-                      > &nbsp; Like</i> -->
-    
-                       </span>
-                  </div>
-                  <div class="pt-4">
-                    <h6>Included in this package</h6>
-                    <div class="package_direction">
-                      <div class="package_section" *ngFor="let pack of packageIncludes">
-                            <span  class="btn btn-primary rounded ml-2">{{pack}}</span>
-                        </div>
-    
-                      </div>
-                  </div>
-                 
-                  <div class="descriprion pt-4">
-                    <h6>Project Description</h6>
-                    <p [innerHtml]="design.description"></p>
-                  </div>
-                </div>
+  <div class="profile-header">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-sm col-md-8 mt-2">
+        <owl-carousel-o [options]="featuredDesigner">
+          <ng-template *ngFor="let item of design.design_images" carouselSlide>
+            <div class="property-wrap">
+              <a class="img img-property" style="background-image: url({{item.imageUrl}})"></a>
             </div>
+          </ng-template>
+        </owl-carousel-o>
+        <div class="sub_details_section mt-3">
+          <div class="design-card-top">
+            <div class="design-property-type">
+              <h5>Property Type</h5>
+              <div class="property-type-list">
+                <span class="btn btn-primary rounded">{{design?.property_type?.title}}</span>
+                <!-- <span class="btn btn-primary rounded">type b</span>
+                <span class="btn btn-primary rounded">type c</span>
+                <span class="btn btn-primary rounded">type d</span>
+                <span class="btn btn-primary rounded">type e</span> -->
+              </div>
             </div>
+            <div class="property-likes-views">
+              <button routerLink="/enquiry"
+                [queryParams]="{'designer': design?.designer?.companyName, 'designerId': design?.designerId}"
+                class="btn btn-primary mb-3">Request Quotation</button>
+              <div class="views-likes">
+                <i class="fa fa-eye"> &nbsp;{{design.views}} &nbsp;View</i> &nbsp; &nbsp;
+                <span (click)="likeUnlike(design.id)" style="cursor: pointer;">
+                  <i class="fa" [ngClass]="{ 'fa-heart-o': design.likes == 0, 'fa-heart': design.likes > 0 }">
+                    &nbsp; {{design?.likes}} Likes
+                  </i>
+                </span>
+              </div>
+              <h4><b>$ {{(+(design?.price)).toLocaleString('en-US')}}</b></h4>
             </div>
+          </div>
+          <div class="pt-4">
+            <h5>This package includes</h5>
+            <div class="package_direction">
+              <div class="package_section" *ngFor="let pack of packageIncludes">
+                <span class="btn btn-primary rounded">{{pack}}</span>
+              </div>
             </div>
-            
+          </div>
+          <div class="descriprion pt-4 mt-3">
+            <h5>Project Description</h5>
+            <p [innerHtml]="design.description"></p>
+          </div>
+          <div class="about-designer mt-3">
+            <h5>About {{design?.designer?.companyName}}</h5>
+            <div class="designer-review">
+              <div class="review">
+                <span class="location d-flex align-items-end justify-content-between">
+                  <bar-rating [rate]="design?.designer?.averageRating" [max]="5" [readOnly]="true"></bar-rating>
+                  <span>{{design?.designer?.averageRating || '0'}} ({{design?.designer?.totalReviewCount}}
+                    Reviews)</span>
+                </span>
+              </div>
+              <button [routerLink]="['/designer/designer-view', design?.designerId]" class="btn btn-primary">View
+                profile</button>
+            </div>
+            <p class="mt-3" [innerHTML]="design?.designer?.description"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="similar-designs mt-3">
+    <h6>Other/Similar Designs</h6>
+    <div class="similar-design-card">
+      <div class="col-md-3 design-card" data-aos="" data-aos-delay="100" data-aos-duration="1000" *ngFor="let data of designList | slice : 1: 4">
+        <app-design-card [design]="data"></app-design-card>
+      </div>
+    </div>
+  </div>
+</div>

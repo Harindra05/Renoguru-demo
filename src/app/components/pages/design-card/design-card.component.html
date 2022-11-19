@@ -1,0 +1,27 @@
+<div class="property-wrap">
+    <owl-carousel-o [options]="customOptions">
+        <ng-template *ngFor="let img of design?.design_images" carouselSlide>
+            <a class="img img-property" style="background-image: url({{img.imageUrl}}); height: 200px;">
+                <p class="price">
+                    <span class="orig-price">${{ design.price }}</span>
+                </p>
+                <p class="heart_icon" (click)="likeUnlike(design.id)">
+                    <span class="orig-price">
+                        <i class="fa" [ngClass]="{ 'fa-heart-o': !design.isLike, 'fa-heart': design.isLike }"></i>
+                    </span>
+                </p>
+            </a>
+        </ng-template>
+    </owl-carousel-o>
+    <div class="text" style="cursor: pointer; padding: 15px" (click)="openDetail(design)">
+        <h3 class="text_single_line">
+            <a>{{ design.title }}</a>
+        </h3>
+        <p class="design-description" [innerHTML]="design?.description"></p>
+        <strong>{{design?.property_type?.title}}</strong>
+        <div class="trend-type">
+            <p class="tag">New</p>
+            <p class="tag">Trending</p>
+        </div>
+    </div>
+</div>

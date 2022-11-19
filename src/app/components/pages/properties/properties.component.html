@@ -10,6 +10,10 @@
                 </p>
                 <h1 class="mb-0 bread">Designer</h1>
             </div>
+            <form class="d-flex justify-content-center search-input">
+                <input type="text">
+                <button class="btn btn-primary">Search</button>
+            </form>
         </div>
     </div>
 </section>
@@ -58,7 +62,7 @@
 <section class="ftco-section bg-light">
     <div class="container-xl">
         <div class="row">
-            <div class="col-md-3" data-aos="" data-aos-delay="100" data-aos-duration="1000" style="cursor: pointer;" [routerLink]="['designer-view',item.id]" *ngFor="let item of desinerList">
+            <div class="col-md" data-aos="" data-aos-delay="100" data-aos-duration="1000" style="cursor: pointer;" [routerLink]="['designer-view',item.id]" *ngFor="let item of desinerList">
                 <div class="property-wrap">
                     <a class="img img-property" style="background-image: url({{item.logo}})">
                         <!-- <p class="price"><span class="orig-price">$300,000</span></p> -->
@@ -70,13 +74,14 @@
                             </div>
                             <!-- <span class="text-right">{{item.createdAt |  date: 'dd/MM/yyyy'}}</span> -->
                         </div>
-                        <h3 class="text_single_line">
-                            <a class="text_single_line" [innerHtml]="item?.description"></a>
+                        <h3>
+                            <a class="designer-description" [innerHtml]="item?.description"></a>
                         </h3>
-                        <span class="location">
-              <bar-rating [(rate)]="item.averageRating" [max]="5" [readOnly]="true"></bar-rating>
-              <span class="sale">{{item?.totalReviewCount || '0'}} /10 Review</span></span>
-                        <ul class="property_list mt-3 mb-0">
+                        <span class="location d-flex align-items-end justify-content-between">
+                            <bar-rating [(rate)]="item.averageRating" [max]="5" [readOnly]="true"></bar-rating>
+                            <span>{{item?.averageRating || '0'}} ({{item?.totalReviewCount || 0}} Reviews)</span>
+                        </span>
+                        <ul class="property_list mt-3 mb-0 d-flex justify-content-between">
                             <li>
                                 <span>{{item?.totalDesigns || '0'}} Projects</span>
                             </li>

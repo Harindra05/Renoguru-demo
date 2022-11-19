@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SimpleLayoutRoutingModule } from './simple-layout-routing.module';
 import { SimpleLayoutComponent } from './simple-layout.component';
 import { HomeComponent } from 'src/app/components/pages/home/home.component';
-import { PropertiesComponent, AboutUsComponent, AgentsComponent, BlogsComponent, ContactComponent, ProfileComponent, InspirationsComponent, TrendingComponent, DesignsViewComponent, AddReviewComponent, DesignerViewComponent,  } from 'src/app/components/pages/pages';
+import { PropertiesComponent, AboutUsComponent, AgentsComponent, BlogsComponent, ContactComponent, ProfileComponent, InspirationsComponent, TrendingComponent, DesignsViewComponent, AddReviewComponent, DesignerViewComponent, } from 'src/app/components/pages/pages';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EnquiryComponent } from 'src/app/components/pages/enquiry/enquiry.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { BarRatingModule } from "ngx-bar-rating";
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AdvertisementComponent } from 'src/app/directives/advertisement/advertisement.component';
+import { DesignCardComponent } from 'src/app/components/pages/design-card/design-card.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AdvertisementComponent } from 'src/app/directives/advertisement/adverti
     DesignsViewComponent,
     AddReviewComponent,
     DesignerViewComponent,
+    DesignCardComponent
   ],
   imports: [
     CommonModule,
@@ -44,9 +46,9 @@ import { AdvertisementComponent } from 'src/app/directives/advertisement/adverti
     BarRatingModule,
     SimpleLayoutRoutingModule,
     ReactiveFormsModule,
-    FormsModule,  
+    FormsModule,
     NgSelectModule,
-    NgxDropzoneModule,NgxSliderModule
+    NgxDropzoneModule, NgxSliderModule
   ]
 })
 export class SimpleLayoutModule { }

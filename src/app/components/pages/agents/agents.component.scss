@@ -27,29 +27,3 @@ span.orig-price {
 ::ng-deep .owl-carousel .owl-nav {
     display: none;
 }
-
-::ng-deep .owl-carousel .owl-dots {
-    margin-top: 10px;
-}
-
-.design-description {
-    width: auto;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.trend-type {
-    display: flex;
-    width: 100%;
-    height: auto;
-    gap: 20px;
-
-    .tag {
-        padding: 5px 10px;
-        border-radius: 10px;
-        background: _var.$ocean-blue;
-        color: #fff;
-    }
-}
