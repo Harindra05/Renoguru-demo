@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.MessageForm = this.fb.group({
       email: ["", Validators.required],
+      full_name: ["", Validators.required],
     });
 
     this.messageEnquiryFrom = this.fb.group({
@@ -154,6 +155,7 @@ export class AppComponent implements OnInit {
   async loginSubmit() {
     let req = {
       email: this.MessageForm.value.email,
+      full_name: this.MessageForm.value.full_name,
     };
     try {
       let res = await this.api.post("chat-bot/upsert", req);
@@ -182,7 +184,7 @@ export class AppComponent implements OnInit {
       area_renovate: this.messageEnquiryFrom.value.area_renovate,
       budget: this.messageEnquiryFrom.value.budget,
     };
-    debugger;
+
     if (req.property_type) {
       delete req.budget;
       delete req.area_renovate;

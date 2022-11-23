@@ -5,9 +5,14 @@
   <i class="fa fa-comments" aria-hidden="true"></i>
   <div class="chat">
     <div class="header d-flex justify-content-between">
-      <span class="title" style="cursor: pointer" (click)="openWhatsApp()">
+      <span class="title">
         what's on your mind?
-        <i class="fa fa-whatsapp pl-3" aria-hidden="true"></i
+        <i
+          style="cursor: pointer"
+          class="fa fa-whatsapp pl-3"
+          aria-hidden="true"
+          (click)="openWhatsApp()"
+        ></i
       ></span>
       <button (click)="close()">
         <i class="fa fa-times" aria-hidden="true"></i>
@@ -16,8 +21,19 @@
     <ul class="messages">
       <form *ngIf="!loginBtn" [formGroup]="MessageForm">
         <div class="form-group mb-2">
+          <label for="">Full Name</label>
           <input
             type="text"
+            class="form-control"
+            autocomplete="off"
+            formControlName="full_name"
+            placeholder="Full Name"
+          />
+        </div>
+        <div class="form-group mb-2">
+          <label for="">Email</label>
+          <input
+            type="email"
             class="form-control"
             autocomplete="off"
             formControlName="email"
@@ -26,7 +42,7 @@
         </div>
         <div class="form-group mb-2">
           <button type="submit" class="btn btn-primary" (click)="loginSubmit()">
-            Login
+            Submit
           </button>
         </div>
       </form>
