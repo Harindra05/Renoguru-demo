@@ -139,19 +139,22 @@ export class AppComponent implements OnInit {
 
   enquiryData!: any;
 
-  ngOnChanges() {
-    let enquiryData = localStorage.getItem("enquiryData");
-    if (enquiryData) {
-      let val = JSON.parse(enquiryData);
-      this.enquiryData = val;
-      this.messageEnquiryFrom.setValue({
-        property_type: val.property_type ? val.property_type : null,
-        area_renovate: val.area_renovate ? val.area_renovate : null,
-        budget: val.budget ? val.budget : null,
-        email: val.email ? val.email : null,
-      });
-    }
-  }
+  // ngOnChanges() {
+  //   let enquiryData = localStorage.getItem("enquiryData");
+  //   if (enquiryData) {
+  //     let val = JSON.parse(enquiryData);
+  //     this.enquiryData = val;
+  //     this.messageEnquiryFrom.setValue({
+  //       property_type: val.property_type ? val.property_type : null,
+  //       area_renovate: val.area_renovate ? val.area_renovate : null,
+  //       budget: val.budget ? val.budget : null,
+  //       email: val.email ? val.email : null,
+  //     });
+  //   }
+  // }
+  propertyType: any;
+  areaRenovate: any;
+  budgetValue: any;
   async loginSubmit() {
     let req = {
       email: this.MessageForm.value.email,
@@ -161,8 +164,22 @@ export class AppComponent implements OnInit {
       let res = await this.api.post("chat-bot/upsert", req);
       if (res.success) {
         this.toster.success(res.message);
+        this.MessageForm.reset();
         let email_set = localStorage.setItem("email_set", res.data.data.email);
         this.emailId_set = localStorage.getItem("email_set");
+        // let propertyType = localStorage.setItem(
+        //   "propertyType",
+        //   res.data.data.property_type
+        // );
+        // this.propertyType = localStorage.getItem("propertyType");
+        // let areaRenovate = localStorage.setItem(
+        //   "areaRenovate",
+        //   res.data.data.area_renovate
+        // );
+        // this.areaRenovate = localStorage.getItem("areaRenovate");
+        // let budgetValue = localStorage.setItem("budget", res.data.data.budget);
+        // this.budgetValue = localStorage.getItem("budget");
+
         this.loginBtn = true;
         this.MessageForm.reset();
       } else {
@@ -186,24 +203,30 @@ export class AppComponent implements OnInit {
     };
 
     if (req.property_type) {
+      this.propertyType=req.property_type
       delete req.budget;
       delete req.area_renovate;
       this.property_type = false;
       this.area_renovate = true;
       this.budget = false;
     } else if (req.area_renovate) {
+      this.areaRenovate=req.area_renovate
       this.property_type = false;
       this.area_renovate = false;
       this.budget = true;
       delete req.budget;
       delete req.property_type;
     } else if (req.budget) {
+      this.budgetValue=req.budget
       delete req.area_renovate;
       delete req.property_type;
       this.enquuiry_sumited = true;
     }
 
     try {
+      if(typeof(req.property_type)=='string'){
+        req.property_type=1
+      }
       let res = await this.api.post("chat-bot/upsert", req);
       if (res.success) {
         this.toster.success(res.message);

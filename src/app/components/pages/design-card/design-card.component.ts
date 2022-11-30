@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-design-card',
@@ -10,7 +9,7 @@ import { EventEmitter } from 'stream';
 })
 export class DesignCardComponent implements OnInit {
 
-  @Output('liked') like!: EventEmitter;
+  @Output() like: EventEmitter<any> = new EventEmitter();
   @Input('design') design!: any;
   customOptions: OwlOptions = {
     loop: true,

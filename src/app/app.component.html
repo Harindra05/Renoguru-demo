@@ -48,60 +48,61 @@
       </form>
 
       <form *ngIf="loginBtn" action="" [formGroup]="messageEnquiryFrom">
-        <div class="form-group mb-2" *ngIf="property_type">
-          <label for="">Your property type</label>
+        <li
+          class="self"
+          *ngIf="property_type || area_renovate || budget || enquuiry_sumited"
+        >
+          What is your property type
+        </li>
+        <li class="other" *ngIf="area_renovate || budget || enquuiry_sumited">
+          {{ propertyType }}
+        </li>
+        <li class="self" *ngIf="area_renovate || budget || enquuiry_sumited">
+          your renovate area
+        </li>
+        <li class="other" *ngIf="budget || enquuiry_sumited">
+          {{ areaRenovate }}
+        </li>
+        <li class="self" *ngIf="budget || enquuiry_sumited">your budget</li>
+        <li class="other" *ngIf="enquuiry_sumited">{{ budgetValue }}</li>
+
+        <div class="footer">
+          <div>
+            <input
+              *ngIf="property_type"
+              type="text"
+              class="text-box"
+              formControlName="property_type"
+              placeholder="property type"
+            />
+          </div>
           <input
+            *ngIf="area_renovate"
             type="text"
-            class="form-control"
-            formControlName="property_type"
-            placeholder="property type"
-          />
-        </div>
-        <div class="form-group mb-2" *ngIf="area_renovate">
-          <label for="">Your renovate area</label>
-          <input
-            type="text"
-            class="form-control"
+            class="text-box"
             formControlName="area_renovate"
             placeholder="area renovate"
           />
-        </div>
-        <ng-container *ngIf="!enquuiry_sumited">
-          <div class="form-group mb-2" *ngIf="budget">
-            <label for="">Your budget</label>
+          <ng-container *ngIf="!enquuiry_sumited">
             <input
+              *ngIf="budget"
               type="number"
-              class="form-control"
+              class="text-box"
               formControlName="budget"
               placeholder="budget"
             />
-          </div>
-        </ng-container>
-
-        <div class="form-group mb-2" *ngIf="!enquuiry_sumited">
+          </ng-container>
           <button
-            type="submit"
             class="btn btn-primary"
+            id="sendMessage"
+            *ngIf="!enquuiry_sumited"
             (click)="submitEnquiryForm()"
           >
-            Submit
+            send
           </button>
+          <div *ngIf="enquuiry_sumited">Your Enquiry has been submitted.</div>
         </div>
-        <div *ngIf="enquuiry_sumited">Your Enquiry has been submitted.</div>
       </form>
-      <!-- <li class="other">asdasdasasdasdasasdasdasasdasdasasdasdasasdasdasasdasdas</li>
-            <li class="other">Are we dogs??? 🐶</li>
-            <li class="self">no... we're human</li>
-            <li class="other">are you sure???</li>
-            <li class="self">yes.... -___-</li>
-            <li class="other">if we're not dogs.... we might be monkeys 🐵</li>
-            <li class="self">i hate you</li>
-            <li class="other">don't be so negative! here's a banana 🍌</li>
-            <li class="self">......... -___-</li> -->
     </ul>
-    <!-- <div class="footer">
-            <div class="text-box" contenteditable="true" disabled="true"></div>
-            <button id="sendMessage">send</button>
-        </div> -->
   </div>
 </div>

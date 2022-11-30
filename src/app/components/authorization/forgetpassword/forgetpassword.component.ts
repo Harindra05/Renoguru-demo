@@ -21,7 +21,7 @@ export class ForgetpasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.forgetForm = this.fb.group({
-      emailOrPhoneNo: ["", Validators.required],
+      emailOrPhoneNo: ["", [Validators.required, Validators.email]],
     });
   }
   get f() {

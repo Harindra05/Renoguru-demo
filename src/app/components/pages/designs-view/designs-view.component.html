@@ -38,7 +38,7 @@
             </div>
             <div class="property-likes-views">
               <button routerLink="/enquiry"
-                [queryParams]="{'designer': design?.designer?.companyName, 'designerId': design?.designerId}"
+                [queryParams]="{'design': design?.title, 'designId': design?.id}"
                 class="btn btn-primary mb-3">Request Quotation</button>
               <div class="views-likes">
                 <i class="fa fa-eye"> &nbsp;{{design.views}} &nbsp;View</i> &nbsp; &nbsp;
@@ -86,7 +86,7 @@
     <h6>Other/Similar Designs</h6>
     <div class="similar-design-card">
       <div class="col-md-3 design-card" data-aos="" data-aos-delay="100" data-aos-duration="1000" *ngFor="let data of designList | slice : 1: 4">
-        <app-design-card [design]="data"></app-design-card>
+        <app-design-card [design]="data" (like)="likeUnlike($event)"></app-design-card>
       </div>
     </div>
   </div>

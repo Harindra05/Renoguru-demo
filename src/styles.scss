@@ -4396,7 +4396,7 @@ textarea.form-control {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #5ea51d;
+    background: _var.$ocean_blue;
     -moz-transition: all .3s ease;
     -o-transition: all .3s ease;
     -webkit-transition: all .3s ease;
@@ -4681,8 +4681,8 @@ textarea.form-control {
 
 .testimony-wrap .icon {
     position: absolute;
-    top: 2px;
-    left: 25px;
+    top: 10px;
+    left: 10px;
     width: 45px;
     height: 45px;
     border-radius: 50%;
